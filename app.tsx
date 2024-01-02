@@ -1,22 +1,15 @@
 import fs from "fs";
 import esbuild from "esbuild";
-import React, { ReactNode } from "react";
+import React from "react";
 import { renderToString } from "react-dom/server";
-import markdown from "markdown-it";
-const MD = markdown({ html: true });
+import { IsFileExists } from "./libs";
 
 const main = async () => {
-  await createPage("index",{name: "home page"})
-  // home页测试页
-  await createPage("home", {name:"hello"});
+  // 首页
+  await createPage("index", { name: "home page" });
+  // markdown
+  await createPage("markdown", { name: "markdown" });
 };
-
-// 获取markdown数据
-// const getMarkDown = ()=>{
-//     // 获取服务端数据
-//     var mdRemote = fs.readFileSync("./markdown/md.md","utf-8");
-//     return MD.render(mdRemote.toString());
-// }
 
 /**
  * ssg生成html页面
@@ -25,9 +18,14 @@ const main = async () => {
  */
 const createPage = async (pack, props) => {
   // 模块页面
-  const Page: ReactNode = require("./src/" + pack + "/Page.tsx").default;
+  const Page = require("./src/" + pack + "/Page.tsx");
+  // 获取服务端数据，并将其注入到props的serData中。
+  if(IsFileExists("./src/"+pack+"/SerData.ts")){
+    const SerData = require("./src/"+pack+"/SerData.ts").default;
+    props.serData = SerData;
+  }
   // 服务端渲染html
-  const html = renderToString(<Page {...props} />);
+  const html = renderToString(<Page.default {...props} />);
   // ssg部分生成index.html
   const template = fs.readFileSync("./public/index.html", "utf-8");
   // 预渲染

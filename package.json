@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "https://swallsky.github.io/",
   "scripts": {
+    "dev":"nodemon --watch src --exec tsx app.tsx",
     "build": "yarn tsx app.tsx"
   },
   "keywords": [],
@@ -11,6 +12,7 @@
   "devDependencies": {
     "@types/node": "^20.10.6",
     "esbuild": "^0.19.11",
+    "nodemon": "^3.0.2",
     "tsx": "^4.7.0"
   },
   "dependencies": {
