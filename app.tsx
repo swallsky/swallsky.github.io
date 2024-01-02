@@ -2,13 +2,14 @@ import fs from "fs";
 import esbuild from "esbuild";
 import React from "react";
 import { renderToString } from "react-dom/server";
+import Routes from "./src/route";
 import { IsFileExists } from "./libs";
 
 const main = async () => {
-  // 首页
-  await createPage("index", { name: "home page" });
-  // markdown
-  await createPage("markdown", { name: "markdown" });
+  // 解析路由
+  Routes.map(async (route) => {
+    await createPage(route.page, route.props);
+  });
 };
 
 /**
@@ -20,8 +21,8 @@ const createPage = async (pack, props) => {
   // 模块页面
   const Page = require("./src/" + pack + "/Page.tsx");
   // 获取服务端数据，并将其注入到props的serData中。
-  if(IsFileExists("./src/"+pack+"/SerData.ts")){
-    const SerData = require("./src/"+pack+"/SerData.ts").default;
+  if (IsFileExists("./src/" + pack + "/SerData.ts")) {
+    const SerData = require("./src/" + pack + "/SerData.ts").default;
     props.serData = SerData;
   }
   // 服务端渲染html
@@ -30,7 +31,7 @@ const createPage = async (pack, props) => {
   const template = fs.readFileSync("./public/index.html", "utf-8");
   // 预渲染
   const prerendered_page = template
-    .replace("<%title%>", props.name) //seo模板
+    .replace("<%title%>", props.title) //seo模板
     .replace("<%ssg_props%>", JSON.stringify(props)) //react赋值
     .replace("<%html%>", html) //渲染后的html
     .replace("<%client_js%>", pack); //js

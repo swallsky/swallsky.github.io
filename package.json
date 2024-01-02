@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "https://swallsky.github.io/",
   "scripts": {
-    "dev":"nodemon --watch src --exec tsx app.tsx",
+    "dev":"nodemon --watch src app.tsx --exec tsx app.tsx",
     "build": "yarn tsx app.tsx"
   },
   "keywords": [],
