@@ -11,8 +11,14 @@ class SSG {
   private srcDir: string;
   // 模板文件
   private templateFile: string;
+  // 页面文件
+  private pageFile: string;
+  // Js.tsx缓存文件名
+  private jsCacheFile: string;
   // 编译后的目录
   private buildDir: string;
+  // 缓存的目录
+  private cacheDir: string;
   /**
    * 构造函数
    */
@@ -20,7 +26,9 @@ class SSG {
     this.srcDir = path.join(__dirname, "../src");
     this.templateFile = path.join(__dirname, "../public/index.html");
     this.buildDir = path.join(__dirname, "../", config.buildDir);
-    if(!fs.existsSync(this.buildDir)) fs.mkdirSync(this.buildDir); //创建编译后的目录
+    if (!fs.existsSync(this.buildDir)) fs.mkdirSync(this.buildDir); //创建编译后的目录
+    this.cacheDir = path.join(__dirname, "../", config.cacheDir);
+    if (!fs.existsSync(this.cacheDir)) fs.mkdirSync(this.cacheDir); //创建缓存的目录
   }
   /**
    * 路由
@@ -35,11 +43,11 @@ class SSG {
    * @returns
    */
   private getPage(pack: string) {
-    var pageFile = path.join(this.srcDir, pack, config.page.index);
-    if (IsFileExists(pageFile)) {
-      return require(pageFile);
+    this.pageFile = path.join(this.srcDir, pack, config.page.index);
+    if (IsFileExists(this.pageFile)) {
+      return require(this.pageFile);
     } else {
-      console.log("未找到页面:", pageFile);
+      console.log("未找到页面:", this.pageFile);
       return false;
     }
   }
@@ -82,6 +90,26 @@ class SSG {
     }
   }
   /**
+   * 创建Js.tsx缓存
+   * @param pack
+   */
+  private createCache(pack:string) {
+    const code = `
+import React from "react";
+import { hydrateRoot } from "react-dom/client";
+import Page from "../../src/${pack}/Page";
+hydrateRoot(document.getElementById("root"), <Page {...JSON.parse(props)} />);
+    `;
+    var packDir = path.join(this.cacheDir, pack);
+    if(!fs.existsSync(packDir)) fs.mkdirSync(packDir); //创建页面的目录
+    this.jsCacheFile = path.join(this.cacheDir, pack, "Js.tsx"); //前端js的缓存文件
+    try {
+      fs.writeFileSync(this.jsCacheFile, code);
+    } catch (err) {
+      console.error(err);
+    }
+  }
+  /**
    * 渲染html
    * @param pack
    * @param props
@@ -97,7 +125,9 @@ class SSG {
         .replace("<%title%>", props.title) //seo模板
         .replace("<%ssg_props%>", JSON.stringify(props)) //react赋值
         .replace("<%html%>", html) //渲染后的html
-        .replace("<%client_js%>", path.join("js", pack + ".js") //客户端的js
+        .replace(
+          "<%client_js%>",
+          path.join("js", pack + ".js") //客户端的js
         ); //js
       // 生成index.html页面
       fs.writeFileSync(
@@ -105,8 +135,10 @@ class SSG {
         prerendered_page
       );
       // 生成js
+      this.createCache(pack);
+      // 打包前端js
       esbuild.buildSync({
-        entryPoints: [path.join(this.srcDir, pack, "Js.ts")],
+        entryPoints: [this.jsCacheFile],
         bundle: true,
         minify: true,
         outfile: path.join(this.buildDir, "js", pack + ".js"),
