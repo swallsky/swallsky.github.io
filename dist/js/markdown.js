@@ -510,7 +510,7 @@ Note right of C: \u6CA1\u4EBA\u966A\u6211\u73A9
       Go downstairs: 5: Me
       Sit down: 3: Me
 </code></pre>
-`}};(0,Tc.hydrateRoot)(document.getElementById("root23"),Pc.default.createElement(zc,{...np}));})();
+`}};(0,Tc.hydrateRoot)(document.getElementById("root"),Pc.default.createElement(zc,{...np}));})();
 /*! Bundled license information:
 
 react/cjs/react.production.min.js:
