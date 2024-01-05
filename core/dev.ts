@@ -55,7 +55,12 @@ const server = http.createServer((req, res) => {
 // server on develop env
 export default () => {
   const port = process.env.PORT || config.server.port;
-  server.listen(port, () => {
+  var devServer = true;
+  server.once('error',(error)=>{
+    console.log(`Server started`,error.message);
+    devServer = false;
+  });
+  if(devServer) server.listen(port, ()=>{
     console.log(`Server running at http://localhost:${port}/`);
   });
 };

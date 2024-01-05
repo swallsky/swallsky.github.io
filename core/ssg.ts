@@ -86,14 +86,11 @@ class SSG {
     }
   }
   /**
-   * 渲染html
-   * @param pack
-   * @param props
+   * 生成html页
+   * @param pack 
+   * @param props 
    */
-  public async renderHtml(pack: string, props: any) {
-    // 获取服务端数据 server data
-    props.serData = await this.getSerData(pack, props);
-
+  private createHtml(pack: string, props: any){
     // 获取服务端html
     const Page = this.getPage(pack);
     const roothtml = RootHtml(Page, props);
@@ -108,6 +105,13 @@ class SSG {
       path.join(this.buildDir, pack + ".html"),
       prerendered_page
     );
+  }
+  /**
+   * 生成html需要的打包好的js
+   * @param pack 
+   * @param props 
+   */
+  private createJs(pack:string, props: any){
     // 为解决客户端的hydrateRoot而使用的临时缓存的tsx，方便前端打包js文件
     this.createCache(pack, props);
     // 打包前端js
@@ -117,6 +121,19 @@ class SSG {
       minify: true,
       outfile: path.join(this.buildDir, "js", pack + ".js"),
     });
+  }
+  /**
+   * 渲染html
+   * @param pack
+   * @param props
+   */
+  public async renderHtml(pack: string, props: any) {
+    // 获取服务端数据 server data
+    props.serData = await this.getSerData(pack, props);
+    // 生成html页
+    this.createHtml(pack,props);
+    // 生成html对应的js
+    this.createJs(pack,props);
   }
 }
 
