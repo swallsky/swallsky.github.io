@@ -1,4 +1,4 @@
-import ssg from "./core/ssg.tsx";
+import ssg from "./core/ssg.ts";
 import Routes from "./src/route.ts";
 
 const main = async () => {

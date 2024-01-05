@@ -1,3 +1,5 @@
+import React from "react";
+import { renderToString } from "react-dom/server";
 /**
  * hydrateRoot水合模式的前端js模板
  * @param pack
@@ -13,16 +15,15 @@ var props = ${props};
 hydrateRoot(document.getElementById("root"), <Page {...props} />);
     `;
 };
-
 /**
  *  渲染前端模板
- * @param html 
- * @param jspath 
- * @param props 
- * @returns 
+ * @param html
+ * @param jspath
+ * @param props
+ * @returns
  */
-export const RenderHtml = (html: string, jspath:string, props: any)=>{
-    return `<!DOCTYPE html>
+export const RenderHtml = (html: string, jspath: string, props: any) => {
+  return `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -34,5 +35,19 @@ export const RenderHtml = (html: string, jspath:string, props: any)=>{
     <script type="text/javascript" src="${jspath}"></script>
 </body>
 </html>
-    `
-}
+    `;
+};
+
+/**
+ * 返回服务端的html
+ * @param Page 
+ * @param props 
+ * @returns 
+ */
+export const RootHtml = (Page: any, props: any) => {
+  if (Page) {
+    return renderToString(<Page.default {...props} />);
+  } else {
+    return "";
+  }
+};

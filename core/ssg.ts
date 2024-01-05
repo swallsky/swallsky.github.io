@@ -1,11 +1,9 @@
-import React from "react";
-import { renderToString } from "react-dom/server";
 import config from "../book.config";
 import path from "path";
 import fs from "fs";
 import { IsFileExists } from "./utils";
 import esbuild from "esbuild";
-import { JsTemplate, RenderHtml } from "./tpls";
+import { JsTemplate, RenderHtml, RootHtml } from "./tpls";
 
 class SSG {
   // src目录
@@ -36,20 +34,6 @@ class SSG {
     console.log(r);
   }
   /**
-   * 返回前端页面
-   * @param pack
-   * @returns
-   */
-  private getPage(pack: string) {
-    this.pageFile = path.join(this.srcDir, pack, config.page.index);
-    if (IsFileExists(this.pageFile)) {
-      return require(this.pageFile);
-    } else {
-      console.log("未找到页面:", this.pageFile);
-      return false;
-    }
-  }
-  /**
    * 获取服务端数据
    * @param pack
    * @returns
@@ -63,16 +47,16 @@ class SSG {
     }
   }
   /**
-   * 返回服务器的html
-   * @param pack
-   * @param props
+   * 获取页面文件
+   * @param pack 
+   * @returns 
    */
-  public async rootHtml(pack: string, props: any) {
-    const Page = this.getPage(pack);
-    if (Page) {
-      return renderToString(<Page.default {...props} />);
-    } else {
-      return "";
+  private getPage(pack:string) {
+    this.pageFile = path.join(this.srcDir, pack, config.page.index);
+    if(IsFileExists(this.pageFile)){
+      return require(this.pageFile);
+    }else{
+      return false;
     }
   }
   /**
@@ -100,7 +84,8 @@ class SSG {
     // 获取服务端数据 server data
     props.serData = this.getSerData(pack);
     // 获取服务端html
-    const roothtml = await this.rootHtml(pack, props);
+    const Page = this.getPage(pack);
+    const roothtml = RootHtml(Page,props);
     // 预渲染html页面
     const prerendered_page = RenderHtml(roothtml,path.join("js", pack + ".js"),props);
     // 生成index.html页面
