@@ -47,7 +47,7 @@ class SSG {
    * @param pack
    * @returns
    */
-  private getSerData(pack: string) {
+  private async getSerData(pack: string) {
     var serFile = path.join(this.srcDir, pack, config.page.serverData);
     if (IsFileExists(serFile)) {
       return require(serFile).default;
@@ -91,7 +91,7 @@ class SSG {
    */
   public async renderHtml(pack: string, props: any) {
     // 获取服务端数据 server data
-    props.serData = this.getSerData(pack);
+    props.serData = await this.getSerData(pack);
     // 获取服务端html
     const Page = this.getPage(pack);
     const roothtml = RootHtml(Page, props);
