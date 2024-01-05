@@ -92,13 +92,15 @@ class SSG {
   /**
    * 创建Js.tsx缓存
    * @param pack
+   * @param props
    */
-  private createCache(pack:string) {
+  private createCache(pack:string,props: any) {
     const code = `
 import React from "react";
 import { hydrateRoot } from "react-dom/client";
 import Page from "../../src/${pack}/Page";
-hydrateRoot(document.getElementById("root"), <Page {...JSON.parse(props)} />);
+var props = ${props};
+hydrateRoot(document.getElementById("root"), <Page {...props} />);
     `;
     var packDir = path.join(this.cacheDir, pack);
     if(!fs.existsSync(packDir)) fs.mkdirSync(packDir); //创建页面的目录
@@ -123,7 +125,6 @@ hydrateRoot(document.getElementById("root"), <Page {...JSON.parse(props)} />);
       // 预渲染
       const prerendered_page = template
         .replace("<%title%>", props.title) //seo模板
-        .replace("<%ssg_props%>", JSON.stringify(props)) //react赋值
         .replace("<%html%>", html) //渲染后的html
         .replace(
           "<%client_js%>",
@@ -135,7 +136,7 @@ hydrateRoot(document.getElementById("root"), <Page {...JSON.parse(props)} />);
         prerendered_page
       );
       // 生成js
-      this.createCache(pack);
+      this.createCache(pack,JSON.stringify(props));
       // 打包前端js
       esbuild.buildSync({
         entryPoints: [this.jsCacheFile],
