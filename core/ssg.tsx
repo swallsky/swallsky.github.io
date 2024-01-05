@@ -5,12 +5,11 @@ import path from "path";
 import fs from "fs";
 import { IsFileExists } from "./utils";
 import esbuild from "esbuild";
+import { JsTemplate, RenderHtml } from "./tpls";
 
 class SSG {
   // src目录
   private srcDir: string;
-  // 模板文件
-  private templateFile: string;
   // 页面文件
   private pageFile: string;
   // Js.tsx缓存文件名
@@ -24,7 +23,6 @@ class SSG {
    */
   constructor() {
     this.srcDir = path.join(__dirname, "../src");
-    this.templateFile = path.join(__dirname, "../public/index.html");
     this.buildDir = path.join(__dirname, "../", config.buildDir);
     if (!fs.existsSync(this.buildDir)) fs.mkdirSync(this.buildDir); //创建编译后的目录
     this.cacheDir = path.join(__dirname, "../", config.cacheDir);
@@ -72,21 +70,9 @@ class SSG {
   public async rootHtml(pack: string, props: any) {
     const Page = this.getPage(pack);
     if (Page) {
-      props.serData = this.getSerData(pack);
       return renderToString(<Page.default {...props} />);
     } else {
       return "";
-    }
-  }
-  /**
-   * 获取模板数据
-   * @returns
-   */
-  private getTemplate() {
-    if (IsFileExists(this.templateFile)) {
-      return fs.readFileSync(this.templateFile, "utf-8");
-    } else {
-      return false;
     }
   }
   /**
@@ -94,16 +80,10 @@ class SSG {
    * @param pack
    * @param props
    */
-  private createCache(pack:string,props: any) {
-    const code = `
-import React from "react";
-import { hydrateRoot } from "react-dom/client";
-import Page from "../../src/${pack}/Page";
-var props = ${props};
-hydrateRoot(document.getElementById("root"), <Page {...props} />);
-    `;
+  private createCache(pack: string, props: any) {
+    const code = JsTemplate(pack, props);
     var packDir = path.join(this.cacheDir, pack);
-    if(!fs.existsSync(packDir)) fs.mkdirSync(packDir); //创建页面的目录
+    if (!fs.existsSync(packDir)) fs.mkdirSync(packDir); //创建页面的目录
     this.jsCacheFile = path.join(this.cacheDir, pack, "Js.tsx"); //前端js的缓存文件
     try {
       fs.writeFileSync(this.jsCacheFile, code);
@@ -117,34 +97,23 @@ hydrateRoot(document.getElementById("root"), <Page {...props} />);
    * @param props
    */
   public async renderHtml(pack: string, props: any) {
-    // ssg部分生成index.html
-    const template = this.getTemplate();
+    // 获取服务端数据 server data
+    props.serData = this.getSerData(pack);
     // 获取服务端html
-    const html = await this.rootHtml(pack, props);
-    if (template) {
-      // 预渲染
-      const prerendered_page = template
-        .replace("<%title%>", props.title) //seo模板
-        .replace("<%html%>", html) //渲染后的html
-        .replace(
-          "<%client_js%>",
-          path.join("js", pack + ".js") //客户端的js
-        ); //js
-      // 生成index.html页面
-      fs.writeFileSync(
-        path.join(this.buildDir, pack + ".html"),
-        prerendered_page
-      );
-      // 生成js
-      this.createCache(pack,JSON.stringify(props));
-      // 打包前端js
-      esbuild.buildSync({
-        entryPoints: [this.jsCacheFile],
-        bundle: true,
-        minify: true,
-        outfile: path.join(this.buildDir, "js", pack + ".js"),
-      });
-    }
+    const roothtml = await this.rootHtml(pack, props);
+    // 预渲染html页面
+    const prerendered_page = RenderHtml(roothtml,path.join("js", pack + ".js"),props);
+    // 生成index.html页面
+    fs.writeFileSync(path.join(this.buildDir, pack + ".html"),prerendered_page);
+    // 为解决客户端的hydrateRoot而使用的临时缓存的tsx，方便前端打包js文件
+    this.createCache(pack, props);
+    // 打包前端js
+    esbuild.buildSync({
+      entryPoints: [this.jsCacheFile],
+      bundle: true,
+      minify: true,
+      outfile: path.join(this.buildDir, "js", pack + ".js"),
+    });
   }
 }
 
