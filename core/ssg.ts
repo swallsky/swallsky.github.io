@@ -5,6 +5,13 @@ import { IsFileExists } from "./utils";
 import esbuild from "esbuild";
 import { JsTemplate, RenderHtml, RootHtml } from "./tpls";
 
+// 路由配置接口
+export interface RouteCfg {
+  page: string //页面目录
+  props: any //预处理数据
+  children?: RouteCfg[]
+}
+
 class SSG {
   // src目录
   private srcDir: string;
@@ -27,11 +34,13 @@ class SSG {
     if (!fs.existsSync(this.cacheDir)) fs.mkdirSync(this.cacheDir); //创建缓存的目录
   }
   /**
-   * 路由
-   * @param r
+   * 路由配置
+   * @param R
    */
-  public route(r: any) {
-    console.log(r);
+  public async route(R: RouteCfg[]) {
+    R.map(async (route) => {
+      await this.renderHtml(route.page, route.props);
+    });
   }
   /**
    * 获取服务端数据
@@ -48,14 +57,14 @@ class SSG {
   }
   /**
    * 获取页面文件
-   * @param pack 
-   * @returns 
+   * @param pack
+   * @returns
    */
-  private getPage(pack:string) {
+  private getPage(pack: string) {
     this.pageFile = path.join(this.srcDir, pack, config.page.index);
-    if(IsFileExists(this.pageFile)){
+    if (IsFileExists(this.pageFile)) {
       return require(this.pageFile);
-    }else{
+    } else {
       return false;
     }
   }
@@ -85,11 +94,18 @@ class SSG {
     props.serData = this.getSerData(pack);
     // 获取服务端html
     const Page = this.getPage(pack);
-    const roothtml = RootHtml(Page,props);
+    const roothtml = RootHtml(Page, props);
     // 预渲染html页面
-    const prerendered_page = RenderHtml(roothtml,path.join("js", pack + ".js"),props);
+    const prerendered_page = RenderHtml(
+      roothtml,
+      path.join("js", pack + ".js"),
+      props
+    );
     // 生成index.html页面
-    fs.writeFileSync(path.join(this.buildDir, pack + ".html"),prerendered_page);
+    fs.writeFileSync(
+      path.join(this.buildDir, pack + ".html"),
+      prerendered_page
+    );
     // 为解决客户端的hydrateRoot而使用的临时缓存的tsx，方便前端打包js文件
     this.createCache(pack, props);
     // 打包前端js
