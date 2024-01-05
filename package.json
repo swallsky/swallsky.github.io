@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "https://swallsky.github.io/",
   "scripts": {
-    "dev": "nodemon --watch src app.tsx --exec tsx app.ts",
-    "build": "rm -rf _cache && rm -rf dist && yarn tsx app.ts"
+    "dev": "MODE=dev nodemon -e ts,tsx --watch src --watch core --watch app.ts --exec tsx app.ts",
+    "build": "rm -rf _cache && rm -rf dist && MODE=prod tsx app.ts"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +13,7 @@
     "@types/node": "^20.10.6",
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",
+    "concurrently": "^8.2.2",
     "esbuild": "^0.19.11",
     "nodemon": "^3.0.2",
     "tsx": "^4.7.0"

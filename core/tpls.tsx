@@ -1,4 +1,5 @@
 import React from "react";
+import config from "../book.config";
 import { renderToString } from "react-dom/server";
 /**
  * hydrateRoot水合模式的前端js模板
@@ -12,7 +13,7 @@ export const JsTemplate = (pack: string, props: any) => {
 import { hydrateRoot } from "react-dom/client";
 import Page from "../../src/${pack}/Page";
 var props = ${props};
-hydrateRoot(document.getElementById("root"), <Page {...props} />);
+hydrateRoot(document.getElementById("${config.page.domRootId}"), <Page {...props} />);
     `;
 };
 /**
@@ -31,7 +32,7 @@ export const RenderHtml = (html: string, jspath: string, props: any) => {
     <title>${props?.title}</title>
 </head>
 <body>
-    <div id="root">${html}</div>
+    <div id="${config.page.domRootId}">${html}</div>
     <script type="text/javascript" src="${jspath}"></script>
 </body>
 </html>
