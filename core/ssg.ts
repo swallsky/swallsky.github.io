@@ -7,9 +7,9 @@ import { JsTemplate, RenderHtml, RootHtml } from "./tpls";
 
 // 路由配置接口
 export interface RouteCfg {
-  page: string //页面目录
-  props: any //预处理数据
-  children?: RouteCfg[]
+  page: string; //页面目录
+  props: any; //预处理数据
+  children?: RouteCfg[];
 }
 
 class SSG {
@@ -47,10 +47,11 @@ class SSG {
    * @param pack
    * @returns
    */
-  private async getSerData(pack: string) {
+  private async getSerData(pack: string, props: any) {
     var serFile = path.join(this.srcDir, pack, config.page.serverData);
     if (IsFileExists(serFile)) {
-      return require(serFile).default;
+      const serverFn = require(serFile).default;
+      return await serverFn(props);
     } else {
       return false;
     }
@@ -91,7 +92,8 @@ class SSG {
    */
   public async renderHtml(pack: string, props: any) {
     // 获取服务端数据 server data
-    props.serData = await this.getSerData(pack);
+    props.serData = await this.getSerData(pack, props);
+
     // 获取服务端html
     const Page = this.getPage(pack);
     const roothtml = RootHtml(Page, props);

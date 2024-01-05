@@ -1,6 +1,6 @@
 import React from "react";
 
-function Page() {
+function Page(props:any) {
   return (
     <>
         <ul>
@@ -11,6 +11,7 @@ function Page() {
               </ul>
             </li>
         </ul>
+        <div>{props.serData.baidu}</div>
     </>
   );
 }
