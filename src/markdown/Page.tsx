@@ -1,12 +1,12 @@
 import React from "react";
+import Layout from "../_components/Layout";
 
 function Index(props) {
-  // console.log(props);
   return (
-    <>
+    <Layout>
       <div>hello</div>
       <div dangerouslySetInnerHTML={{ __html: props.serData.markdown }} />
-    </>
+    </Layout>
   );
 }
 
