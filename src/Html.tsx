@@ -5,6 +5,7 @@ const bodyStyle:React.CSSProperties = {
     margin: 0,
     padding: 0
 }
+
 interface Props {
     children:any; // 服务端组件
     title: string; // 页面标题

@@ -14,6 +14,8 @@ Error generating stack: `+l.message+`
         display: flex;
         list-style: none;
         justify-content: flex-start;
+        margin: 0;
+        padding: 0;
         li {
             margin: 0 10px;
             a {
