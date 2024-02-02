@@ -1,5 +1,10 @@
 import React from "react";
 
+// body样式
+const bodyStyle:React.CSSProperties = {
+    margin: 0,
+    padding: 0
+}
 interface Props {
     children:any; // 服务端组件
     title: string; // 页面标题
@@ -15,7 +20,7 @@ function Html(props:Props) {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>{props.title}</title>
       </head>
-      <body>
+      <body style={bodyStyle}>
         <div id={props.rootId}>{props.children}</div>
         <script type="text/javascript" src={props.jsPath}></script>
       </body>
