@@ -3,7 +3,8 @@ import React from "react";
 // body样式
 const bodyStyle:React.CSSProperties = {
     margin: 0,
-    padding: 0
+    padding: 0,
+    backgroundColor: 'antiquewhite'
 }
 
 interface Props {
@@ -13,6 +14,7 @@ interface Props {
     jsPath: string; // 客户js路径
 }
 
+// html模板
 function Html(props:Props) {
   return (
     <html lang="en">

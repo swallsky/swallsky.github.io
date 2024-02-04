@@ -2,8 +2,6 @@ import React from "react";
 import Layout from "../_components/Layout";
 import styled from "styled-components";
 const HomeStyle = styled.div`
-  height: calc(100vh-100px);
-  background-color: antiquewhite;
   h3 {
     width: 100%;
     margin: 0;
