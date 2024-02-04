@@ -1,20 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Header from "./Header";
+import Loading from "./Loading";
 
 interface Props {
   children: any;
 }
 
 function Layout(props:Props) {
-  const [loaded,setLoaded] = useState(false);
-  useEffect(()=>{
-    setLoaded(true);
-  },[]);
   return (
-    <div style={{display:loaded?"":"none"}}>
+    <Loading>
         <Header />
         {props.children}
-    </div>
+    </Loading>
   );
 }
 
