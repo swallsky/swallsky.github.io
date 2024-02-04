@@ -109,7 +109,7 @@ class SSG {
     // 获取服务端html
     const Page = this.getPage(pack);
     // 预渲染html页面
-    const _html = ServerHtml(Page, props, path.join("js", pack + ".js"));
+    const _html = ServerHtml(Page, props, pack);
     // 生成index.html页面
     fs.writeFileSync(
       path.join(this.buildDir, pack + ".html"),
@@ -133,6 +133,22 @@ class SSG {
     });
   }
   /**
+   * 生成页面css
+   * @param pack 
+   */
+  private createCss(pack: string) {
+    const cssFile = path.join(this.srcDir,pack,"page.css");
+    if(IsFileExists(cssFile)){
+      const buildCssFile = path.join(this.buildDir,"css",pack+".css");
+      esbuild.buildSync({
+        entryPoints: [cssFile],
+        bundle: true,
+        minify: true,
+        outfile: buildCssFile
+      });
+    }
+  }
+  /**
    * 生成html页面和js
    * @param pack
    * @param props
@@ -140,10 +156,12 @@ class SSG {
   public async CreateHtml(pack: string, props: any) {
     // 获取服务端数据 server data
     props.serData = await this.getSerData(pack, props);
-    // 生成html页
-    this.createHtml(pack, props);
     // 生成html对应的js
     this.createJs(pack, props);
+    // 生成对应的css样式
+    this.createCss(pack);
+    // 生成html页
+    this.createHtml(pack, props);
   }
 }
 

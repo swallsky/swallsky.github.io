@@ -10,10 +10,10 @@ import Html from "./Html";
  * @param jspath
  * @returns
  */
-const Server = (Page: any, props: any, jspath: string) => {
+const Server = (Page: any, props: any, pack: string) => {
   if (Page) {
     return renderToString(
-      <Html title={props.title} jsPath={jspath} rootId={config.page.domRootId}>
+      <Html title={props.title} jsPath={"js/"+pack+".js"} cssPath={"css/"+pack+".css"} rootId={config.page.domRootId}>
         <Page.default {...props} />
       </Html>
     );
