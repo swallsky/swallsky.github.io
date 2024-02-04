@@ -9,6 +9,10 @@ const HomeStyle = styled.div`
     padding-top: 200px;
     text-align: center;
   }
+  div.summary {
+    text-align: center;
+    margin-top: 20px;
+  }
 `
 
 function Page(props: any) {
@@ -16,6 +20,7 @@ function Page(props: any) {
     <Layout>
       <HomeStyle>
         <h3>swallsky books</h3>
+        <div className="summary">技术文档分享</div>
       </HomeStyle>
     </Layout>
   );
