@@ -37,9 +37,9 @@ class SSG {
    * 路由配置
    * @param R
    */
-  public async route(R: RouteCfg[]) {
+  public async Route(R: RouteCfg[]) {
     R.map(async (route) => {
-      await this.renderHtml(route.page, route.props);
+      await this.CreateHtml(route.page, route.props);
     });
   }
   /**
@@ -108,13 +108,8 @@ class SSG {
   private createHtml(pack: string, props: any) {
     // 获取服务端html
     const Page = this.getPage(pack);
-    const _html = ServerHtml(Page, props, path.join("js", pack + ".js"));
     // 预渲染html页面
-    // const prerendered_page = RenderHtml(
-    //   roothtml,
-    //   path.join("js", pack + ".js"),
-    //   props
-    // );
+    const _html = ServerHtml(Page, props, path.join("js", pack + ".js"));
     // 生成index.html页面
     fs.writeFileSync(
       path.join(this.buildDir, pack + ".html"),
@@ -138,11 +133,11 @@ class SSG {
     });
   }
   /**
-   * 渲染html
+   * 生成html页面和js
    * @param pack
    * @param props
    */
-  public async renderHtml(pack: string, props: any) {
+  public async CreateHtml(pack: string, props: any) {
     // 获取服务端数据 server data
     props.serData = await this.getSerData(pack, props);
     // 生成html页

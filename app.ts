@@ -7,7 +7,7 @@ const main = async () => {
     devServer();
   }
   // 解析路由
-  await ssg.route(Routes);
+  await ssg.Route(Routes);
 };
 
 // 执行
