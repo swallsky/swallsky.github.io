@@ -1,10 +1,10 @@
 import React from "react";
 import Layout from "../_components/Layout";
 
-function Page() {
+function Page(props) {
   return (
     <Layout>
-        <div>go base</div>
+        <div className="warp" dangerouslySetInnerHTML={{ __html: props.serData.gobase }} />
     </Layout>
   );
 }
