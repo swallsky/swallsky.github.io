@@ -1,11 +1,14 @@
 import http from "http";
 import fs from "fs";
 import path from "path";
+import url from "url";
 import config from "../book.config";
 
 // 创建一个简单的静态web服务
 const server = http.createServer((req, res) => {
-  let filePath = config.buildDir + req.url;
+  const currentUrl = url.parse(req.url as string,true);
+  let filePath = config.buildDir + currentUrl.pathname;
+
   if (filePath === config.buildDir + "/") {
     //默认首页
     filePath = config.buildDir + "/index.html";
