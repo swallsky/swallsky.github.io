@@ -21,13 +21,12 @@ const HeadStyle = styled.div`
     }
 `
 
-
 function Header() {
   return (
     <HeadStyle>
         <ul>
-            <li><a href="/markdown.html">Markdown</a></li>
-            <li><a href="">Go基础</a></li>
+            <li><a href="./markdown.html">Markdown</a></li>
+            <li><a href="./go.html">Go基础</a></li>
         </ul>
     </HeadStyle>
   );

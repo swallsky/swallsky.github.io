@@ -8,6 +8,10 @@ const Route:RouteCfg[] = [
     {
         page: "markdown",
         props: { title: "MarkDown基础" }
+    },
+    {
+        page: "go",
+        props: { title: "go基础" }
     }
 ]
 export default Route
