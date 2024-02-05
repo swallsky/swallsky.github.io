@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "https://swallsky.github.io/",
   "scripts": {
-    "dev": "MODE=dev nodemon -e ts,tsx --watch src --watch core --watch app.ts --exec tsx app.ts",
+    "dev": "MODE=dev nodemon -e ts,tsx,css --watch src --watch core --watch app.ts --exec tsx app.ts",
     "build": "rm -rf _cache && rm -rf dist && MODE=prod tsx app.ts"
   },
   "keywords": [],

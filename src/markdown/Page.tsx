@@ -4,8 +4,7 @@ import Layout from "../_components/Layout";
 function Index(props) {
   return (
     <Layout>
-      <div className="hello">hello</div>
-      <div dangerouslySetInnerHTML={{ __html: props.serData.markdown }} />
+      <div className="mdwarp" dangerouslySetInnerHTML={{ __html: props.serData.markdown }} />
     </Layout>
   );
 }
