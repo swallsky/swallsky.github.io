@@ -1,6 +1,19 @@
 import fs from "fs";
 import markdown from "markdown-it";
-const MD = markdown({ html: true });
+import hljs from "highlight.js";
+const MD = markdown({ html: true, xhtmlOut: false, linkify: true,
+    highlight: function (str, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+            try {
+                return '<pre><code class="hljs">' +
+                        hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
+                        '</code></pre>';
+            } catch (__) {}
+        }
+    
+        return '<pre><code class="hljs">' + MD.utils.escapeHtml(str) + '</code></pre>';
+    }
+});
 
 // 获取markdown数据
 export const GetMarkDownFile = (mdfile: string) => {

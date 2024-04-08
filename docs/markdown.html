@@ -1,4 +1,4 @@
-<html lang="en"><head><meta charSet="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="favicon.ico"/><link href="css/markdown.css" rel="stylesheet" type="text/css"/><title>MarkDown基础</title></head><body style="margin:0;padding:0"><div id="root"><div style="display:none"><div class="sc-beySPh CWEHv"><ul><li><a href="./">首页</a></li><li><a href="./markdown.html">Markdown</a></li><li><a href="./go.html">Go语言</a></li></ul></div><div class="sc-guDLey iklPtY"><div class="menu"><ul><li><span class="icon"></span><a href="/markdown.html">Markdown基础</a></li></ul></div><div class="cnt"><div><h2>Markdown介绍</h2>
+<html lang="en"><head><meta charSet="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="favicon.ico"/><link rel="stylesheet" href="/css/highlight/styles/default.min.css"/><link href="css/markdown.css" rel="stylesheet" type="text/css"/><title>MarkDown基础</title></head><body style="margin:0;padding:0"><div id="root"><div style="display:none"><div class="sc-beySPh CWEHv"><ul><li><a href="./">首页</a></li><li><a href="./markdown.html">Markdown</a></li><li><a href="./go.html">Go语言</a></li></ul></div><div class="sc-guDLey hlHwXq"><div class="menu"><ul><li><span class="icon"></span><a href="/markdown.html">Markdown基础</a></li></ul></div><div class="cnt"><div><h2>Markdown介绍</h2>
 <h3>说明</h3>
 <ul>
 <li>Markdown是一种轻量级标记语言，它充许人们使用易读易写的纯文本格式编写文档</li>
@@ -68,7 +68,7 @@ MarkDown区块引用是在段落开头使用&gt;符号，然后后面紧跟一�
 <ol start="2">
 <li>
 <p>区块嵌套</p>
-<pre><code>&gt; 第一层
+<pre><code class="hljs">&gt; 第一层
 &gt; &gt; 第二层
 &gt; &gt; &gt; 第三层
 </code></pre>
@@ -91,7 +91,7 @@ MarkDown区块引用是在段落开头使用&gt;符号，然后后面紧跟一�
 <blockquote>
 <p>列表</p>
 </blockquote>
-<pre><code>&gt; 列表
+<pre><code class="hljs">&gt; 列表
 &gt; 1. 第一项
 &gt; 2. 第二项
 &gt; + 第一项
@@ -118,7 +118,7 @@ MarkDown区块引用是在段落开头使用&gt;符号，然后后面紧跟一�
 </li>
 <li>
 <p>列表中使用区块</p>
-<pre><code>* 第一项
+<pre><code class="hljs">* 第一项
   &gt; 引用1
   &gt; 引用2
 * 第二项
@@ -148,7 +148,7 @@ MarkDown区块引用是在段落开头使用&gt;符号，然后后面紧跟一�
 <blockquote>
 <p>Markdown针对连接和图片的处理也比较简单，可以使用下面的语法标记</p>
 </blockquote>
-<pre><code>[点击跳转QQ](https://www.qq.com)
+<pre><code class="hljs">[点击跳转QQ](https://www.qq.com)
 ![晚霞](https://upload-images.jianshu.io/upload_images/703764-605e3cc2ecb664f6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 </code></pre>
 <p><a href="https://www.qq.com">点击跳转QQ</a>
@@ -160,7 +160,7 @@ MarkDown区块引用是在段落开头使用&gt;符号，然后后面紧跟一�
 <li>有序列表：使用数字加.标识</li>
 </ul>
 </blockquote>
-<pre><code>* 蔬菜1
+<pre><code class="hljs">* 蔬菜1
 * 熟菜2
 * 熟菜3
 
@@ -218,7 +218,7 @@ MarkDown区块引用是在段落开头使用&gt;符号，然后后面紧跟一�
 <blockquote>
 <p>三个以上的星号、减号、下划线，他们之间可以使用空格，但是行内不能有其他的文本</p>
 </blockquote>
-<pre><code>***
+<pre><code class="hljs">***
 ---
 </code></pre>
 <hr>
@@ -228,7 +228,7 @@ MarkDown区块引用是在段落开头使用&gt;符号，然后后面紧跟一�
 <blockquote>
 <p>有时候，我们希望对某一部分文字进行强调，使用*或_包住，不能空格，否则无效，语法如下。</p>
 </blockquote>
-<pre><code>*斜体显示*
+<pre><code class="hljs">*斜体显示*
 _斜体显示_
 
 **加粗显示**
@@ -252,14 +252,14 @@ ___粗斜体___
 <blockquote>
 <p>语法如下</p>
 </blockquote>
-<pre><code>&lt;u&gt;这是下划线&lt;/u&gt;
+<pre><code class="hljs">&lt;u&gt;这是下划线&lt;/u&gt;
 </code></pre>
 <p><u>这是下划线</u></p>
 <p><strong>4.字体大小</strong></p>
 <blockquote>
 <p>文本尺寸大小取值范围1~7,浏览器默认值是3，当大于7时，也只显示7的大小，语法如下：</p>
 </blockquote>
-<pre><code>&lt;font size=1&gt;字体size=1&lt;/font&gt;
+<pre><code class="hljs">&lt;font size=1&gt;字体size=1&lt;/font&gt;
 &lt;font size=2&gt;字体size=2&lt;/font&gt;
 &lt;font size=3&gt;字体size=3&lt;/font&gt;
 &lt;font size=4&gt;字体size=4&lt;/font&gt;
@@ -275,14 +275,14 @@ ___粗斜体___
 <blockquote>
 <p>将字符包裹在==中即可,语法如下</p>
 </blockquote>
-<pre><code class="language-markdown">==高亮字==
+<pre><code class="hljs">==高亮字==
 </code></pre>
 <p>==高亮字==</p>
 <p><strong>6.居中显示</strong></p>
 <blockquote>
 <p>将需要的字符用center包围，语法如下：</p>
 </blockquote>
-<pre><code>&lt;center&gt;居中的字&lt;/center&gt;
+<pre><code class="hljs">&lt;center&gt;居中的字&lt;/center&gt;
 </code></pre>
 <center>居中的字</center>
 <h2>Markdown的高级用法</h2>
@@ -295,7 +295,7 @@ ___粗斜体___
 <li>:-: 设置内容和标题居中对齐</li>
 </ul>
 </blockquote>
-<pre><code>| 表头1 | 表头2 |
+<pre><code class="hljs">| 表头1 | 表头2 |
 | ---  | --- |
 | 单元格数据1 | 单元格数据2 |
 | 单元格数据1 | 单元格数据2 |
@@ -348,14 +348,14 @@ ___粗斜体___
 <blockquote>
 <p>用三个反引号，将代码包裹起来，在第一个三个反引号后加上语言名称：</p>
 </blockquote>
-<pre><code class="language-javascript">let var1 = &quot;hello world&quot;;
-console.log(var1)
+<pre><code class="hljs"><span class="hljs-keyword">let</span> var1 = <span class="hljs-string">&quot;hello world&quot;</span>;
+<span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(var1)
 </code></pre>
 <h3>流程图</h3>
 <ol>
 <li>横向流程图</li>
 </ol>
-<pre><code class="language-mermaid">graph LR
+<pre><code class="hljs">graph LR
 A[开始] --&gt;B(审批)
  B --&gt; C{年龄?}
  C --&gt;|年龄&gt;=18| D[通过]
@@ -364,7 +364,7 @@ A[开始] --&gt;B(审批)
 <ol start="2">
 <li>竖向流程图</li>
 </ol>
-<pre><code class="language-mermaid">graph TD
+<pre><code class="hljs">graph TD
 A[开始] --&gt;B(审批)
     B --&gt; C{年龄?}
     C --&gt;|年龄&gt;=18| D[通过]
@@ -373,7 +373,7 @@ A[开始] --&gt;B(审批)
 <ol start="3">
 <li>标准横向流程图</li>
 </ol>
-<pre><code class="language-flow">st=&gt;start: 开始
+<pre><code class="hljs">st=&gt;start: 开始
 op=&gt;operation: 审批
 cond=&gt;condition: 年龄是否大于18
 sub1=&gt;subroutine: 返回审批
@@ -386,7 +386,7 @@ cond(no)-&gt;sub1(right)-&gt;op
 <ol start="4">
 <li>标准竖向流程图</li>
 </ol>
-<pre><code class="language-flow">st=&gt;start: 开始框
+<pre><code class="hljs">st=&gt;start: 开始框
 op=&gt;operation: 处理框
 cond=&gt;condition: 判断框(是或否?)
 sub1=&gt;subroutine: 子流程
@@ -399,7 +399,7 @@ cond(no)-&gt;sub1(right)-&gt;op
 <ol start="5">
 <li>时序图</li>
 </ol>
-<pre><code class="language-sequence">对象A-&gt;对象B: 对象B你好吗?（请求）
+<pre><code class="hljs">对象A-&gt;对象B: 对象B你好吗?（请求）
 Note right of 对象B: 对象B的描述
 Note left of 对象A: 对象A的描述(提示)
 对象B--&gt;对象A: 我很好(响应)
@@ -408,7 +408,7 @@ Note left of 对象A: 对象A的描述(提示)
 <ol start="6">
 <li>复杂时序图</li>
 </ol>
-<pre><code class="language-sequence">Title: 标题：复杂使用
+<pre><code class="hljs">Title: 标题：复杂使用
 对象A-&gt;对象B: 对象B你好吗?（请求）
 Note right of 对象B: 对象B的描述
 Note left of 对象A: 对象A的描述(提示)
@@ -423,7 +423,7 @@ Note right of C: 没人陪我玩
 <ol start="7">
 <li>UML标准时序图</li>
 </ol>
-<pre><code class="language-mermaid">%% 时序图例子,-&gt; 直线，--&gt;虚线，-&gt;&gt;实线箭头
+<pre><code class="hljs">%% 时序图例子,-&gt; 直线，--&gt;虚线，-&gt;&gt;实线箭头
   sequenceDiagram
     participant 张三
     participant 李四
@@ -439,7 +439,7 @@ Note right of C: 没人陪我玩
 <ol start="8">
 <li>甘特图</li>
 </ol>
-<pre><code class="language-mermaid">%% 语法示例
+<pre><code class="hljs">%% 语法示例
         gantt
         dateFormat  YYYY-MM-DD
         title 软件开发甘特图
@@ -462,7 +462,7 @@ Note right of C: 没人陪我玩
 <ol start="9">
 <li>类图</li>
 </ol>
-<pre><code class="language-mermaid">classDiagram
+<pre><code class="hljs">classDiagram
         class Account
         Account : +String owner
     Account &lt;|-- BankAccount
@@ -475,7 +475,7 @@ Note right of C: 没人陪我玩
 <ol start="10">
 <li>状态图</li>
 </ol>
-<pre><code class="language-mermaid">stateDiagram-v2
+<pre><code class="hljs">stateDiagram-v2
     [*] --&gt; First
     state First {
         [*] --&gt; second
@@ -485,7 +485,7 @@ Note right of C: 没人陪我玩
 <ol start="11">
 <li>饼图</li>
 </ol>
-<pre><code class="language-mermaid">pie
+<pre><code class="hljs">pie
 &quot;苹果&quot; : 386
 &quot;香蕉&quot; : 85
 &quot;菠萝&quot; : 15
@@ -493,7 +493,7 @@ Note right of C: 没人陪我玩
 <ol start="12">
 <li>用户体验旅程图</li>
 </ol>
-<pre><code class="language-mermaid">journey
+<pre><code class="hljs">journey
     title My working day
     section Go to work
       Make tea: 5: Me

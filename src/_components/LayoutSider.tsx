@@ -44,6 +44,18 @@ const Content = styled.div`
     flex: 1 1 auto;
     background-color: #fff;
     padding: 0 20px;
+    table {
+      border-spacing: 0;
+      thead tr th {
+        border-bottom: 1px solid #ccc;
+        padding: 10px;
+        text-align: left;
+      }
+      tbody tr td {
+        border-bottom: 1px solid #ccc;
+        padding: 10px;
+      }
+    }
   }
 `
 

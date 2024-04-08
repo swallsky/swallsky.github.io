@@ -1,4 +1,4 @@
-<html lang="en"><head><meta charSet="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="favicon.ico"/><link href="css/go.css" rel="stylesheet" type="text/css"/><title>go基础</title></head><body style="margin:0;padding:0"><div id="root"><div style="display:none"><div class="sc-beySPh CWEHv"><ul><li><a href="./">首页</a></li><li><a href="./markdown.html">Markdown</a></li><li><a href="./go.html">Go语言</a></li></ul></div><div class="sc-guDLey iklPtY"><div class="menu"><ul><li><span class="icon"></span><a href="/go.html">Go语言基础</a></li></ul></div><div class="cnt"><div><h3>简介</h3>
+<html lang="en"><head><meta charSet="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="favicon.ico"/><link rel="stylesheet" href="/css/highlight/styles/default.min.css"/><link href="css/go.css" rel="stylesheet" type="text/css"/><title>go基础</title></head><body style="margin:0;padding:0"><div id="root"><div style="display:none"><div class="sc-beySPh CWEHv"><ul><li><a href="./">首页</a></li><li><a href="./markdown.html">Markdown</a></li><li><a href="./go.html">Go语言</a></li></ul></div><div class="sc-guDLey hlHwXq"><div class="menu"><ul><li><span class="icon"></span><a href="/go.html">Go语言基础</a></li></ul></div><div class="cnt"><div><h3>简介</h3>
 <blockquote>
 <p>Go是Google公司2009年11月正式对外公开的一门编程语言。</p>
 <p>Go语言的推出，旨在不损失应用程序性能的情况下降低代码的复杂性，具有“部署简单、并发性好、语言设计良好、执行性能好”等优势，目前国内诸多 IT 公司均已采用Go语言开发项目。</p>
@@ -8,15 +8,15 @@
 <p>Go语言经过多年的发展，现在安装比较简单，可直接从官网下载安装。</p>
 </blockquote>
 <h4>下载安装</h4>
-<p>官网下载地址： https://go.dev/dl/</p>
-<p>国内下载地址： https://golang.google.cn/dl/</p>
+<p>官网下载地址： <a href="https://go.dev/dl/">https://go.dev/dl/</a></p>
+<p>国内下载地址： <a href="https://golang.google.cn/dl/">https://golang.google.cn/dl/</a></p>
 <p>根据自已的操作系统，下载对应的版本安装即可。</p>
 <p>例如：</p>
-<p>Windows，下载 Microsoft Windows https://golang.google.cn/dl/go1.21.4.windows-amd64.msi</p>
-<p>Apple macOS(x86-64)，下载对应的 https://golang.google.cn/dl/go1.21.4.darwin-amd64.pkg</p>
+<p>Windows，下载 Microsoft Windows <a href="https://golang.google.cn/dl/go1.21.4.windows-amd64.msi">https://golang.google.cn/dl/go1.21.4.windows-amd64.msi</a></p>
+<p>Apple macOS(x86-64)，下载对应的 <a href="https://golang.google.cn/dl/go1.21.4.darwin-amd64.pkg">https://golang.google.cn/dl/go1.21.4.darwin-amd64.pkg</a></p>
 <h4>配置环境变量</h4>
 <p>vim ~/.bash_profile</p>
-<pre><code class="language-shell">export GOPATH=/Users/xjz/go # go第三方包目录
+<pre><code class="hljs">export GOPATH=/Users/xjz/go # go第三方包目录
 export GOROOT=/usr/local/go # go安装目录
 export GO111MODULE=on  # go modules 是 golang 1.11 新加的特性, 为配合七牛国内镜像建议开启
 export GOPROXY=https://goproxy.cn,direct # 开启第三方包国内镜像地址
@@ -109,7 +109,7 @@ export PATH=$PATH:$GOPATH/bin # 第三方全局命令，可不设置
 </table>
 <h4>go mod</h4>
 <p>go mod是Go语言的模块管理工具，go mod必须将golang升级到1.11以上版本，配置开启go mod，go语言1.16版本之后，默认开启go mod功能。</p>
-<pre><code class="language-shell">go env -w GOBIN=/usr/local/go/bin              #配置下go bin
+<pre><code class="hljs">go env -w GOBIN=/usr/local/go/bin              #配置下go bin
 go env -w GO111MODULE=on                       #开启go mod
 go env -w GOPROXY=https://goproxy.cn,direct    #七牛云代理
 </code></pre>
@@ -560,7 +560,7 @@ go env -w GOPROXY=https://goproxy.cn,direct    #七牛云代理
 </li>
 </ul>
 <p>例如一个简单语句</p>
-<pre><code class="language-go">fmt.Println(&quot;Hello, World!&quot;)
+<pre><code class="hljs">fmt.Println(<span class="hljs-string">&quot;Hello, World!&quot;</span>)
 </code></pre>
 <h4>语言结构</h4>
 <ul>
@@ -584,13 +584,13 @@ go env -w GOPROXY=https://goproxy.cn,direct    #七牛云代理
 </li>
 </ul>
 <p>helloword.go</p>
-<pre><code class="language-go">package main // 包声明
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main <span class="hljs-comment">// 包声明</span>
 
-import &quot;fmt&quot; // 引入包
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span> <span class="hljs-comment">// 引入包</span>
 
-func main() { // 主函数
-   /* 这是我的第一个简单的程序 */
-   fmt.Println(&quot;Hello, World!&quot;) //执行的语句
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> { <span class="hljs-comment">// 主函数</span>
+   <span class="hljs-comment">/* 这是我的第一个简单的程序 */</span>
+   fmt.Println(<span class="hljs-string">&quot;Hello, World!&quot;</span>) <span class="hljs-comment">//执行的语句</span>
 }
 </code></pre>
 <h4>数据类型</h4>
@@ -645,39 +645,39 @@ func main() { // 主函数
 <p>Go语言变量名由字母、数字、下划线组成，其中首字符不能为数字。</p>
 </blockquote>
 <p>声明变量的一般形式是使用var关键字</p>
-<pre><code class="language-go">var idn int
+<pre><code class="hljs"><span class="hljs-keyword">var</span> idn <span class="hljs-type">int</span>
 </code></pre>
 <p>可以一次声明多个变量</p>
-<pre><code class="language-go">//类型相同多个变量, 非全局变量
-var vname1, vname2, vname3 type
+<pre><code class="hljs"><span class="hljs-comment">//类型相同多个变量, 非全局变量</span>
+<span class="hljs-keyword">var</span> vname1, vname2, vname3 <span class="hljs-keyword">type</span>
 vname1, vname2, vname3 = v1, v2, v3
 
-var vname1, vname2, vname3 = v1, v2, v3 // 和 python 很像,不需要显示声明类型，自动推断
+<span class="hljs-keyword">var</span> vname1, vname2, vname3 = v1, v2, v3 <span class="hljs-comment">// 和 python 很像,不需要显示声明类型，自动推断</span>
 
-vname1, vname2, vname3 := v1, v2, v3 // 出现在 := 左侧的变量不应该是已经被声明过的，否则会导致编译错误// 全局声明多    // 这种因式分解关键字的写法一般用于声明全局变量
-var (
+vname1, vname2, vname3 := v1, v2, v3 <span class="hljs-comment">// 出现在 := 左侧的变量不应该是已经被声明过的，否则会导致编译错误// 全局声明多    // 这种因式分解关键字的写法一般用于声明全局变量</span>
+<span class="hljs-keyword">var</span> (
     vname1 v_type1
     vname2 v_type2
 )
 </code></pre>
 <p>实例</p>
-<pre><code class="language-go">package main
-import &quot;fmt&quot;
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
 
-var x, y int
-var (  // 这种因式分解关键字的写法一般用于声明全局变量
-    a int
-    b bool
+<span class="hljs-keyword">var</span> x, y <span class="hljs-type">int</span>
+<span class="hljs-keyword">var</span> (  <span class="hljs-comment">// 这种因式分解关键字的写法一般用于声明全局变量</span>
+    a <span class="hljs-type">int</span>
+    b <span class="hljs-type">bool</span>
 )
 
-var c, d int = 1, 2
-var e, f = 123, &quot;hello&quot;
+<span class="hljs-keyword">var</span> c, d <span class="hljs-type">int</span> = <span class="hljs-number">1</span>, <span class="hljs-number">2</span>
+<span class="hljs-keyword">var</span> e, f = <span class="hljs-number">123</span>, <span class="hljs-string">&quot;hello&quot;</span>
 
-//这种不带声明格式的只能在函数体中出现
-//g, h := 123, &quot;hello&quot;
+<span class="hljs-comment">//这种不带声明格式的只能在函数体中出现</span>
+<span class="hljs-comment">//g, h := 123, &quot;hello&quot;</span>
 
-func main(){
-    g, h := 123, &quot;hello&quot;
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span>{
+    g, h := <span class="hljs-number">123</span>, <span class="hljs-string">&quot;hello&quot;</span>
     fmt.Println(x, y, a, b, c, d, e, f, g, h)
 }
 </code></pre>
@@ -705,53 +705,53 @@ func main(){
 </li>
 </ul>
 <p>局部变量的例子</p>
-<pre><code class="language-go">package main
-import &quot;fmt&quot;
-func main() {
-   /* 声明局部变量 */
-   var a, b, c int
-   /* 初始化参数 */
-   a = 10
-   b = 20
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+   <span class="hljs-comment">/* 声明局部变量 */</span>
+   <span class="hljs-keyword">var</span> a, b, c <span class="hljs-type">int</span>
+   <span class="hljs-comment">/* 初始化参数 */</span>
+   a = <span class="hljs-number">10</span>
+   b = <span class="hljs-number">20</span>
    c = a + b
-   fmt.Printf (&quot;结果： a = %d, b = %d and c = %d\n&quot;, a, b, c)
+   fmt.Printf (<span class="hljs-string">&quot;结果： a = %d, b = %d and c = %d\n&quot;</span>, a, b, c)
 }
 </code></pre>
 <p>全局变量实例</p>
-<pre><code class="language-go">package main
-import &quot;fmt&quot;
-/* 声明全局变量 */
-var g int
-func main() {
-   /* 声明局部变量 */
-   var a, b int
-   /* 初始化参数 */
-   a = 10
-   b = 20
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
+<span class="hljs-comment">/* 声明全局变量 */</span>
+<span class="hljs-keyword">var</span> g <span class="hljs-type">int</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+   <span class="hljs-comment">/* 声明局部变量 */</span>
+   <span class="hljs-keyword">var</span> a, b <span class="hljs-type">int</span>
+   <span class="hljs-comment">/* 初始化参数 */</span>
+   a = <span class="hljs-number">10</span>
+   b = <span class="hljs-number">20</span>
    g = a + b
-   fmt.Printf(&quot;结果： a = %d, b = %d and g = %d\n&quot;, a, b, g)
+   fmt.Printf(<span class="hljs-string">&quot;结果： a = %d, b = %d and g = %d\n&quot;</span>, a, b, g)
 }
 </code></pre>
 <p>形参实例</p>
-<pre><code class="language-go">package main
-import &quot;fmt&quot;
-/* 声明全局变量 */
-var a int = 20
-func main() {
-   /* main 函数中声明局部变量 */
-   var a int = 10
-   var b int = 20
-   var c int = 0
-   fmt.Printf(&quot;main()函数中 a = %d\n&quot;,  a)
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
+<span class="hljs-comment">/* 声明全局变量 */</span>
+<span class="hljs-keyword">var</span> a <span class="hljs-type">int</span> = <span class="hljs-number">20</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+   <span class="hljs-comment">/* main 函数中声明局部变量 */</span>
+   <span class="hljs-keyword">var</span> a <span class="hljs-type">int</span> = <span class="hljs-number">10</span>
+   <span class="hljs-keyword">var</span> b <span class="hljs-type">int</span> = <span class="hljs-number">20</span>
+   <span class="hljs-keyword">var</span> c <span class="hljs-type">int</span> = <span class="hljs-number">0</span>
+   fmt.Printf(<span class="hljs-string">&quot;main()函数中 a = %d\n&quot;</span>,  a)
    c = sum( a, b)
-   fmt.Printf(&quot;main()函数中 c = %d\n&quot;,  c)
+   fmt.Printf(<span class="hljs-string">&quot;main()函数中 c = %d\n&quot;</span>,  c)
 }
 
-/* 函数定义-两数相加 */
-func sum(a, b int) int {
-   fmt.Printf(&quot;sum() 函数中 a = %d\n&quot;,  a)
-   fmt.Printf(&quot;sum() 函数中 b = %d\n&quot;,  b)
-   return a + b
+<span class="hljs-comment">/* 函数定义-两数相加 */</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">sum</span><span class="hljs-params">(a, b <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> {
+   fmt.Printf(<span class="hljs-string">&quot;sum() 函数中 a = %d\n&quot;</span>,  a)
+   fmt.Printf(<span class="hljs-string">&quot;sum() 函数中 b = %d\n&quot;</span>,  b)
+   <span class="hljs-keyword">return</span> a + b
 }
 </code></pre>
 <p>变量默认值</p>
@@ -781,17 +781,17 @@ func sum(a, b int) int {
 <blockquote>
 <p>数组声明需要指定元素类型及元素个数，语法格式如下：</p>
 </blockquote>
-<pre><code class="language-go">var arrayName [size]dataType
+<pre><code class="hljs"><span class="hljs-keyword">var</span> arrayName [size]dataType
 </code></pre>
 <p>其中 arrayName是数组的名称, size为数组的大小，dataType是数组中元素的数据类型。</p>
 <p>实例</p>
-<pre><code class="language-go">var numbers [5]int // 默认初始化 ，初始值为0
-var numbers = [5]int{1, 2, 3, 4, 5} // 可以使用初始化列表来初始化数组的元素
-numbers := [5]int{1, 2, 3, 4, 5} // 使用:=简短声明语法来声明和初始化数组
-var balance = [5]float32{1000.0, 2.0, 3.4, 7.0, 50.0}
+<pre><code class="hljs"><span class="hljs-keyword">var</span> numbers [<span class="hljs-number">5</span>]<span class="hljs-type">int</span> <span class="hljs-comment">// 默认初始化 ，初始值为0</span>
+<span class="hljs-keyword">var</span> numbers = [<span class="hljs-number">5</span>]<span class="hljs-type">int</span>{<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>} <span class="hljs-comment">// 可以使用初始化列表来初始化数组的元素</span>
+numbers := [<span class="hljs-number">5</span>]<span class="hljs-type">int</span>{<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>} <span class="hljs-comment">// 使用:=简短声明语法来声明和初始化数组</span>
+<span class="hljs-keyword">var</span> balance = [<span class="hljs-number">5</span>]<span class="hljs-type">float32</span>{<span class="hljs-number">1000.0</span>, <span class="hljs-number">2.0</span>, <span class="hljs-number">3.4</span>, <span class="hljs-number">7.0</span>, <span class="hljs-number">50.0</span>}
 
 
-fmt.Println(numbers[0]) //访问数组的元fmt.Println(numbers[0]) //访问数组的元
+fmt.Println(numbers[<span class="hljs-number">0</span>]) <span class="hljs-comment">//访问数组的元fmt.Println(numbers[0]) //访问数组的元</span>
 </code></pre>
 <h4>函数</h4>
 <blockquote>
@@ -801,7 +801,7 @@ fmt.Println(numbers[0]) //访问数组的元fmt.Println(numbers[0]) //访问数�
 </blockquote>
 <p>函数的定义</p>
 <p>Go函数的定义格式如下：</p>
-<pre><code class="language-go">func function_name( [parameter list] ) [return_types] {
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">function_name</span><span class="hljs-params">( [parameter list] )</span></span> [return_types] {
    函数体
 }
 </code></pre>
@@ -824,17 +824,17 @@ fmt.Println(numbers[0]) //访问数组的元fmt.Println(numbers[0]) //访问数�
 </li>
 </ul>
 <p>实例</p>
-<pre><code class="language-go">/* 函数返回两个数的最大值 */
-func max(num1, num2 int) int {
-   /* 声明局部变量 */
-   var result int
+<pre><code class="hljs"><span class="hljs-comment">/* 函数返回两个数的最大值 */</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">max</span><span class="hljs-params">(num1, num2 <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> {
+   <span class="hljs-comment">/* 声明局部变量 */</span>
+   <span class="hljs-keyword">var</span> result <span class="hljs-type">int</span>
 
-   if (num1 &gt; num2) {
+   <span class="hljs-keyword">if</span> (num1 &gt; num2) {
       result = num1
-   } else {
+   } <span class="hljs-keyword">else</span> {
       result = num2
    }
-   return result
+   <span class="hljs-keyword">return</span> result
 }
 </code></pre>
 <h4>切片Slice</h4>
@@ -844,53 +844,53 @@ func max(num1, num2 int) int {
 </blockquote>
 <p>定义切片</p>
 <p>声明一个未指定大小的数组来定义的切片：</p>
-<pre><code class="language-go">var identifier []type
+<pre><code class="hljs"><span class="hljs-keyword">var</span> identifier []<span class="hljs-keyword">type</span>
 </code></pre>
 <p>切片不需要长度说明, 使用make()函数来创建切片</p>
-<pre><code class="language-go">var slice1 []type = make([]type, len)
-//也可以简写为
-slice1 := make([]type, len)
+<pre><code class="hljs"><span class="hljs-keyword">var</span> slice1 []<span class="hljs-keyword">type</span> = <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">type</span>, <span class="hljs-built_in">len</span>)
+<span class="hljs-comment">//也可以简写为</span>
+slice1 := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">type</span>, <span class="hljs-built_in">len</span>)
 </code></pre>
 <p>切片初始化</p>
-<pre><code class="language-go">s :=[] int {1,2,3 }  // 直接初始化切片，[] 表示是切片类型，{1,2,3} 初始化值依次是 1,2,3，其 cap=len=3。
+<pre><code class="hljs">s :=[] <span class="hljs-type">int</span> {<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span> }  <span class="hljs-comment">// 直接初始化切片，[] 表示是切片类型，{1,2,3} 初始化值依次是 1,2,3，其 cap=len=3。</span>
 </code></pre>
 <p>切片截取</p>
-<pre><code class="language-go">package main
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main
 
-import &quot;fmt&quot;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
 
-func main() {
-   /* 创建切片 */
-   numbers := []int{0,1,2,3,4,5,6,7,8}  
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+   <span class="hljs-comment">/* 创建切片 */</span>
+   numbers := []<span class="hljs-type">int</span>{<span class="hljs-number">0</span>,<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">5</span>,<span class="hljs-number">6</span>,<span class="hljs-number">7</span>,<span class="hljs-number">8</span>}  
    printSlice(numbers)
 
-   /* 打印原始切片 */
-   fmt.Println(&quot;numbers ==&quot;, numbers)
+   <span class="hljs-comment">/* 打印原始切片 */</span>
+   fmt.Println(<span class="hljs-string">&quot;numbers ==&quot;</span>, numbers)
 
-   /* 打印子切片从索引1(包含) 到索引4(不包含)*/
-   fmt.Println(&quot;numbers[1:4] ==&quot;, numbers[1:4])
+   <span class="hljs-comment">/* 打印子切片从索引1(包含) 到索引4(不包含)*/</span>
+   fmt.Println(<span class="hljs-string">&quot;numbers[1:4] ==&quot;</span>, numbers[<span class="hljs-number">1</span>:<span class="hljs-number">4</span>])
 
-   /* 默认下限为 0*/
-   fmt.Println(&quot;numbers[:3] ==&quot;, numbers[:3])
+   <span class="hljs-comment">/* 默认下限为 0*/</span>
+   fmt.Println(<span class="hljs-string">&quot;numbers[:3] ==&quot;</span>, numbers[:<span class="hljs-number">3</span>])
 
-   /* 默认上限为 len(s)*/
-   fmt.Println(&quot;numbers[4:] ==&quot;, numbers[4:])
+   <span class="hljs-comment">/* 默认上限为 len(s)*/</span>
+   fmt.Println(<span class="hljs-string">&quot;numbers[4:] ==&quot;</span>, numbers[<span class="hljs-number">4</span>:])
 
-   numbers1 := make([]int,0,5)
+   numbers1 := <span class="hljs-built_in">make</span>([]<span class="hljs-type">int</span>,<span class="hljs-number">0</span>,<span class="hljs-number">5</span>)
    printSlice(numbers1)
 
-   /* 打印子切片从索引  0(包含) 到索引 2(不包含) */
-   number2 := numbers[:2]
+   <span class="hljs-comment">/* 打印子切片从索引  0(包含) 到索引 2(不包含) */</span>
+   number2 := numbers[:<span class="hljs-number">2</span>]
    printSlice(number2)
 
-   /* 打印子切片从索引 2(包含) 到索引 5(不包含) */
-   number3 := numbers[2:5]
+   <span class="hljs-comment">/* 打印子切片从索引 2(包含) 到索引 5(不包含) */</span>
+   number3 := numbers[<span class="hljs-number">2</span>:<span class="hljs-number">5</span>]
    printSlice(number3)
 
 }
 
-func printSlice(x []int){
-   fmt.Printf(&quot;len=%d cap=%d slice=%v\n&quot;,len(x),cap(x),x)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">printSlice</span><span class="hljs-params">(x []<span class="hljs-type">int</span>)</span></span>{
+   fmt.Printf(<span class="hljs-string">&quot;len=%d cap=%d slice=%v\n&quot;</span>,<span class="hljs-built_in">len</span>(x),<span class="hljs-built_in">cap</span>(x),x)
 }
 </code></pre>
 <h4>指针</h4>
@@ -900,57 +900,57 @@ func printSlice(x []int){
 <h5>指针地址和指针类型</h5>
 <p>每个变量在运行时都拥有一个地址，这个地址代表变量在内存中的位置。Go语言中使用&amp;字符放在变量前面对变量进行“取地址”操作。Go语言中的值类型(int、float、bool、string、array、struct)都有对应的指针类型，如：<code>*int</code>、<code>*int64</code>、<code>*string</code>等。</p>
 <p>取变量指针的语法如下：</p>
-<pre><code class="language-go">  ptr := &amp;v    // v的类型为T
+<pre><code class="hljs">  ptr := &amp;v    <span class="hljs-comment">// v的类型为T</span>
 </code></pre>
 <p>其中：</p>
 <p>v：代表被取地址的变量，类型为T</p>
 <p>ptr： 用于接收的变量，ptr的类型就为*T，称做T的指针类型。*代表指针。</p>
-<pre><code class="language-go">func main() {
-    a := 10
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    a := <span class="hljs-number">10</span>
     b := &amp;a
-    fmt.Printf(&quot;a:%d ptr:%p\n&quot;, a, &amp;a) // a:10 ptr:0xc00001a078
-    fmt.Printf(&quot;b:%p type:%T\n&quot;, b, b) // b:0xc00001a078 type:*int
-    fmt.Println(&amp;b)                    // 0xc00000e018
+    fmt.Printf(<span class="hljs-string">&quot;a:%d ptr:%p\n&quot;</span>, a, &amp;a) <span class="hljs-comment">// a:10 ptr:0xc00001a078</span>
+    fmt.Printf(<span class="hljs-string">&quot;b:%p type:%T\n&quot;</span>, b, b) <span class="hljs-comment">// b:0xc00001a078 type:*int</span>
+    fmt.Println(&amp;b)                    <span class="hljs-comment">// 0xc00000e018</span>
 }
 </code></pre>
 <h5>指针取值</h5>
 <p>在对普通变量使用&amp;操作符取地址后会获得这个变量的指针，然后可以对指针使用*操作，也就是指针取值。</p>
-<pre><code class="language-go">func main() {
-    //指针取值
-    a := 10
-    b := &amp;a // 取变量a的地址，将指针保存到b中
-    fmt.Printf(&quot;type of b:%T\n&quot;, b)
-    c := *b // 指针取值（根据指针去内存取值）
-    fmt.Printf(&quot;type of c:%T\n&quot;, c)
-    fmt.Printf(&quot;value of c:%v\n&quot;, c)
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-comment">//指针取值</span>
+    a := <span class="hljs-number">10</span>
+    b := &amp;a <span class="hljs-comment">// 取变量a的地址，将指针保存到b中</span>
+    fmt.Printf(<span class="hljs-string">&quot;type of b:%T\n&quot;</span>, b)
+    c := *b <span class="hljs-comment">// 指针取值（根据指针去内存取值）</span>
+    fmt.Printf(<span class="hljs-string">&quot;type of c:%T\n&quot;</span>, c)
+    fmt.Printf(<span class="hljs-string">&quot;value of c:%v\n&quot;</span>, c)
 }
 </code></pre>
 <p>输出如下：</p>
-<pre><code>type of b:*int
+<pre><code class="hljs">type of b:*int
 type of c:int
 value of c:10
 </code></pre>
 <p>总结： 取地址操作符&amp;和取值操作符<code>*</code>是一对互补操作符，<code>&amp;</code>取出地址，<code>*</code>根据地址取出地址指向的值。</p>
 <p>变量、指针地址、指针变量、取地址、取值的相互关系和特性如下：</p>
-<pre><code>1.对变量进行取地址（&amp;）操作，可以获得这个变量的指针变量。
+<pre><code class="hljs">1.对变量进行取地址（&amp;）操作，可以获得这个变量的指针变量。
 2.指针变量的值是指针地址。
 3.对指针变量进行取值（*）操作，可以获得指针变量指向的原变量的值。
 </code></pre>
 <p>指针传值示例：</p>
-<pre><code class="language-go">func modify1(x int) {
-    x = 100
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">modify1</span><span class="hljs-params">(x <span class="hljs-type">int</span>)</span></span> {
+    x = <span class="hljs-number">100</span>
 }
 
-func modify2(x *int) {
-    *x = 100
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">modify2</span><span class="hljs-params">(x *<span class="hljs-type">int</span>)</span></span> {
+    *x = <span class="hljs-number">100</span>
 }
 
-func main() {
-    a := 10
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    a := <span class="hljs-number">10</span>
     modify1(a)
-    fmt.Println(a) // 10
+    fmt.Println(a) <span class="hljs-comment">// 10</span>
     modify2(&amp;a)
-    fmt.Println(a) // 100
+    fmt.Println(a) <span class="hljs-comment">// 100</span>
 }
 </code></pre>
 <h5>空指针</h5>
@@ -958,76 +958,76 @@ func main() {
 <li>当一个指针被定义后没有分配到任何变量时，它的值为 nil</li>
 <li>空指针的判断</li>
 </ul>
-<pre><code class="language-go">package main
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main
 
-import &quot;fmt&quot;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
 
-func main() {
-    var p *string
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-keyword">var</span> p *<span class="hljs-type">string</span>
     fmt.Println(p)
-    fmt.Printf(&quot;p的值是%s/n&quot;, p)
-    if p != nil {
-        fmt.Println(&quot;非空&quot;)
-    } else {
-        fmt.Println(&quot;空值&quot;)
+    fmt.Printf(<span class="hljs-string">&quot;p的值是%s/n&quot;</span>, p)
+    <span class="hljs-keyword">if</span> p != <span class="hljs-literal">nil</span> {
+        fmt.Println(<span class="hljs-string">&quot;非空&quot;</span>)
+    } <span class="hljs-keyword">else</span> {
+        fmt.Println(<span class="hljs-string">&quot;空值&quot;</span>)
     }
 }
 </code></pre>
 <h5>new和make</h5>
 <p>我们先来看一个例子：</p>
-<pre><code class="language-go">func main() {
-    var a *int
-    *a = 100
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-keyword">var</span> a *<span class="hljs-type">int</span>
+    *a = <span class="hljs-number">100</span>
     fmt.Println(*a)
 
-    var b map[string]int
-    b[&quot;测试&quot;] = 100
+    <span class="hljs-keyword">var</span> b <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">int</span>
+    b[<span class="hljs-string">&quot;测试&quot;</span>] = <span class="hljs-number">100</span>
     fmt.Println(b)
 }
 </code></pre>
 <p>执行上面的代码会引发panic，为什么呢？ 在Go语言中对于引用类型的变量，我们在使用的时候不仅要声明它，还要为它分配内存空间，否则我们的值就没办法存储。而对于值类型的声明不需要分配内存空间，是因为它们在声明的时候已经默认分配好了内存空间。要分配内存，就引出来今天的new和make。 Go语言中new和make是内建的两个函数，主要用来分配内存。</p>
 <h5>new</h5>
 <p>new是一个内置的函数，它的函数签名如下：</p>
-<pre><code class="language-go">func new(Type) *Type
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">new</span><span class="hljs-params">(Type)</span></span> *Type
 </code></pre>
 <p>其中，</p>
-<pre><code>1.Type表示类型，new函数只接受一个参数，这个参数是一个类型
+<pre><code class="hljs">1.Type表示类型，new函数只接受一个参数，这个参数是一个类型
 2.*Type表示类型指针，new函数返回一个指向该类型内存地址的指针。
 </code></pre>
 <p>new函数不太常用，使用new函数得到的是一个类型的指针，并且该指针对应的值为该类型的零值。</p>
 <p>例如：</p>
-<pre><code class="language-go">func main() {
-    a := new(int)
-    b := new(bool)
-    fmt.Printf(&quot;%T\n&quot;, a) // *int
-    fmt.Printf(&quot;%T\n&quot;, b) // *bool
-    fmt.Println(*a)       // 0
-    fmt.Println(*b)       // false
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    a := <span class="hljs-built_in">new</span>(<span class="hljs-type">int</span>)
+    b := <span class="hljs-built_in">new</span>(<span class="hljs-type">bool</span>)
+    fmt.Printf(<span class="hljs-string">&quot;%T\n&quot;</span>, a) <span class="hljs-comment">// *int</span>
+    fmt.Printf(<span class="hljs-string">&quot;%T\n&quot;</span>, b) <span class="hljs-comment">// *bool</span>
+    fmt.Println(*a)       <span class="hljs-comment">// 0</span>
+    fmt.Println(*b)       <span class="hljs-comment">// false</span>
 }
 </code></pre>
 <p>示例代码中<code>var a *int</code>只是声明了一个指针变量a但是没有初始化，指针作为引用类型需要初始化后才会拥有内存空间，才可以给它赋值。应该按照如下方式使用内置的new函数对a进行初始化之后就可以正常对其赋值了：</p>
-<pre><code class="language-go">func main() {
-    var a *int
-    a = new(int)
-    *a = 10
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-keyword">var</span> a *<span class="hljs-type">int</span>
+    a = <span class="hljs-built_in">new</span>(<span class="hljs-type">int</span>)
+    *a = <span class="hljs-number">10</span>
     fmt.Println(*a)
 }
 </code></pre>
 <h5>make</h5>
 <p>make也是用于内存分配的，区别于new，它只用于slice、map以及chan的内存创建，而且它返回的类型就是这三个类型本身，而不是他们的指针类型，因为这三种类型就是引用类型，所以就没有必要返回他们的指针了。make函数的函数签名如下：</p>
-<pre><code>func make(t Type, size ...IntegerType) Type
+<pre><code class="hljs">func make(t Type, size ...IntegerType) Type
 </code></pre>
 <p>make函数是无可替代的，我们在使用slice、map以及channel的时候，都需要使用make进行初始化，然后才可以对它们进行操作。这个我们在上一章中都有说明，关于channel我们会在后续的章节详细说明。</p>
 <p>本节开始的示例中<code>var b map[string]int</code>只是声明变量b是一个map类型的变量，需要像下面的示例代码一样使用make函数进行初始化操作之后，才能对其进行键值对赋值：</p>
-<pre><code class="language-go">func main() {
-    var b map[string]int
-    b = make(map[string]int, 10)
-    b[&quot;测试&quot;] = 100
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-keyword">var</span> b <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">int</span>
+    b = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">int</span>, <span class="hljs-number">10</span>)
+    b[<span class="hljs-string">&quot;测试&quot;</span>] = <span class="hljs-number">100</span>
     fmt.Println(b)
 }
 </code></pre>
 <h5>new与make的区别</h5>
-<pre><code>1.二者都是用来做内存分配的。
+<pre><code class="hljs">1.二者都是用来做内存分配的。
 2.make只用于slice、map以及channel的初始化，返回的还是这三个引用类型本身；
 3.而new用于类型的内存分配，并且内存对应的值为类型零值，返回的是指向类型的指针。
 </code></pre>
@@ -1036,7 +1036,7 @@ func main() {
 <p>结构体是由一系列具有相同类型或不同类型的数据构成的数据集合。</p>
 <p>定义结构体</p>
 <p>结构体定义需要使用type和struct语句。struct语句定义一个新的数据类型，结构体中有一个或多个成员。type语句设定了结构体的名称。格式如下：</p>
-<pre><code class="language-go">type struct_variable_type struct {
+<pre><code class="hljs"><span class="hljs-keyword">type</span> struct_variable_type <span class="hljs-keyword">struct</span> {
    member definition
    member definition
    ...
@@ -1044,67 +1044,67 @@ func main() {
 }
 </code></pre>
 <p>一旦定义了结构体类型，它就能用于变量的声明，语法格式如下：</p>
-<pre><code class="language-go">variable_name := structure_variable_type {value1, value2...valuen}
+<pre><code class="hljs">variable_name := structure_variable_type {value1, value2...valuen}
 或
 variable_name := structure_variable_type { key1: value1, key2: value2..., keyn: valuen}
 </code></pre>
 <p>实例</p>
-<pre><code class="language-go">package main
-import &quot;fmt&quot;
-type Books struct {
-   title string
-   author string
-   subject string
-   book_id int
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
+<span class="hljs-keyword">type</span> Books <span class="hljs-keyword">struct</span> {
+   title <span class="hljs-type">string</span>
+   author <span class="hljs-type">string</span>
+   subject <span class="hljs-type">string</span>
+   book_id <span class="hljs-type">int</span>
 }
-func main() {
-    // 创建一个新的结构体
-    fmt.Println(Books{&quot;Go 语言&quot;, &quot;www.runoob.com&quot;, &quot;Go 语言教程&quot;, 6495407})
-    // 也可以使用 key =&gt; value 格式
-    fmt.Println(Books{title: &quot;Go 语言&quot;, author: &quot;www.runoob.com&quot;, subject: &quot;Go 语言教程&quot;, book_id: 6495407})
-    // 忽略的字段为 0 或 空
-   fmt.Println(Books{title: &quot;Go 语言&quot;, author: &quot;www.runoob.com&quot;})
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-comment">// 创建一个新的结构体</span>
+    fmt.Println(Books{<span class="hljs-string">&quot;Go 语言&quot;</span>, <span class="hljs-string">&quot;www.runoob.com&quot;</span>, <span class="hljs-string">&quot;Go 语言教程&quot;</span>, <span class="hljs-number">6495407</span>})
+    <span class="hljs-comment">// 也可以使用 key =&gt; value 格式</span>
+    fmt.Println(Books{title: <span class="hljs-string">&quot;Go 语言&quot;</span>, author: <span class="hljs-string">&quot;www.runoob.com&quot;</span>, subject: <span class="hljs-string">&quot;Go 语言教程&quot;</span>, book_id: <span class="hljs-number">6495407</span>})
+    <span class="hljs-comment">// 忽略的字段为 0 或 空</span>
+   fmt.Println(Books{title: <span class="hljs-string">&quot;Go 语言&quot;</span>, author: <span class="hljs-string">&quot;www.runoob.com&quot;</span>})
 }
 </code></pre>
 <p>结构体变量使用struct关键字定义，实例如下：</p>
-<pre><code class="language-go">package main
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main
 
-import &quot;fmt&quot;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
 
-type Books struct {
-   title string
-   author string
-   subject string
-   book_id int
+<span class="hljs-keyword">type</span> Books <span class="hljs-keyword">struct</span> {
+   title <span class="hljs-type">string</span>
+   author <span class="hljs-type">string</span>
+   subject <span class="hljs-type">string</span>
+   book_id <span class="hljs-type">int</span>
 }
 
-func main() {
-   var Book1 Books        /* 声明 Book1 为 Books 类型 */
-   var Book2 Books        /* 声明 Book2 为 Books 类型 */
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+   <span class="hljs-keyword">var</span> Book1 Books        <span class="hljs-comment">/* 声明 Book1 为 Books 类型 */</span>
+   <span class="hljs-keyword">var</span> Book2 Books        <span class="hljs-comment">/* 声明 Book2 为 Books 类型 */</span>
 
-   /* book 1 描述 */
-   Book1.title = &quot;Go 语言&quot;
-   Book1.author = &quot;www.runoob.com&quot;
-   Book1.subject = &quot;Go 语言教程&quot;
-   Book1.book_id = 6495407
+   <span class="hljs-comment">/* book 1 描述 */</span>
+   Book1.title = <span class="hljs-string">&quot;Go 语言&quot;</span>
+   Book1.author = <span class="hljs-string">&quot;www.runoob.com&quot;</span>
+   Book1.subject = <span class="hljs-string">&quot;Go 语言教程&quot;</span>
+   Book1.book_id = <span class="hljs-number">6495407</span>
 
-   /* book 2 描述 */
-   Book2.title = &quot;Python 教程&quot;
-   Book2.author = &quot;www.runoob.com&quot;
-   Book2.subject = &quot;Python 语言教程&quot;
-   Book2.book_id = 6495700
+   <span class="hljs-comment">/* book 2 描述 */</span>
+   Book2.title = <span class="hljs-string">&quot;Python 教程&quot;</span>
+   Book2.author = <span class="hljs-string">&quot;www.runoob.com&quot;</span>
+   Book2.subject = <span class="hljs-string">&quot;Python 语言教程&quot;</span>
+   Book2.book_id = <span class="hljs-number">6495700</span>
 
-   /* 打印 Book1 信息 */
-   fmt.Printf( &quot;Book 1 title : %s\n&quot;, Book1.title)
-   fmt.Printf( &quot;Book 1 author : %s\n&quot;, Book1.author)
-   fmt.Printf( &quot;Book 1 subject : %s\n&quot;, Book1.subject)
-   fmt.Printf( &quot;Book 1 book_id : %d\n&quot;, Book1.book_id)
+   <span class="hljs-comment">/* 打印 Book1 信息 */</span>
+   fmt.Printf( <span class="hljs-string">&quot;Book 1 title : %s\n&quot;</span>, Book1.title)
+   fmt.Printf( <span class="hljs-string">&quot;Book 1 author : %s\n&quot;</span>, Book1.author)
+   fmt.Printf( <span class="hljs-string">&quot;Book 1 subject : %s\n&quot;</span>, Book1.subject)
+   fmt.Printf( <span class="hljs-string">&quot;Book 1 book_id : %d\n&quot;</span>, Book1.book_id)
 
-   /* 打印 Book2 信息 */
-   fmt.Printf( &quot;Book 2 title : %s\n&quot;, Book2.title)
-   fmt.Printf( &quot;Book 2 author : %s\n&quot;, Book2.author)
-   fmt.Printf( &quot;Book 2 subject : %s\n&quot;, Book2.subject)
-   fmt.Printf( &quot;Book 2 book_id : %d\n&quot;, Book2.book_id)
+   <span class="hljs-comment">/* 打印 Book2 信息 */</span>
+   fmt.Printf( <span class="hljs-string">&quot;Book 2 title : %s\n&quot;</span>, Book2.title)
+   fmt.Printf( <span class="hljs-string">&quot;Book 2 author : %s\n&quot;</span>, Book2.author)
+   fmt.Printf( <span class="hljs-string">&quot;Book 2 subject : %s\n&quot;</span>, Book2.subject)
+   fmt.Printf( <span class="hljs-string">&quot;Book 2 book_id : %d\n&quot;</span>, Book2.book_id)
 }
 </code></pre>
 <h4>Map(集合)</h4>
@@ -1116,71 +1116,71 @@ func main() {
 </blockquote>
 <p>定义Map</p>
 <p>可以使用内建函数make或使用map关键字来定义Map:</p>
-<pre><code class="language-go">/* 使用 make 函数 */
-map_variable := make(map[KeyType]ValueType, initialCapacity)
+<pre><code class="hljs"><span class="hljs-comment">/* 使用 make 函数 */</span>
+map_variable := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[KeyType]ValueType, initialCapacity)
 </code></pre>
 <p>实例</p>
-<pre><code class="language-go">// 创建一个空的 Map
-m := make(map[string]int)
-// 创建一个初始容量为 10 的 Map
-m := make(map[string]int, 10)
+<pre><code class="hljs"><span class="hljs-comment">// 创建一个空的 Map</span>
+m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">int</span>)
+<span class="hljs-comment">// 创建一个初始容量为 10 的 Map</span>
+m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">int</span>, <span class="hljs-number">10</span>)
 </code></pre>
 <p>结合实例</p>
-<pre><code class="language-go">package main
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main
 
-import &quot;fmt&quot;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
 
-func main() {
-    var siteMap map[string]string /*创建集合 */
-    siteMap = make(map[string]string)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-keyword">var</span> siteMap <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">string</span> <span class="hljs-comment">/*创建集合 */</span>
+    siteMap = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">string</span>)
 
-    /* map 插入 key - value 对,各个国家对应的首都 */
-    siteMap [&quot;Google&quot;] = &quot;谷歌&quot;
-    siteMap [&quot;Runoob&quot;] = &quot;菜鸟教程&quot;
-    siteMap [&quot;Baidu&quot;] = &quot;百度&quot;
-    siteMap [&quot;Wiki&quot;] = &quot;维基百科&quot;
+    <span class="hljs-comment">/* map 插入 key - value 对,各个国家对应的首都 */</span>
+    siteMap [<span class="hljs-string">&quot;Google&quot;</span>] = <span class="hljs-string">&quot;谷歌&quot;</span>
+    siteMap [<span class="hljs-string">&quot;Runoob&quot;</span>] = <span class="hljs-string">&quot;菜鸟教程&quot;</span>
+    siteMap [<span class="hljs-string">&quot;Baidu&quot;</span>] = <span class="hljs-string">&quot;百度&quot;</span>
+    siteMap [<span class="hljs-string">&quot;Wiki&quot;</span>] = <span class="hljs-string">&quot;维基百科&quot;</span>
 
-    /*使用键输出地图值 */
-    for site := range siteMap {
-        fmt.Println(site, &quot;首都是&quot;, siteMap[site])
+    <span class="hljs-comment">/*使用键输出地图值 */</span>
+    <span class="hljs-keyword">for</span> site := <span class="hljs-keyword">range</span> siteMap {
+        fmt.Println(site, <span class="hljs-string">&quot;首都是&quot;</span>, siteMap[site])
     }
 
-    /*查看元素在集合中是否存在 */
-    name, ok := siteMap [&quot;Facebook&quot;] /*如果确定是真实的,则存在,否则不存在 */
-    /*fmt.Println(capital) */
-    /*fmt.Println(ok) */
-    if (ok) {
-        fmt.Println(&quot;Facebook 的 站点是&quot;, name)
-    } else {
-        fmt.Println(&quot;Facebook 站点不存在&quot;)
+    <span class="hljs-comment">/*查看元素在集合中是否存在 */</span>
+    name, ok := siteMap [<span class="hljs-string">&quot;Facebook&quot;</span>] <span class="hljs-comment">/*如果确定是真实的,则存在,否则不存在 */</span>
+    <span class="hljs-comment">/*fmt.Println(capital) */</span>
+    <span class="hljs-comment">/*fmt.Println(ok) */</span>
+    <span class="hljs-keyword">if</span> (ok) {
+        fmt.Println(<span class="hljs-string">&quot;Facebook 的 站点是&quot;</span>, name)
+    } <span class="hljs-keyword">else</span> {
+        fmt.Println(<span class="hljs-string">&quot;Facebook 站点不存在&quot;</span>)
     }
 }
 </code></pre>
 <p>delete()函数</p>
-<pre><code class="language-go">package main
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main
 
-import &quot;fmt&quot;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
 
-func main() {
-        /* 创建map */
-        countryCapitalMap := map[string]string{&quot;France&quot;: &quot;Paris&quot;, &quot;Italy&quot;: &quot;Rome&quot;, &quot;Japan&quot;: &quot;Tokyo&quot;, &quot;India&quot;: &quot;New delhi&quot;}
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+        <span class="hljs-comment">/* 创建map */</span>
+        countryCapitalMap := <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">string</span>{<span class="hljs-string">&quot;France&quot;</span>: <span class="hljs-string">&quot;Paris&quot;</span>, <span class="hljs-string">&quot;Italy&quot;</span>: <span class="hljs-string">&quot;Rome&quot;</span>, <span class="hljs-string">&quot;Japan&quot;</span>: <span class="hljs-string">&quot;Tokyo&quot;</span>, <span class="hljs-string">&quot;India&quot;</span>: <span class="hljs-string">&quot;New delhi&quot;</span>}
 
-        fmt.Println(&quot;原始地图&quot;)
+        fmt.Println(<span class="hljs-string">&quot;原始地图&quot;</span>)
 
-        /* 打印地图 */
-        for country := range countryCapitalMap {
-                fmt.Println(country, &quot;首都是&quot;, countryCapitalMap [ country ])
+        <span class="hljs-comment">/* 打印地图 */</span>
+        <span class="hljs-keyword">for</span> country := <span class="hljs-keyword">range</span> countryCapitalMap {
+                fmt.Println(country, <span class="hljs-string">&quot;首都是&quot;</span>, countryCapitalMap [ country ])
         }
 
-        /*删除元素*/ 
-        delete(countryCapitalMap, &quot;France&quot;)
-        fmt.Println(&quot;法国条目被删除&quot;)
+        <span class="hljs-comment">/*删除元素*/</span> 
+        <span class="hljs-built_in">delete</span>(countryCapitalMap, <span class="hljs-string">&quot;France&quot;</span>)
+        fmt.Println(<span class="hljs-string">&quot;法国条目被删除&quot;</span>)
 
-        fmt.Println(&quot;删除元素后地图&quot;)
+        fmt.Println(<span class="hljs-string">&quot;删除元素后地图&quot;</span>)
 
-        /*打印地图*/
-        for country := range countryCapitalMap {
-                fmt.Println(country, &quot;首都是&quot;, countryCapitalMap[country])
+        <span class="hljs-comment">/*打印地图*/</span>
+        <span class="hljs-keyword">for</span> country := <span class="hljs-keyword">range</span> countryCapitalMap {
+                fmt.Println(country, <span class="hljs-string">&quot;首都是&quot;</span>, countryCapitalMap[country])
         }
 }
 </code></pre>
@@ -1189,51 +1189,51 @@ func main() {
 <blockquote>
 <p>接口是Go语言中数据类型的关键。几乎所有的数据结构都围绕接口展开，接口是Go语言中所有数据结构的核心。Go语言的接口实际上是一组方法的集合(接口不能声明属性)。</p>
 </blockquote>
-<pre><code class="language-go">/* 定义接口 */
-type 接口名 interface {
-   方法1 [返回类型]
-   方法2 [返回类型]
-   方法3 [返回类型]
+<pre><code class="hljs"><span class="hljs-comment">/* 定义接口 */</span>
+<span class="hljs-keyword">type</span> 接口名 <span class="hljs-keyword">interface</span> {
+   方法<span class="hljs-number">1</span> [返回类型]
+   方法<span class="hljs-number">2</span> [返回类型]
+   方法<span class="hljs-number">3</span> [返回类型]
    ...
    方法N [返回类型]
 }
 </code></pre>
 <p>实例1</p>
-<pre><code class="language-go">package main
-import &quot;fmt&quot;
-// 定义Animal接口
-type Animal interface {
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
+<span class="hljs-comment">// 定义Animal接口</span>
+<span class="hljs-keyword">type</span> Animal <span class="hljs-keyword">interface</span> {
     sleep()
 }
-// 定义Dog和Cat两个结构体
-type Dog struct {
-    name string
+<span class="hljs-comment">// 定义Dog和Cat两个结构体</span>
+<span class="hljs-keyword">type</span> Dog <span class="hljs-keyword">struct</span> {
+    name <span class="hljs-type">string</span>
 }
-type Cat struct {
-    name string
+<span class="hljs-keyword">type</span> Cat <span class="hljs-keyword">struct</span> {
+    name <span class="hljs-type">string</span>
 }
-// Dog 实现了Animal接口
-func (d Dog) sleep() {
-    fmt.Printf(&quot;%s正在睡觉\n&quot;, d.name)
+<span class="hljs-comment">// Dog 实现了Animal接口</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(d Dog)</span></span> sleep() {
+    fmt.Printf(<span class="hljs-string">&quot;%s正在睡觉\n&quot;</span>, d.name)
 }
-// Cat实现了animal接口
-func (c Cat) sleep() {
-    fmt.Printf(&quot;%s正在睡觉\n&quot;, c.name)
+<span class="hljs-comment">// Cat实现了animal接口</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(c Cat)</span></span> sleep() {
+    fmt.Printf(<span class="hljs-string">&quot;%s正在睡觉\n&quot;</span>, c.name)
 }
-// 接口类型变量
-func foo(ani Animal) {
+<span class="hljs-comment">// 接口类型变量</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">foo</span><span class="hljs-params">(ani Animal)</span></span> {
     ani.sleep()
 }
-func main() {
-    var a Animal
-    var d = Dog{&quot;小黑&quot;}
-    var c = Cat{&quot;小花&quot;}
-    // 分别实现的方法
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-keyword">var</span> a Animal
+    <span class="hljs-keyword">var</span> d = Dog{<span class="hljs-string">&quot;小黑&quot;</span>}
+    <span class="hljs-keyword">var</span> c = Cat{<span class="hljs-string">&quot;小花&quot;</span>}
+    <span class="hljs-comment">// 分别实现的方法</span>
     a = d
     a.sleep()
     a = c
     a.sleep()
-    // 作为参数
+    <span class="hljs-comment">// 作为参数</span>
     foo(d)
     foo(c)
 }
@@ -1245,21 +1245,21 @@ func main() {
 <p>因此空接口作为参数的方法，可以接受任何类型。</p>
 </blockquote>
 <p>空接口实例</p>
-<pre><code class="language-go">package main
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main
 
-import &quot;fmt&quot;
-import &quot;os&quot;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;os&quot;</span>
 
-// 空接口参数
-func log(v ...interface{}) {
+<span class="hljs-comment">// 空接口参数</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">log</span><span class="hljs-params">(v ...<span class="hljs-keyword">interface</span>{})</span></span> {
     fmt.Println(v...)
 }
 
-func main() {
-    log(&quot;hello&quot;, 1, 3.23)
-    // 空接口类型
-    f,_ := os.Open(&quot;text.txt&quot;)
-    var i1 interface{}
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    log(<span class="hljs-string">&quot;hello&quot;</span>, <span class="hljs-number">1</span>, <span class="hljs-number">3.23</span>)
+    <span class="hljs-comment">// 空接口类型</span>
+    f,_ := os.Open(<span class="hljs-string">&quot;text.txt&quot;</span>)
+    <span class="hljs-keyword">var</span> i1 <span class="hljs-keyword">interface</span>{}
     i1 = f
 }
 </code></pre>
@@ -1269,26 +1269,26 @@ func main() {
 </blockquote>
 <p>基本语法</p>
 <p>基本语法是在函数后用方括号指定泛型参数</p>
-<pre><code class="language-go">func 函数名[泛型类型](函数参数){函数体}
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> 函数名[泛型类型]<span class="hljs-params">(函数参数)</span></span>{函数体}
 </code></pre>
 <p>例如</p>
-<pre><code class="language-go">func max[T int | float64](a, b T) T {
-  if a &gt; b {
-    return a
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">max</span>[<span class="hljs-title">T</span> <span class="hljs-title">int</span> | <span class="hljs-title">float64</span>]<span class="hljs-params">(a, b T)</span></span> T {
+  <span class="hljs-keyword">if</span> a &gt; b {
+    <span class="hljs-keyword">return</span> a
   }
-  return b
+  <span class="hljs-keyword">return</span> b
 }
 </code></pre>
 <p>例2</p>
-<pre><code class="language-go">type Ord interface {
-  byte | int8 | int16 | int32 | int64 | int | float32 | float64 | string
+<pre><code class="hljs"><span class="hljs-keyword">type</span> Ord <span class="hljs-keyword">interface</span> {
+  <span class="hljs-type">byte</span> | <span class="hljs-type">int8</span> | <span class="hljs-type">int16</span> | <span class="hljs-type">int32</span> | <span class="hljs-type">int64</span> | <span class="hljs-type">int</span> | <span class="hljs-type">float32</span> | <span class="hljs-type">float64</span> | <span class="hljs-type">string</span>
 }
 
-func max[T Ord](a, b T) T {
-  if a &gt; b {
-    return a
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">max</span>[<span class="hljs-title">T</span> <span class="hljs-title">Ord</span>]<span class="hljs-params">(a, b T)</span></span> T {
+  <span class="hljs-keyword">if</span> a &gt; b {
+    <span class="hljs-keyword">return</span> a
   }
-  return b
+  <span class="hljs-keyword">return</span> b
 }
 </code></pre>
 <h4>高阶函数</h4>
@@ -1316,71 +1316,71 @@ func max[T Ord](a, b T) T {
 </ul>
 </blockquote>
 <p>函数可以存储在变量中</p>
-<pre><code class="language-go">var (
-    myFprintf = func(w io.Writer, format string, a ...interface{}) (int, error) {
-        return fmt.Fprintf(w, format, a...)
+<pre><code class="hljs"><span class="hljs-keyword">var</span> (
+    myFprintf = <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(w io.Writer, format <span class="hljs-type">string</span>, a ...<span class="hljs-keyword">interface</span>{})</span></span> (<span class="hljs-type">int</span>, <span class="hljs-type">error</span>) {
+        <span class="hljs-keyword">return</span> fmt.Fprintf(w, format, a...)
     }
 )
 
-func main() {
-    fmt.Printf(&quot;%T\n&quot;, myFprintf) // func(io.Writer, string, ...interface {}) (int, error)
-    myFprintf(os.Stdout, &quot;%s\n&quot;, &quot;Hello, Go&quot;) // 输出Hello，Go
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    fmt.Printf(<span class="hljs-string">&quot;%T\n&quot;</span>, myFprintf) <span class="hljs-comment">// func(io.Writer, string, ...interface {}) (int, error)</span>
+    myFprintf(os.Stdout, <span class="hljs-string">&quot;%s\n&quot;</span>, <span class="hljs-string">&quot;Hello, Go&quot;</span>) <span class="hljs-comment">// 输出Hello，Go</span>
 }
 </code></pre>
 <p>作为参数传入函数</p>
-<pre><code class="language-go">// 遍历切片的每个元素, 通过给定函数进行元素访问
-func visit(list []int, f func(int)) {
-    for _, v := range list {
+<pre><code class="hljs"><span class="hljs-comment">// 遍历切片的每个元素, 通过给定函数进行元素访问</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">visit</span><span class="hljs-params">(list []<span class="hljs-type">int</span>, f <span class="hljs-keyword">func</span>(<span class="hljs-type">int</span>)</span></span>) {
+    <span class="hljs-keyword">for</span> _, v := <span class="hljs-keyword">range</span> list {
         f(v)
     }
 }
 
-func main() {
-    // 使用匿名函数打印切片内容
-    visit([]int{1, 2, 3, 4}, func(v int) {
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-comment">// 使用匿名函数打印切片内容</span>
+    visit([]<span class="hljs-type">int</span>{<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>}, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(v <span class="hljs-type">int</span>)</span></span> {
         fmt.Println(v)
     })
 }
 </code></pre>
 <p>函数支持在函数内创建并通过返回值返回</p>
-<pre><code class="language-go">func setup(task string) func() {
-    println(&quot;do some setup stuff for&quot;, task)
-    return func() {
-        println(&quot;do some teardown stuff for&quot;, task)
+<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">setup</span><span class="hljs-params">(task <span class="hljs-type">string</span>)</span></span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;do some setup stuff for&quot;</span>, task)
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> {
+        <span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;do some teardown stuff for&quot;</span>, task)
     }
 }
 
-func main() {
-    teardown := setup(&quot;demo&quot;)
-    defer teardown()
-    println(&quot;do some bussiness stuff&quot;)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    teardown := setup(<span class="hljs-string">&quot;demo&quot;</span>)
+    <span class="hljs-keyword">defer</span> teardown()
+    <span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;do some bussiness stuff&quot;</span>)
 }
 </code></pre>
 <p>拥有自已的类型</p>
-<pre><code class="language-go">package main
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main
 
-import &quot;fmt&quot;
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
 
-type CalculateType func(int, int)
+<span class="hljs-keyword">type</span> CalculateType <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(<span class="hljs-type">int</span>, <span class="hljs-type">int</span>)</span></span>
 
-func (c *CalculateType) Server() {
-    fmt.Println(&quot;这是函数类型&quot;)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(c *CalculateType)</span></span> Server() {
+    fmt.Println(<span class="hljs-string">&quot;这是函数类型&quot;</span>)
 }
 
-func add(a, b int) {
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">add</span><span class="hljs-params">(a, b <span class="hljs-type">int</span>)</span></span> {
     fmt.Println(a + b)
 }
 
-func mul(a, b int) {
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">mul</span><span class="hljs-params">(a, b <span class="hljs-type">int</span>)</span></span> {
     fmt.Println(a * b)
 }
 
-func main() {
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
     a := CalculateType(add)
     b := CalculateType(mul)
 
-    a(2, 4)
-    b(2, 4)
+    a(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>)
+    b(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>)
 
     a.Server()
     b.Server()
@@ -1388,11 +1388,11 @@ func main() {
 </code></pre>
 <p>高阶函数</p>
 <p>函数作为值时，可以用来提升服务的扩展性。</p>
-<pre><code class="language-go">var opMap = map[string]func(int, int) int{
-    &quot;+&quot;: add,
-    &quot;-&quot;: sub,
-    &quot;*&quot;: mul,
-    &quot;/&quot;: div,
+<pre><code class="hljs"><span class="hljs-keyword">var</span> opMap = <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(<span class="hljs-type">int</span>, <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span>{
+    <span class="hljs-string">&quot;+&quot;</span>: add,
+    <span class="hljs-string">&quot;-&quot;</span>: sub,
+    <span class="hljs-string">&quot;*&quot;</span>: mul,
+    <span class="hljs-string">&quot;/&quot;</span>: div,
 }
 
 f := opMap[op]
@@ -1417,12 +1417,12 @@ f()
 <ol>
 <li>相对路径</li>
 </ol>
-<pre><code class="language-go">import &quot;./module&quot; // 引入的包在当前文件同一目录的 module 目录
+<pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./module&quot;</span> <span class="hljs-comment">// 引入的包在当前文件同一目录的 module 目录</span>
 </code></pre>
 <ol start="2">
 <li>绝对路径</li>
 </ol>
-<pre><code class="language-go">import &quot;LearnGo/init&quot; // 引入的包在 gopath/src/LearnGo/init 目录。
+<pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;LearnGo/init&quot;</span> <span class="hljs-comment">// 引入的包在 gopath/src/LearnGo/init 目录。</span>
 </code></pre>
 <ol start="3">
 <li>Go Module模式下</li>
@@ -1437,23 +1437,23 @@ f()
 <p>这个点操作的含义就是这个包导入之后，在调用这个包的函数时，可以省略前缀的包名。</p>
 </li>
 </ul>
-<pre><code class="language-go">import . &quot;fmt&quot;
-// 例如：fmt.Println(&quot;hello world&quot;) 可以省略的写成 Println(&quot;hello world&quot;)。
+<pre><code class="hljs"><span class="hljs-keyword">import</span> . <span class="hljs-string">&quot;fmt&quot;</span>
+<span class="hljs-comment">// 例如：fmt.Println(&quot;hello world&quot;) 可以省略的写成 Println(&quot;hello world&quot;)。</span>
 </code></pre>
 <p>特别说明，因为.导入容易造成命名冲突，一般很少用，<code>.</code> 导入会有一个警告should not use dot imports (ST1001)go-staticcheck</p>
 <ul>
 <li>别名操作</li>
 </ul>
 <p>别名操作可以包命名成另一个名字</p>
-<pre><code class="language-go">import f &quot;fmt&quot;
-// 别名操作的话调用包函数时前缀变成了我们的前缀，即 f.Println(&quot;hello world&quot;)。
+<pre><code class="hljs"><span class="hljs-keyword">import</span> f <span class="hljs-string">&quot;fmt&quot;</span>
+<span class="hljs-comment">// 别名操作的话调用包函数时前缀变成了我们的前缀，即 f.Println(&quot;hello world&quot;)。</span>
 </code></pre>
 <ul>
 <li><code>_</code>操作</li>
 </ul>
 <p><code>_</code>操作是引入该包，调用该包里的init函数。而不直接使用包里面的函数。</p>
-<pre><code class="language-go">import _ &quot;github.com/go-sql-driver/mysql&quot;
-// _操作其实是引入该包，而不直接使用包里面的函数，而是调用了该包里面的 init 函数。
+<pre><code class="hljs"><span class="hljs-keyword">import</span> _ <span class="hljs-string">&quot;github.com/go-sql-driver/mysql&quot;</span>
+<span class="hljs-comment">// _操作其实是引入该包，而不直接使用包里面的函数，而是调用了该包里面的 init 函数。</span>
 </code></pre>
 <h3>init函数</h3>
 <blockquote>
@@ -1486,73 +1486,73 @@ f()
 </blockquote>
 <h4>文件读取</h4>
 <p><strong>方法一：使用os.Open和切片的读取文件</strong></p>
-<pre><code class="language-go">package main
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main
 
-import (
-    &quot;fmt&quot;
-    &quot;io&quot;
-    &quot;net/http&quot;
-    &quot;os&quot;
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;io&quot;</span>
+    <span class="hljs-string">&quot;net/http&quot;</span>
+    <span class="hljs-string">&quot;os&quot;</span>
 
-    &quot;github.com/gin-gonic/gin&quot;
+    <span class="hljs-string">&quot;github.com/gin-gonic/gin&quot;</span>
 )
 
-func main() {
-    file, err := os.Open(&quot;./demo.log&quot;)
-    if err != nil {
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    file, err := os.Open(<span class="hljs-string">&quot;./demo.log&quot;</span>)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
         fmt.Println(err)
-        return
+        <span class="hljs-keyword">return</span>
     }
-    defer file.Close()
-    var content []byte
-    // 循环读取全部内容
-    for {
-        // 创建切片保存字节
-        var temStr = make([]byte, 128)
-        //使用file.Read读取内容
-        len, err := file.Read(temStr)
-        // 读取完毕
-        if err == io.EOF {
-            break
-        } else {
-            content = append(content, temStr[:len]...)
+    <span class="hljs-keyword">defer</span> file.Close()
+    <span class="hljs-keyword">var</span> content []<span class="hljs-type">byte</span>
+    <span class="hljs-comment">// 循环读取全部内容</span>
+    <span class="hljs-keyword">for</span> {
+        <span class="hljs-comment">// 创建切片保存字节</span>
+        <span class="hljs-keyword">var</span> temStr = <span class="hljs-built_in">make</span>([]<span class="hljs-type">byte</span>, <span class="hljs-number">128</span>)
+        <span class="hljs-comment">//使用file.Read读取内容</span>
+        <span class="hljs-built_in">len</span>, err := file.Read(temStr)
+        <span class="hljs-comment">// 读取完毕</span>
+        <span class="hljs-keyword">if</span> err == io.EOF {
+            <span class="hljs-keyword">break</span>
+        } <span class="hljs-keyword">else</span> {
+            content = <span class="hljs-built_in">append</span>(content, temStr[:<span class="hljs-built_in">len</span>]...)
         }
     }
-    fmt.Println(string(content))
+    fmt.Println(<span class="hljs-type">string</span>(content))
 }
 </code></pre>
 <p><strong>方法二：通过bufio方式，逐行读取</strong></p>
-<pre><code class="language-go">package main
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main
 
-import (
-    &quot;bufio&quot;
-    &quot;fmt&quot;
-    &quot;io&quot;
-    &quot;net/http&quot;
-    &quot;os&quot;
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;bufio&quot;</span>
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;io&quot;</span>
+    <span class="hljs-string">&quot;net/http&quot;</span>
+    <span class="hljs-string">&quot;os&quot;</span>
 
-    &quot;github.com/gin-gonic/gin&quot;
+    <span class="hljs-string">&quot;github.com/gin-gonic/gin&quot;</span>
 )
 
-func main() {
-    f, err := os.Open(&quot;demo.log&quot;)
-    if err != nil {
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    f, err := os.Open(<span class="hljs-string">&quot;demo.log&quot;</span>)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
         fmt.Println(err)
-        return
+        <span class="hljs-keyword">return</span>
     }
-    defer f.Close()
+    <span class="hljs-keyword">defer</span> f.Close()
     reader := bufio.NewReader(f)
-    var content string
-    for {
-        // 一次读取一行
-        str, err := reader.ReadString('\n')
-        if err == io.EOF {
-            // 拼接最后一行
+    <span class="hljs-keyword">var</span> content <span class="hljs-type">string</span>
+    <span class="hljs-keyword">for</span> {
+        <span class="hljs-comment">// 一次读取一行</span>
+        str, err := reader.ReadString(<span class="hljs-string">&#x27;\n&#x27;</span>)
+        <span class="hljs-keyword">if</span> err == io.EOF {
+            <span class="hljs-comment">// 拼接最后一行</span>
             content += str
-            // 跳出当前循环
-            break
-        } else {
-            // 拼接其他行
+            <span class="hljs-comment">// 跳出当前循环</span>
+            <span class="hljs-keyword">break</span>
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-comment">// 拼接其他行</span>
             content += str
         }
     }
@@ -1560,75 +1560,75 @@ func main() {
 }
 </code></pre>
 <p><strong>方法三：通过os.ReadFile直接读取整个文件内容(ioutil包在1.16之后已弃用)</strong></p>
-<pre><code class="language-go">package main
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main
 
-import (
-    &quot;fmt&quot;
-    &quot;net/http&quot;
-    &quot;os&quot;
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;net/http&quot;</span>
+    <span class="hljs-string">&quot;os&quot;</span>
 
-    &quot;github.com/gin-gonic/gin&quot;
+    <span class="hljs-string">&quot;github.com/gin-gonic/gin&quot;</span>
 )
 
-func main() {
-    msg, err := os.ReadFile(&quot;demo.log&quot;)
-    if err != nil {
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    msg, err := os.ReadFile(<span class="hljs-string">&quot;demo.log&quot;</span>)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
         fmt.Println(err)
-        return
+        <span class="hljs-keyword">return</span>
     }
     fmt.Println(msg)
 }
 </code></pre>
 <h4>文件写入</h4>
 <p>写文件，先通过os.OpenFile文件句柄，然后再通过bufio.NewWriter以及WriteString来写入字符串，详细代码如下：</p>
-<pre><code class="language-go">package main
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main
 
-import (
-    &quot;bufio&quot;
-    &quot;fmt&quot;
-    &quot;net/http&quot;
-    &quot;os&quot;
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;bufio&quot;</span>
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;net/http&quot;</span>
+    <span class="hljs-string">&quot;os&quot;</span>
 
-    &quot;github.com/gin-gonic/gin&quot;
+    <span class="hljs-string">&quot;github.com/gin-gonic/gin&quot;</span>
 )
 
-func main() {
-    pf, err := os.OpenFile(&quot;demo.log&quot;, os.O_WRONLY|os.O_CREATE, 0666)
-    if err != nil {
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    pf, err := os.OpenFile(<span class="hljs-string">&quot;demo.log&quot;</span>, os.O_WRONLY|os.O_CREATE, <span class="hljs-number">0666</span>)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
         fmt.Println(err)
-        return
+        <span class="hljs-keyword">return</span>
     }
-    defer pf.Close()
+    <span class="hljs-keyword">defer</span> pf.Close()
 
     outWriter := bufio.NewWriter(pf)
-    outString := &quot;hello world!\n&quot;
+    outString := <span class="hljs-string">&quot;hello world!\n&quot;</span>
 
-    for i := 0; i &lt; 10; i++ {
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++ {
         outWriter.WriteString(outString)
     }
     outWriter.Flush()
 }
 </code></pre>
 <p>以上是逐行写入，也可一次写入，具体代码如下：</p>
-<pre><code class="language-go">package main
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main
 
-import (
-    &quot;fmt&quot;
-    &quot;net/http&quot;
-    &quot;os&quot;
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;net/http&quot;</span>
+    <span class="hljs-string">&quot;os&quot;</span>
 
-    &quot;github.com/gin-gonic/gin&quot;
+    <span class="hljs-string">&quot;github.com/gin-gonic/gin&quot;</span>
 )
 
-func main(c *gin.Context) {
-    f, err := os.OpenFile(&quot;demo.log&quot;, os.O_WRONLY|os.O_CREATE, 0666)
-    if err != nil {
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">(c *gin.Context)</span></span> {
+    f, err := os.OpenFile(<span class="hljs-string">&quot;demo.log&quot;</span>, os.O_WRONLY|os.O_CREATE, <span class="hljs-number">0666</span>)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
         fmt.Println(err)
-        return
+        <span class="hljs-keyword">return</span>
     }
-    defer f.Close()
-    f.Write([]byte(&quot;hello go lang&quot;))
-    c.String(http.StatusOK, &quot;hello golang&quot;)
+    <span class="hljs-keyword">defer</span> f.Close()
+    f.Write([]<span class="hljs-type">byte</span>(<span class="hljs-string">&quot;hello go lang&quot;</span>))
+    c.String(http.StatusOK, <span class="hljs-string">&quot;hello golang&quot;</span>)
 }
 </code></pre>
 <p>OpenFile函数有三个参数： 文件名、一个或多个标志(使用逻辑符&quot;|&quot;连接)，使用的文件权限。</p>
@@ -1668,36 +1668,36 @@ func main(c *gin.Context) {
 </blockquote>
 <p>首先观察这个程序，我们使用go关键字去启动一个协程，实例如下：</p>
 <p>main.go</p>
-<pre><code class="language-go">package main
-import (
-        &quot;fmt&quot;
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<span class="hljs-keyword">import</span> (
+        <span class="hljs-string">&quot;fmt&quot;</span>
 )
 
-func Say(msg string) {
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Say</span><span class="hljs-params">(msg <span class="hljs-type">string</span>)</span></span> {
         fmt.Println(msg)
 }
-func main() {
-        go Say(&quot;func say : hello world!!!&quot;)
-        fmt.Println(&quot;main say : hello world&quot;)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+        <span class="hljs-keyword">go</span> Say(<span class="hljs-string">&quot;func say : hello world!!!&quot;</span>)
+        fmt.Println(<span class="hljs-string">&quot;main say : hello world&quot;</span>)
 }
 </code></pre>
 <p>执行go run main.go后，发现输出只有main say: hello world,而没有Say函数的输出。</p>
 <p>原因很简单，因为主函数main首先执行完并返回return了，而go Say(&quot;func say : hello world!!!&quot;)需要为协程初始化消耗一些时间，因为晚于main的return，因为就没有输出打印。</p>
 <p>我们修改一下程序</p>
-<pre><code class="language-go">package main
-import (
-        &quot;fmt&quot;
-        &quot;time&quot;
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<span class="hljs-keyword">import</span> (
+        <span class="hljs-string">&quot;fmt&quot;</span>
+        <span class="hljs-string">&quot;time&quot;</span>
 )
-func Say(msg string) {
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Say</span><span class="hljs-params">(msg <span class="hljs-type">string</span>)</span></span> {
         fmt.Println(msg)
 }
 
 
-func main() {
-        go Say(&quot;func say : hello world!!!&quot;)
-        fmt.Println(&quot;main say : hello world&quot;)
-        time.Sleep(time.Second * 3) //让主程序休眠3秒
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+        <span class="hljs-keyword">go</span> Say(<span class="hljs-string">&quot;func say : hello world!!!&quot;</span>)
+        fmt.Println(<span class="hljs-string">&quot;main say : hello world&quot;</span>)
+        time.Sleep(time.Second * <span class="hljs-number">3</span>) <span class="hljs-comment">//让主程序休眠3秒</span>
 }
 </code></pre>
 <p>让main函数休眠3秒，Say函数的打印就顺利输出了。</p>
@@ -1731,65 +1731,65 @@ func main() {
 <p>Wait() 会阻塞代码的运行，直到计数器减为0</p>
 </li>
 </ul>
-<pre><code class="language-go">package main
-import (
-    &quot;fmt&quot;
-    &quot;sync&quot;
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;sync&quot;</span>
 )
-// 并发控制
-var wg sync.WaitGroup
-// 协程函数
-func Say(msg string) {
-    defer wg.Done() // 计数器减1
+<span class="hljs-comment">// 并发控制</span>
+<span class="hljs-keyword">var</span> wg sync.WaitGroup
+<span class="hljs-comment">// 协程函数</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Say</span><span class="hljs-params">(msg <span class="hljs-type">string</span>)</span></span> {
+    <span class="hljs-keyword">defer</span> wg.Done() <span class="hljs-comment">// 计数器减1</span>
     fmt.Println(msg)
 }
-func main() {
-    for i := 0; i &lt; 10; i++ {
-        wg.Add(1)                                          // 计数器加1
-        go Say(fmt.Sprintf(&quot;func %d say: hello world&quot;, i)) // 启动协程
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++ {
+        wg.Add(<span class="hljs-number">1</span>)                                          <span class="hljs-comment">// 计数器加1</span>
+        <span class="hljs-keyword">go</span> Say(fmt.Sprintf(<span class="hljs-string">&quot;func %d say: hello world&quot;</span>, i)) <span class="hljs-comment">// 启动协程</span>
     }
-    wg.Wait() // 等待协程完成
-    fmt.Println(&quot;main say: hello world&quot;)
+    wg.Wait() <span class="hljs-comment">// 等待协程完成</span>
+    fmt.Println(<span class="hljs-string">&quot;main say: hello world&quot;</span>)
 }
 </code></pre>
 <h4>channel(信道)</h4>
 <p>Go语言中的通道(channel)是一种特殊类型。通道像一个传递带或者队列，总是遵循先入先出的规则，保证收发数据的顺序。channel跟Linux中的双向管道很像，也是用于进程和协程间通信。</p>
 <p>channel的定义打开、发送、接收、关闭</p>
-<pre><code class="language-go">chan T          // 可以接收和发送类型为 T 的数据
-chan&lt;- float64  // 只可以用来发送 float64 类型的数据
-&lt;-chan int      // 只可以用来接收 int 类型的数据
+<pre><code class="hljs"><span class="hljs-keyword">chan</span> T          <span class="hljs-comment">// 可以接收和发送类型为 T 的数据</span>
+<span class="hljs-keyword">chan</span>&lt;- <span class="hljs-type">float64</span>  <span class="hljs-comment">// 只可以用来发送 float64 类型的数据</span>
+&lt;-<span class="hljs-keyword">chan</span> <span class="hljs-type">int</span>      <span class="hljs-comment">// 只可以用来接收 int 类型的数据</span>
 
-ch1 := make(chan int, 10) // 定义channel，里面可以塞的数据结构是int，缓冲长度为10
-ch2 := make(chan []int) // 定义channel，里面可以塞的数据结构是[]int，缓冲长度为0（也就是无缓冲channel），往里面发了数据，会阻塞直到数据被接收
+ch1 := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-type">int</span>, <span class="hljs-number">10</span>) <span class="hljs-comment">// 定义channel，里面可以塞的数据结构是int，缓冲长度为10</span>
+ch2 := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> []<span class="hljs-type">int</span>) <span class="hljs-comment">// 定义channel，里面可以塞的数据结构是[]int，缓冲长度为0（也就是无缓冲channel），往里面发了数据，会阻塞直到数据被接收</span>
 
 
-ch1 &lt;- 10  //发送一个数据
-x := &lt;- ch1  // 接收一个数据
+ch1 &lt;- <span class="hljs-number">10</span>  <span class="hljs-comment">//发送一个数据</span>
+x := &lt;- ch1  <span class="hljs-comment">// 接收一个数据</span>
 
-close(ch1) // 关闭channel
+<span class="hljs-built_in">close</span>(ch1) <span class="hljs-comment">// 关闭channel</span>
 </code></pre>
 <p>信道实例：</p>
-<pre><code class="language-go">package main
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main
 
-import (
-    &quot;fmt&quot;
-    &quot;time&quot;
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;time&quot;</span>
 )
 
-var msgChan = make(chan string) //声明并初始化一个长度为0的信道,无缓冲通道
+<span class="hljs-keyword">var</span> msgChan = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-type">string</span>) <span class="hljs-comment">//声明并初始化一个长度为0的信道,无缓冲通道</span>
 
-func Say(msg string) {
-    // fmt.Println(msg)
-    msgChan &lt;- msg // 将msg字符推给msgChan信道
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Say</span><span class="hljs-params">(msg <span class="hljs-type">string</span>)</span></span> {
+    <span class="hljs-comment">// fmt.Println(msg)</span>
+    msgChan &lt;- msg <span class="hljs-comment">// 将msg字符推给msgChan信道</span>
 }
 
-func main() {
-    for i := 0; i &lt; 1000; i++ {
-        go Say(fmt.Sprintf(&quot;func %d say: hello world!!!&quot;, i))
-        msg := &lt;-msgChan //将信道里的内容，赋值给msg
-        fmt.Println(&quot;Channel&quot;, msg)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">1000</span>; i++ {
+        <span class="hljs-keyword">go</span> Say(fmt.Sprintf(<span class="hljs-string">&quot;func %d say: hello world!!!&quot;</span>, i))
+        msg := &lt;-msgChan <span class="hljs-comment">//将信道里的内容，赋值给msg</span>
+        fmt.Println(<span class="hljs-string">&quot;Channel&quot;</span>, msg)
     }
-    fmt.Println(&quot;main say: hello world&quot;)
+    fmt.Println(<span class="hljs-string">&quot;main say: hello world&quot;</span>)
 }
 </code></pre>
 <h4>Context</h4>
@@ -1797,11 +1797,11 @@ func main() {
 <p>Context是Go1.7引入到标准库的，准确说它是goroutine的上下文，包含goroutine的运行状态、环境、现场等信息。Context主要用来在goroutine之间传递上下文信息。Context几乎成为了并发控制和超时控制的标准做法。</p>
 </blockquote>
 <p>Context接口定义如下：</p>
-<pre><code class="language-go">type Context interface {
-    Deadline() (deadline time.Time, ok bool)
-    Done() &lt;-chan struct{}
-    Err() error
-    Value(key interface{}) interface{}
+<pre><code class="hljs"><span class="hljs-keyword">type</span> Context <span class="hljs-keyword">interface</span> {
+    Deadline() (deadline time.Time, ok <span class="hljs-type">bool</span>)
+    Done() &lt;-<span class="hljs-keyword">chan</span> <span class="hljs-keyword">struct</span>{}
+    Err() <span class="hljs-type">error</span>
+    Value(key <span class="hljs-keyword">interface</span>{}) <span class="hljs-keyword">interface</span>{}
 }
 </code></pre>
 <ul>
@@ -1834,33 +1834,33 @@ func main() {
 </li>
 </ul>
 <p>下面是一个使用信道控制协程的例子</p>
-<pre><code class="language-go">package main
+<pre><code class="hljs"><span class="hljs-keyword">package</span> main
 
-import (
-    &quot;fmt&quot;
-    &quot;time&quot;
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;time&quot;</span>
 )
 
-func main() {
-    c := make(chan bool) //定义信道
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    c := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-type">bool</span>) <span class="hljs-comment">//定义信道</span>
 
-    go func() {
-        for {
-            select {
-            case &lt;-c:
-                fmt.Println(&quot;监控退出，停止了&quot;)
-                return
-            default:
-                fmt.Println(&quot;监控子协程中...&quot;)
-                time.Sleep(2 * time.Second)
+    <span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> {
+        <span class="hljs-keyword">for</span> {
+            <span class="hljs-keyword">select</span> {
+            <span class="hljs-keyword">case</span> &lt;-c:
+                fmt.Println(<span class="hljs-string">&quot;监控退出，停止了&quot;</span>)
+                <span class="hljs-keyword">return</span>
+            <span class="hljs-keyword">default</span>:
+                fmt.Println(<span class="hljs-string">&quot;监控子协程中...&quot;</span>)
+                time.Sleep(<span class="hljs-number">2</span> * time.Second)
             }
         }
     }()
 
-    time.Sleep(10 * time.Second)
-    fmt.Println(&quot;通知监控停止&quot;)
-    c &lt;- true
-    time.Sleep(5 * time.Second) // 为了检测监控是否停止，如果没有监控输出，就表示停止了
+    time.Sleep(<span class="hljs-number">10</span> * time.Second)
+    fmt.Println(<span class="hljs-string">&quot;通知监控停止&quot;</span>)
+    c &lt;- <span class="hljs-literal">true</span>
+    time.Sleep(<span class="hljs-number">5</span> * time.Second) <span class="hljs-comment">// 为了检测监控是否停止，如果没有监控输出，就表示停止了</span>
 }
 </code></pre>
 <h3>热更新</h3>
@@ -1871,62 +1871,62 @@ func main() {
 </blockquote>
 <h4>安装Air</h4>
 <p>通过go来安装air命令</p>
-<pre><code class="language-shell">go install github.com/cosmtrek/air@latest
+<pre><code class="hljs">go install github.com/cosmtrek/air@latest
 </code></pre>
 <p>macOS/linux添加环境变量</p>
 <p>如添加到~/.zshrc</p>
-<pre><code class="language-shell">export PATH=$PATH:$(go env GOPATH)/bin
+<pre><code class="hljs">export PATH=$PATH:$(go env GOPATH)/bin
 </code></pre>
 <h4>测试</h4>
 <p>进入项目文件夹根目录</p>
-<pre><code class="language-shell">air -v
+<pre><code class="hljs">air -v
 </code></pre>
 <h4>使用Air</h4>
 <p>进入项目文件夹根目录</p>
 <p>初始化默认配置到当前路径下，会自动生成.air.toml文件到项目根目录下</p>
-<pre><code class="language-shell">air init
+<pre><code class="hljs">air init
 </code></pre>
 <p>之后开发时，只需要执行air命令，即可实现热重更功能。</p>
-<pre><code class="language-shell">air
+<pre><code class="hljs">air
 </code></pre>
 <h4>配置文件(.air.toml)说明</h4>
-<pre><code class="language-toml"># 根目录
-root = &quot;.&quot;
-testdata_dir = &quot;testdata&quot;
-# 临时文件目录
-tmp_dir = &quot;tmp&quot;
+<pre><code class="hljs"><span class="hljs-comment"># 根目录</span>
+<span class="hljs-attr">root</span> = <span class="hljs-string">&quot;.&quot;</span>
+<span class="hljs-attr">testdata_dir</span> = <span class="hljs-string">&quot;testdata&quot;</span>
+<span class="hljs-comment"># 临时文件目录</span>
+<span class="hljs-attr">tmp_dir</span> = <span class="hljs-string">&quot;tmp&quot;</span>
 
-[build]
-# 运行时参数
-args_bin = []
-# 编译文件位置
-bin = &quot;tmp\\main.exe&quot;
-# 编译命令
-cmd = &quot;go build -o ./tmp/main.exe .&quot;
-delay = 0
-# 排除目录
-exclude_dir = [&quot;assets&quot;, &quot;tmp&quot;, &quot;vendor&quot;, &quot;testdata&quot;]
-# 排除文件
-exclude_file = []
-# 排除特定的正则表达式
-exclude_regex = [&quot;_test.go&quot;]
-exclude_unchanged = false
-follow_symlink = false
-full_bin = &quot;&quot;
-# 观察目录
-include_dir = []
-# 观察文件扩展名
-include_ext = [&quot;go&quot;, &quot;tpl&quot;, &quot;tmpl&quot;, &quot;html&quot;]
-# 观察文件
-include_file = []
-kill_delay = &quot;0s&quot;
-log = &quot;build-errors.log&quot;
-poll = false
-poll_interval = 0
-rerun = false
-rerun_delay = 500
-send_interrupt = false
-# 错误时停止监测
-stop_on_error = false
+<span class="hljs-section">[build]</span>
+<span class="hljs-comment"># 运行时参数</span>
+<span class="hljs-attr">args_bin</span> = []
+<span class="hljs-comment"># 编译文件位置</span>
+<span class="hljs-attr">bin</span> = <span class="hljs-string">&quot;tmp\\main.exe&quot;</span>
+<span class="hljs-comment"># 编译命令</span>
+<span class="hljs-attr">cmd</span> = <span class="hljs-string">&quot;go build -o ./tmp/main.exe .&quot;</span>
+<span class="hljs-attr">delay</span> = <span class="hljs-number">0</span>
+<span class="hljs-comment"># 排除目录</span>
+<span class="hljs-attr">exclude_dir</span> = [<span class="hljs-string">&quot;assets&quot;</span>, <span class="hljs-string">&quot;tmp&quot;</span>, <span class="hljs-string">&quot;vendor&quot;</span>, <span class="hljs-string">&quot;testdata&quot;</span>]
+<span class="hljs-comment"># 排除文件</span>
+<span class="hljs-attr">exclude_file</span> = []
+<span class="hljs-comment"># 排除特定的正则表达式</span>
+<span class="hljs-attr">exclude_regex</span> = [<span class="hljs-string">&quot;_test.go&quot;</span>]
+<span class="hljs-attr">exclude_unchanged</span> = <span class="hljs-literal">false</span>
+<span class="hljs-attr">follow_symlink</span> = <span class="hljs-literal">false</span>
+<span class="hljs-attr">full_bin</span> = <span class="hljs-string">&quot;&quot;</span>
+<span class="hljs-comment"># 观察目录</span>
+<span class="hljs-attr">include_dir</span> = []
+<span class="hljs-comment"># 观察文件扩展名</span>
+<span class="hljs-attr">include_ext</span> = [<span class="hljs-string">&quot;go&quot;</span>, <span class="hljs-string">&quot;tpl&quot;</span>, <span class="hljs-string">&quot;tmpl&quot;</span>, <span class="hljs-string">&quot;html&quot;</span>]
+<span class="hljs-comment"># 观察文件</span>
+<span class="hljs-attr">include_file</span> = []
+<span class="hljs-attr">kill_delay</span> = <span class="hljs-string">&quot;0s&quot;</span>
+<span class="hljs-attr">log</span> = <span class="hljs-string">&quot;build-errors.log&quot;</span>
+<span class="hljs-attr">poll</span> = <span class="hljs-literal">false</span>
+<span class="hljs-attr">poll_interval</span> = <span class="hljs-number">0</span>
+<span class="hljs-attr">rerun</span> = <span class="hljs-literal">false</span>
+<span class="hljs-attr">rerun_delay</span> = <span class="hljs-number">500</span>
+<span class="hljs-attr">send_interrupt</span> = <span class="hljs-literal">false</span>
+<span class="hljs-comment"># 错误时停止监测</span>
+<span class="hljs-attr">stop_on_error</span> = <span class="hljs-literal">false</span>
 </code></pre>
 </div></div></div></div></div><script type="text/javascript" src="js/go.js"></script></body></html>
