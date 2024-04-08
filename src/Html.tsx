@@ -3,8 +3,7 @@ import React from "react";
 // body样式
 const bodyStyle:React.CSSProperties = {
     margin: 0,
-    padding: 0,
-    backgroundColor: 'antiquewhite'
+    padding: 0
 }
 
 interface Props {
@@ -22,6 +21,7 @@ function Html(props:Props) {
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="shortcut icon" href="favicon.ico"/>
         <link href={props.cssPath} rel="stylesheet" type="text/css" />
         <title>{props.title}</title>
       </head>

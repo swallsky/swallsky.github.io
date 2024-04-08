@@ -2,9 +2,13 @@ import React from "react";
 import styled from "styled-components";
 
 const HeadStyle = styled.div`
-    background-color: #1b1c26;
+    position: fixed;
+    width: 100%;
     height: 60px;
     line-height: 60px;
+    z-index: 1000;
+    background-color: #F9F9f9;
+    border-bottom: 1px solid #DDD;
     ul {
         display: flex;
         list-style: none;
@@ -15,7 +19,8 @@ const HeadStyle = styled.div`
             margin: 0 10px;
             a {
                 text-decoration: none;
-                color: #028399;
+                color: #666;
+                font-size: 16px;
             }
         }
     }
