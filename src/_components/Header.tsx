@@ -32,8 +32,8 @@ function Header() {
     <HeadStyle>
         <ul>
             <li><a href="./">首页</a></li>
-            <li><a href="./markdown.html">Markdown</a></li>
             <li><a href="./go.html">Go语言</a></li>
+            <li><a href="./markdown.html">Markdown</a></li>
         </ul>
     </HeadStyle>
   );

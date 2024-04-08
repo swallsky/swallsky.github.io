@@ -1,2 +1,2 @@
-### 网站连接
-https://swallsky.github.io/
+### 站点首页
+https://manongs.cn/

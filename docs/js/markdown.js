@@ -30,7 +30,7 @@ Error generating stack: `+l.message+`
             }
         }
     }
-`;function Py(){return ct.default.createElement(Cy,null,ct.default.createElement("ul",null,ct.default.createElement("li",null,ct.default.createElement("a",{href:"./"},"\u9996\u9875")),ct.default.createElement("li",null,ct.default.createElement("a",{href:"./markdown.html"},"Markdown")),ct.default.createElement("li",null,ct.default.createElement("a",{href:"./go.html"},"Go\u8BED\u8A00"))))}var ap=Py;var Yn=mt(yt());function Ny(e){let[t,n]=(0,Yn.useState)(!1);return(0,Yn.useEffect)(()=>{n(!0)},[]),Yn.default.createElement("div",{style:{display:t?"":"none"}},e.children)}var cp=Ny;var Ty=Xr.div`
+`;function Py(){return ct.default.createElement(Cy,null,ct.default.createElement("ul",null,ct.default.createElement("li",null,ct.default.createElement("a",{href:"./"},"\u9996\u9875")),ct.default.createElement("li",null,ct.default.createElement("a",{href:"./go.html"},"Go\u8BED\u8A00")),ct.default.createElement("li",null,ct.default.createElement("a",{href:"./markdown.html"},"Markdown"))))}var ap=Py;var Yn=mt(yt());function Ny(e){let[t,n]=(0,Yn.useState)(!1);return(0,Yn.useEffect)(()=>{n(!0)},[]),Yn.default.createElement("div",{style:{display:t?"":"none"}},e.children)}var cp=Ny;var Ty=Xr.div`
   display: flex;
   background-color: #f5f5f5;
   margin-top: 62px;
@@ -71,6 +71,18 @@ Error generating stack: `+l.message+`
     flex: 1 1 auto;
     background-color: #fff;
     padding: 0 20px;
+    /* 引用块的样式 */
+    blockquote {
+        display: block;
+        padding-left: 16px;
+        padding-right: 16px;
+        margin: 0 0 24px;
+        border-left: 8px solid #dddfe4;
+        background-color: #eef0f4;
+        overflow: auto;
+        word-break: normal;
+    }
+    /* 表格 */
     table {
       border-spacing: 0;
       thead tr th {

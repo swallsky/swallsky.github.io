@@ -1,9 +1,9 @@
 import React from "react";
-import LayoutSider from "../_components/LayoutSider";
+import LayoutMarkdown from "../_components/LayoutMarkdown";
 
 function Page(props) {
   return (
-    <LayoutSider>
+    <LayoutMarkdown>
       <div className="menu">
         <ul>
           <li><span className="icon" /><a href="/go.html">Go语言基础</a></li>
@@ -12,7 +12,7 @@ function Page(props) {
       <div className="cnt">
         <div dangerouslySetInnerHTML={{ __html: props.serData.gobase }} />
       </div>
-    </LayoutSider>
+    </LayoutMarkdown>
   );
 }
 

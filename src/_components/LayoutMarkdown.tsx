@@ -44,6 +44,18 @@ const Content = styled.div`
     flex: 1 1 auto;
     background-color: #fff;
     padding: 0 20px;
+    /* 引用块的样式 */
+    blockquote {
+        display: block;
+        padding-left: 16px;
+        padding-right: 16px;
+        margin: 0 0 24px;
+        border-left: 8px solid #dddfe4;
+        background-color: #eef0f4;
+        overflow: auto;
+        word-break: normal;
+    }
+    /* 表格 */
     table {
       border-spacing: 0;
       thead tr th {
@@ -63,7 +75,7 @@ interface Props {
   children: any;
 }
 
-function LayoutSider(props:Props) {
+function LayoutMarkdown(props:Props) {
   return (
     <Loading>
         <Header />
@@ -74,4 +86,4 @@ function LayoutSider(props:Props) {
   );
 }
 
-export default LayoutSider;
+export default LayoutMarkdown;
