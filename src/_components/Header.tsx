@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const HeadStyle = styled.div`
     position: fixed;
+    top: 0;
     width: 100%;
     height: 60px;
     line-height: 60px;
@@ -32,7 +33,7 @@ function Header() {
         <ul>
             <li><a href="./">首页</a></li>
             <li><a href="./markdown.html">Markdown</a></li>
-            <li><a href="./go.html">Go基础</a></li>
+            <li><a href="./go.html">Go语言</a></li>
         </ul>
     </HeadStyle>
   );

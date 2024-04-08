@@ -1277,7 +1277,8 @@ import _ "github.com/go-sql-driver/mysql"
 
 init函数与包级变量的初始化顺序如下图所示：
 
-![init函数执行顺序](./img/go-init.png)
+<!-- ![init函数执行顺序](./img/go-init.png) -->
+<img src="./img/go-init.png" width="680" height="300" alt="init函数执行顺序" />
 
 **特点**
 

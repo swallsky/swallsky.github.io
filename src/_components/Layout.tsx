@@ -10,7 +10,7 @@ function Layout(props:Props) {
   return (
     <Loading>
         <Header />
-        {props.children}
+          {props.children}
     </Loading>
   );
 }
