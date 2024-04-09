@@ -1,4 +1,4 @@
-<html lang="en"><head><meta charSet="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="favicon.ico"/><link rel="stylesheet" href="/css/highlight/styles/default.min.css"/><link href="css/go.css" rel="stylesheet" type="text/css"/><title>go基础</title></head><body style="margin:0;padding:0"><div id="root"><div style="display:none"><div class="sc-beySPh CWEHv"><ul><li><a href="./">首页</a></li><li><a href="./go.html">Go语言</a></li><li><a href="./markdown.html">Markdown</a></li></ul></div><div class="sc-guDLey dlFkWP"><div class="menu"><ul><li><span class="icon"></span><a href="/go.html">Go语言基础</a></li></ul></div><div class="cnt"><div><h3>简介</h3>
+<html lang="en"><head><meta charSet="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="favicon.ico"/><link rel="stylesheet" href="/css/highlight/styles/default.min.css"/><link href="css/go.css" rel="stylesheet" type="text/css"/><title>go基础</title><script type="text/javascript" src="js/global.js"></script></head><body style="margin:0;padding:0"><div id="root"><div style="display:none"><div class="sc-beySPh CWEHv"><ul><li><a href="./">首页</a></li><li><a href="./go.html">Go语言</a></li><li><a href="./markdown.html">Markdown</a></li></ul></div><div class="sc-guDLey iXjEWs"><div class="menu"><ul><li><span class="icon"></span><a href="/go.html">Go语言基础</a></li></ul></div><div class="cnt"><div><h3>简介</h3>
 <blockquote>
 <p>Go是Google公司2009年11月正式对外公开的一门编程语言。</p>
 <p>Go语言的推出，旨在不损失应用程序性能的情况下降低代码的复杂性，具有“部署简单、并发性好、语言设计良好、执行性能好”等优势，目前国内诸多 IT 公司均已采用Go语言开发项目。</p>
@@ -16,7 +16,7 @@
 <p>Apple macOS(x86-64)，下载对应的 <a href="https://golang.google.cn/dl/go1.21.4.darwin-amd64.pkg">https://golang.google.cn/dl/go1.21.4.darwin-amd64.pkg</a></p>
 <h4>配置环境变量</h4>
 <p>vim ~/.bash_profile</p>
-<pre><code class="hljs">export GOPATH=/Users/xjz/go # go第三方包目录
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">export GOPATH=/Users/xjz/go # go第三方包目录
 export GOROOT=/usr/local/go # go安装目录
 export GO111MODULE=on  # go modules 是 golang 1.11 新加的特性, 为配合七牛国内镜像建议开启
 export GOPROXY=https://goproxy.cn,direct # 开启第三方包国内镜像地址
@@ -109,7 +109,7 @@ export PATH=$PATH:$GOPATH/bin # 第三方全局命令，可不设置
 </table>
 <h4>go mod</h4>
 <p>go mod是Go语言的模块管理工具，go mod必须将golang升级到1.11以上版本，配置开启go mod，go语言1.16版本之后，默认开启go mod功能。</p>
-<pre><code class="hljs">go env -w GOBIN=/usr/local/go/bin              #配置下go bin
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">go env -w GOBIN=/usr/local/go/bin              #配置下go bin
 go env -w GO111MODULE=on                       #开启go mod
 go env -w GOPROXY=https://goproxy.cn,direct    #七牛云代理
 </code></pre>
@@ -560,7 +560,7 @@ go env -w GOPROXY=https://goproxy.cn,direct    #七牛云代理
 </li>
 </ul>
 <p>例如一个简单语句</p>
-<pre><code class="hljs">fmt.Println(<span class="hljs-string">&quot;Hello, World!&quot;</span>)
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">fmt.Println(<span class="hljs-string">&quot;Hello, World!&quot;</span>)
 </code></pre>
 <h4>语言结构</h4>
 <ul>
@@ -584,7 +584,7 @@ go env -w GOPROXY=https://goproxy.cn,direct    #七牛云代理
 </li>
 </ul>
 <p>helloword.go</p>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main <span class="hljs-comment">// 包声明</span>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main <span class="hljs-comment">// 包声明</span>
 
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span> <span class="hljs-comment">// 引入包</span>
 
@@ -645,10 +645,10 @@ go env -w GOPROXY=https://goproxy.cn,direct    #七牛云代理
 <p>Go语言变量名由字母、数字、下划线组成，其中首字符不能为数字。</p>
 </blockquote>
 <p>声明变量的一般形式是使用var关键字</p>
-<pre><code class="hljs"><span class="hljs-keyword">var</span> idn <span class="hljs-type">int</span>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">var</span> idn <span class="hljs-type">int</span>
 </code></pre>
 <p>可以一次声明多个变量</p>
-<pre><code class="hljs"><span class="hljs-comment">//类型相同多个变量, 非全局变量</span>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-comment">//类型相同多个变量, 非全局变量</span>
 <span class="hljs-keyword">var</span> vname1, vname2, vname3 <span class="hljs-keyword">type</span>
 vname1, vname2, vname3 = v1, v2, v3
 
@@ -661,7 +661,7 @@ vname1, vname2, vname3 := v1, v2, v3 <span class="hljs-comment">// 出现在 := 
 )
 </code></pre>
 <p>实例</p>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
 
 <span class="hljs-keyword">var</span> x, y <span class="hljs-type">int</span>
@@ -705,7 +705,7 @@ vname1, vname2, vname3 := v1, v2, v3 <span class="hljs-comment">// 出现在 := 
 </li>
 </ul>
 <p>局部变量的例子</p>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
 <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
    <span class="hljs-comment">/* 声明局部变量 */</span>
@@ -718,7 +718,7 @@ vname1, vname2, vname3 := v1, v2, v3 <span class="hljs-comment">// 出现在 := 
 }
 </code></pre>
 <p>全局变量实例</p>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
 <span class="hljs-comment">/* 声明全局变量 */</span>
 <span class="hljs-keyword">var</span> g <span class="hljs-type">int</span>
@@ -733,7 +733,7 @@ vname1, vname2, vname3 := v1, v2, v3 <span class="hljs-comment">// 出现在 := 
 }
 </code></pre>
 <p>形参实例</p>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
 <span class="hljs-comment">/* 声明全局变量 */</span>
 <span class="hljs-keyword">var</span> a <span class="hljs-type">int</span> = <span class="hljs-number">20</span>
@@ -781,11 +781,11 @@ vname1, vname2, vname3 := v1, v2, v3 <span class="hljs-comment">// 出现在 := 
 <blockquote>
 <p>数组声明需要指定元素类型及元素个数，语法格式如下：</p>
 </blockquote>
-<pre><code class="hljs"><span class="hljs-keyword">var</span> arrayName [size]dataType
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">var</span> arrayName [size]dataType
 </code></pre>
 <p>其中 arrayName是数组的名称, size为数组的大小，dataType是数组中元素的数据类型。</p>
 <p>实例</p>
-<pre><code class="hljs"><span class="hljs-keyword">var</span> numbers [<span class="hljs-number">5</span>]<span class="hljs-type">int</span> <span class="hljs-comment">// 默认初始化 ，初始值为0</span>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">var</span> numbers [<span class="hljs-number">5</span>]<span class="hljs-type">int</span> <span class="hljs-comment">// 默认初始化 ，初始值为0</span>
 <span class="hljs-keyword">var</span> numbers = [<span class="hljs-number">5</span>]<span class="hljs-type">int</span>{<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>} <span class="hljs-comment">// 可以使用初始化列表来初始化数组的元素</span>
 numbers := [<span class="hljs-number">5</span>]<span class="hljs-type">int</span>{<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>} <span class="hljs-comment">// 使用:=简短声明语法来声明和初始化数组</span>
 <span class="hljs-keyword">var</span> balance = [<span class="hljs-number">5</span>]<span class="hljs-type">float32</span>{<span class="hljs-number">1000.0</span>, <span class="hljs-number">2.0</span>, <span class="hljs-number">3.4</span>, <span class="hljs-number">7.0</span>, <span class="hljs-number">50.0</span>}
@@ -801,7 +801,7 @@ fmt.Println(numbers[<span class="hljs-number">0</span>]) <span class="hljs-comme
 </blockquote>
 <p>函数的定义</p>
 <p>Go函数的定义格式如下：</p>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">function_name</span><span class="hljs-params">( [parameter list] )</span></span> [return_types] {
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">function_name</span><span class="hljs-params">( [parameter list] )</span></span> [return_types] {
    函数体
 }
 </code></pre>
@@ -824,7 +824,7 @@ fmt.Println(numbers[<span class="hljs-number">0</span>]) <span class="hljs-comme
 </li>
 </ul>
 <p>实例</p>
-<pre><code class="hljs"><span class="hljs-comment">/* 函数返回两个数的最大值 */</span>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-comment">/* 函数返回两个数的最大值 */</span>
 <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">max</span><span class="hljs-params">(num1, num2 <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span> {
    <span class="hljs-comment">/* 声明局部变量 */</span>
    <span class="hljs-keyword">var</span> result <span class="hljs-type">int</span>
@@ -844,18 +844,18 @@ fmt.Println(numbers[<span class="hljs-number">0</span>]) <span class="hljs-comme
 </blockquote>
 <p>定义切片</p>
 <p>声明一个未指定大小的数组来定义的切片：</p>
-<pre><code class="hljs"><span class="hljs-keyword">var</span> identifier []<span class="hljs-keyword">type</span>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">var</span> identifier []<span class="hljs-keyword">type</span>
 </code></pre>
 <p>切片不需要长度说明, 使用make()函数来创建切片</p>
-<pre><code class="hljs"><span class="hljs-keyword">var</span> slice1 []<span class="hljs-keyword">type</span> = <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">type</span>, <span class="hljs-built_in">len</span>)
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">var</span> slice1 []<span class="hljs-keyword">type</span> = <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">type</span>, <span class="hljs-built_in">len</span>)
 <span class="hljs-comment">//也可以简写为</span>
 slice1 := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">type</span>, <span class="hljs-built_in">len</span>)
 </code></pre>
 <p>切片初始化</p>
-<pre><code class="hljs">s :=[] <span class="hljs-type">int</span> {<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span> }  <span class="hljs-comment">// 直接初始化切片，[] 表示是切片类型，{1,2,3} 初始化值依次是 1,2,3，其 cap=len=3。</span>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">s :=[] <span class="hljs-type">int</span> {<span class="hljs-number">1</span>,<span class="hljs-number">2</span>,<span class="hljs-number">3</span> }  <span class="hljs-comment">// 直接初始化切片，[] 表示是切片类型，{1,2,3} 初始化值依次是 1,2,3，其 cap=len=3。</span>
 </code></pre>
 <p>切片截取</p>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
 
@@ -900,12 +900,12 @@ slice1 := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">t
 <h5>指针地址和指针类型</h5>
 <p>每个变量在运行时都拥有一个地址，这个地址代表变量在内存中的位置。Go语言中使用&amp;字符放在变量前面对变量进行“取地址”操作。Go语言中的值类型(int、float、bool、string、array、struct)都有对应的指针类型，如：<code>*int</code>、<code>*int64</code>、<code>*string</code>等。</p>
 <p>取变量指针的语法如下：</p>
-<pre><code class="hljs">  ptr := &amp;v    <span class="hljs-comment">// v的类型为T</span>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">  ptr := &amp;v    <span class="hljs-comment">// v的类型为T</span>
 </code></pre>
 <p>其中：</p>
 <p>v：代表被取地址的变量，类型为T</p>
 <p>ptr： 用于接收的变量，ptr的类型就为*T，称做T的指针类型。*代表指针。</p>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
     a := <span class="hljs-number">10</span>
     b := &amp;a
     fmt.Printf(<span class="hljs-string">&quot;a:%d ptr:%p\n&quot;</span>, a, &amp;a) <span class="hljs-comment">// a:10 ptr:0xc00001a078</span>
@@ -915,7 +915,7 @@ slice1 := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">t
 </code></pre>
 <h5>指针取值</h5>
 <p>在对普通变量使用&amp;操作符取地址后会获得这个变量的指针，然后可以对指针使用*操作，也就是指针取值。</p>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
     <span class="hljs-comment">//指针取值</span>
     a := <span class="hljs-number">10</span>
     b := &amp;a <span class="hljs-comment">// 取变量a的地址，将指针保存到b中</span>
@@ -937,7 +937,7 @@ value of c:10
 3.对指针变量进行取值（*）操作，可以获得指针变量指向的原变量的值。
 </code></pre>
 <p>指针传值示例：</p>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">modify1</span><span class="hljs-params">(x <span class="hljs-type">int</span>)</span></span> {
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">modify1</span><span class="hljs-params">(x <span class="hljs-type">int</span>)</span></span> {
     x = <span class="hljs-number">100</span>
 }
 
@@ -958,7 +958,7 @@ value of c:10
 <li>当一个指针被定义后没有分配到任何变量时，它的值为 nil</li>
 <li>空指针的判断</li>
 </ul>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
 
@@ -975,7 +975,7 @@ value of c:10
 </code></pre>
 <h5>new和make</h5>
 <p>我们先来看一个例子：</p>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
     <span class="hljs-keyword">var</span> a *<span class="hljs-type">int</span>
     *a = <span class="hljs-number">100</span>
     fmt.Println(*a)
@@ -988,7 +988,7 @@ value of c:10
 <p>执行上面的代码会引发panic，为什么呢？ 在Go语言中对于引用类型的变量，我们在使用的时候不仅要声明它，还要为它分配内存空间，否则我们的值就没办法存储。而对于值类型的声明不需要分配内存空间，是因为它们在声明的时候已经默认分配好了内存空间。要分配内存，就引出来今天的new和make。 Go语言中new和make是内建的两个函数，主要用来分配内存。</p>
 <h5>new</h5>
 <p>new是一个内置的函数，它的函数签名如下：</p>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">new</span><span class="hljs-params">(Type)</span></span> *Type
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">new</span><span class="hljs-params">(Type)</span></span> *Type
 </code></pre>
 <p>其中，</p>
 <pre><code class="hljs">1.Type表示类型，new函数只接受一个参数，这个参数是一个类型
@@ -996,7 +996,7 @@ value of c:10
 </code></pre>
 <p>new函数不太常用，使用new函数得到的是一个类型的指针，并且该指针对应的值为该类型的零值。</p>
 <p>例如：</p>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
     a := <span class="hljs-built_in">new</span>(<span class="hljs-type">int</span>)
     b := <span class="hljs-built_in">new</span>(<span class="hljs-type">bool</span>)
     fmt.Printf(<span class="hljs-string">&quot;%T\n&quot;</span>, a) <span class="hljs-comment">// *int</span>
@@ -1006,7 +1006,7 @@ value of c:10
 }
 </code></pre>
 <p>示例代码中<code>var a *int</code>只是声明了一个指针变量a但是没有初始化，指针作为引用类型需要初始化后才会拥有内存空间，才可以给它赋值。应该按照如下方式使用内置的new函数对a进行初始化之后就可以正常对其赋值了：</p>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
     <span class="hljs-keyword">var</span> a *<span class="hljs-type">int</span>
     a = <span class="hljs-built_in">new</span>(<span class="hljs-type">int</span>)
     *a = <span class="hljs-number">10</span>
@@ -1019,7 +1019,7 @@ value of c:10
 </code></pre>
 <p>make函数是无可替代的，我们在使用slice、map以及channel的时候，都需要使用make进行初始化，然后才可以对它们进行操作。这个我们在上一章中都有说明，关于channel我们会在后续的章节详细说明。</p>
 <p>本节开始的示例中<code>var b map[string]int</code>只是声明变量b是一个map类型的变量，需要像下面的示例代码一样使用make函数进行初始化操作之后，才能对其进行键值对赋值：</p>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
     <span class="hljs-keyword">var</span> b <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">int</span>
     b = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">int</span>, <span class="hljs-number">10</span>)
     b[<span class="hljs-string">&quot;测试&quot;</span>] = <span class="hljs-number">100</span>
@@ -1036,7 +1036,7 @@ value of c:10
 <p>结构体是由一系列具有相同类型或不同类型的数据构成的数据集合。</p>
 <p>定义结构体</p>
 <p>结构体定义需要使用type和struct语句。struct语句定义一个新的数据类型，结构体中有一个或多个成员。type语句设定了结构体的名称。格式如下：</p>
-<pre><code class="hljs"><span class="hljs-keyword">type</span> struct_variable_type <span class="hljs-keyword">struct</span> {
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">type</span> struct_variable_type <span class="hljs-keyword">struct</span> {
    member definition
    member definition
    ...
@@ -1044,12 +1044,12 @@ value of c:10
 }
 </code></pre>
 <p>一旦定义了结构体类型，它就能用于变量的声明，语法格式如下：</p>
-<pre><code class="hljs">variable_name := structure_variable_type {value1, value2...valuen}
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">variable_name := structure_variable_type {value1, value2...valuen}
 或
 variable_name := structure_variable_type { key1: value1, key2: value2..., keyn: valuen}
 </code></pre>
 <p>实例</p>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
 <span class="hljs-keyword">type</span> Books <span class="hljs-keyword">struct</span> {
    title <span class="hljs-type">string</span>
@@ -1067,7 +1067,7 @@ variable_name := structure_variable_type { key1: value1, key2: value2..., keyn: 
 }
 </code></pre>
 <p>结构体变量使用struct关键字定义，实例如下：</p>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
 
@@ -1116,17 +1116,17 @@ variable_name := structure_variable_type { key1: value1, key2: value2..., keyn: 
 </blockquote>
 <p>定义Map</p>
 <p>可以使用内建函数make或使用map关键字来定义Map:</p>
-<pre><code class="hljs"><span class="hljs-comment">/* 使用 make 函数 */</span>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-comment">/* 使用 make 函数 */</span>
 map_variable := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[KeyType]ValueType, initialCapacity)
 </code></pre>
 <p>实例</p>
-<pre><code class="hljs"><span class="hljs-comment">// 创建一个空的 Map</span>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-comment">// 创建一个空的 Map</span>
 m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">int</span>)
 <span class="hljs-comment">// 创建一个初始容量为 10 的 Map</span>
 m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-type">int</span>, <span class="hljs-number">10</span>)
 </code></pre>
 <p>结合实例</p>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
 
@@ -1157,7 +1157,7 @@ m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</spa
 }
 </code></pre>
 <p>delete()函数</p>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
 
@@ -1189,7 +1189,7 @@ m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</spa
 <blockquote>
 <p>接口是Go语言中数据类型的关键。几乎所有的数据结构都围绕接口展开，接口是Go语言中所有数据结构的核心。Go语言的接口实际上是一组方法的集合(接口不能声明属性)。</p>
 </blockquote>
-<pre><code class="hljs"><span class="hljs-comment">/* 定义接口 */</span>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-comment">/* 定义接口 */</span>
 <span class="hljs-keyword">type</span> 接口名 <span class="hljs-keyword">interface</span> {
    方法<span class="hljs-number">1</span> [返回类型]
    方法<span class="hljs-number">2</span> [返回类型]
@@ -1199,7 +1199,7 @@ m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</spa
 }
 </code></pre>
 <p>实例1</p>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
 <span class="hljs-comment">// 定义Animal接口</span>
 <span class="hljs-keyword">type</span> Animal <span class="hljs-keyword">interface</span> {
@@ -1245,7 +1245,7 @@ m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</spa
 <p>因此空接口作为参数的方法，可以接受任何类型。</p>
 </blockquote>
 <p>空接口实例</p>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;os&quot;</span>
@@ -1269,10 +1269,10 @@ m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</spa
 </blockquote>
 <p>基本语法</p>
 <p>基本语法是在函数后用方括号指定泛型参数</p>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> 函数名[泛型类型]<span class="hljs-params">(函数参数)</span></span>{函数体}
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> 函数名[泛型类型]<span class="hljs-params">(函数参数)</span></span>{函数体}
 </code></pre>
 <p>例如</p>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">max</span>[<span class="hljs-title">T</span> <span class="hljs-title">int</span> | <span class="hljs-title">float64</span>]<span class="hljs-params">(a, b T)</span></span> T {
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">max</span>[<span class="hljs-title">T</span> <span class="hljs-title">int</span> | <span class="hljs-title">float64</span>]<span class="hljs-params">(a, b T)</span></span> T {
   <span class="hljs-keyword">if</span> a &gt; b {
     <span class="hljs-keyword">return</span> a
   }
@@ -1280,7 +1280,7 @@ m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</spa
 }
 </code></pre>
 <p>例2</p>
-<pre><code class="hljs"><span class="hljs-keyword">type</span> Ord <span class="hljs-keyword">interface</span> {
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">type</span> Ord <span class="hljs-keyword">interface</span> {
   <span class="hljs-type">byte</span> | <span class="hljs-type">int8</span> | <span class="hljs-type">int16</span> | <span class="hljs-type">int32</span> | <span class="hljs-type">int64</span> | <span class="hljs-type">int</span> | <span class="hljs-type">float32</span> | <span class="hljs-type">float64</span> | <span class="hljs-type">string</span>
 }
 
@@ -1316,7 +1316,7 @@ m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</spa
 </ul>
 </blockquote>
 <p>函数可以存储在变量中</p>
-<pre><code class="hljs"><span class="hljs-keyword">var</span> (
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">var</span> (
     myFprintf = <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(w io.Writer, format <span class="hljs-type">string</span>, a ...<span class="hljs-keyword">interface</span>{})</span></span> (<span class="hljs-type">int</span>, <span class="hljs-type">error</span>) {
         <span class="hljs-keyword">return</span> fmt.Fprintf(w, format, a...)
     }
@@ -1328,7 +1328,7 @@ m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</spa
 }
 </code></pre>
 <p>作为参数传入函数</p>
-<pre><code class="hljs"><span class="hljs-comment">// 遍历切片的每个元素, 通过给定函数进行元素访问</span>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-comment">// 遍历切片的每个元素, 通过给定函数进行元素访问</span>
 <span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">visit</span><span class="hljs-params">(list []<span class="hljs-type">int</span>, f <span class="hljs-keyword">func</span>(<span class="hljs-type">int</span>)</span></span>) {
     <span class="hljs-keyword">for</span> _, v := <span class="hljs-keyword">range</span> list {
         f(v)
@@ -1343,7 +1343,7 @@ m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</spa
 }
 </code></pre>
 <p>函数支持在函数内创建并通过返回值返回</p>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">setup</span><span class="hljs-params">(task <span class="hljs-type">string</span>)</span></span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> {
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">setup</span><span class="hljs-params">(task <span class="hljs-type">string</span>)</span></span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> {
     <span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;do some setup stuff for&quot;</span>, task)
     <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> {
         <span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;do some teardown stuff for&quot;</span>, task)
@@ -1357,7 +1357,7 @@ m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</spa
 }
 </code></pre>
 <p>拥有自已的类型</p>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
 
@@ -1388,7 +1388,7 @@ m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</spa
 </code></pre>
 <p>高阶函数</p>
 <p>函数作为值时，可以用来提升服务的扩展性。</p>
-<pre><code class="hljs"><span class="hljs-keyword">var</span> opMap = <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(<span class="hljs-type">int</span>, <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span>{
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">var</span> opMap = <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]<span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(<span class="hljs-type">int</span>, <span class="hljs-type">int</span>)</span></span> <span class="hljs-type">int</span>{
     <span class="hljs-string">&quot;+&quot;</span>: add,
     <span class="hljs-string">&quot;-&quot;</span>: sub,
     <span class="hljs-string">&quot;*&quot;</span>: mul,
@@ -1417,12 +1417,12 @@ f()
 <ol>
 <li>相对路径</li>
 </ol>
-<pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./module&quot;</span> <span class="hljs-comment">// 引入的包在当前文件同一目录的 module 目录</span>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./module&quot;</span> <span class="hljs-comment">// 引入的包在当前文件同一目录的 module 目录</span>
 </code></pre>
 <ol start="2">
 <li>绝对路径</li>
 </ol>
-<pre><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;LearnGo/init&quot;</span> <span class="hljs-comment">// 引入的包在 gopath/src/LearnGo/init 目录。</span>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;LearnGo/init&quot;</span> <span class="hljs-comment">// 引入的包在 gopath/src/LearnGo/init 目录。</span>
 </code></pre>
 <ol start="3">
 <li>Go Module模式下</li>
@@ -1437,7 +1437,7 @@ f()
 <p>这个点操作的含义就是这个包导入之后，在调用这个包的函数时，可以省略前缀的包名。</p>
 </li>
 </ul>
-<pre><code class="hljs"><span class="hljs-keyword">import</span> . <span class="hljs-string">&quot;fmt&quot;</span>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">import</span> . <span class="hljs-string">&quot;fmt&quot;</span>
 <span class="hljs-comment">// 例如：fmt.Println(&quot;hello world&quot;) 可以省略的写成 Println(&quot;hello world&quot;)。</span>
 </code></pre>
 <p>特别说明，因为.导入容易造成命名冲突，一般很少用，<code>.</code> 导入会有一个警告should not use dot imports (ST1001)go-staticcheck</p>
@@ -1445,14 +1445,14 @@ f()
 <li>别名操作</li>
 </ul>
 <p>别名操作可以包命名成另一个名字</p>
-<pre><code class="hljs"><span class="hljs-keyword">import</span> f <span class="hljs-string">&quot;fmt&quot;</span>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">import</span> f <span class="hljs-string">&quot;fmt&quot;</span>
 <span class="hljs-comment">// 别名操作的话调用包函数时前缀变成了我们的前缀，即 f.Println(&quot;hello world&quot;)。</span>
 </code></pre>
 <ul>
 <li><code>_</code>操作</li>
 </ul>
 <p><code>_</code>操作是引入该包，调用该包里的init函数。而不直接使用包里面的函数。</p>
-<pre><code class="hljs"><span class="hljs-keyword">import</span> _ <span class="hljs-string">&quot;github.com/go-sql-driver/mysql&quot;</span>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">import</span> _ <span class="hljs-string">&quot;github.com/go-sql-driver/mysql&quot;</span>
 <span class="hljs-comment">// _操作其实是引入该包，而不直接使用包里面的函数，而是调用了该包里面的 init 函数。</span>
 </code></pre>
 <h3>init函数</h3>
@@ -1486,7 +1486,7 @@ f()
 </blockquote>
 <h4>文件读取</h4>
 <p><strong>方法一：使用os.Open和切片的读取文件</strong></p>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 
 <span class="hljs-keyword">import</span> (
     <span class="hljs-string">&quot;fmt&quot;</span>
@@ -1522,7 +1522,7 @@ f()
 }
 </code></pre>
 <p><strong>方法二：通过bufio方式，逐行读取</strong></p>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 
 <span class="hljs-keyword">import</span> (
     <span class="hljs-string">&quot;bufio&quot;</span>
@@ -1560,7 +1560,7 @@ f()
 }
 </code></pre>
 <p><strong>方法三：通过os.ReadFile直接读取整个文件内容(ioutil包在1.16之后已弃用)</strong></p>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 
 <span class="hljs-keyword">import</span> (
     <span class="hljs-string">&quot;fmt&quot;</span>
@@ -1581,7 +1581,7 @@ f()
 </code></pre>
 <h4>文件写入</h4>
 <p>写文件，先通过os.OpenFile文件句柄，然后再通过bufio.NewWriter以及WriteString来写入字符串，详细代码如下：</p>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 
 <span class="hljs-keyword">import</span> (
     <span class="hljs-string">&quot;bufio&quot;</span>
@@ -1610,7 +1610,7 @@ f()
 }
 </code></pre>
 <p>以上是逐行写入，也可一次写入，具体代码如下：</p>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 
 <span class="hljs-keyword">import</span> (
     <span class="hljs-string">&quot;fmt&quot;</span>
@@ -1668,7 +1668,7 @@ f()
 </blockquote>
 <p>首先观察这个程序，我们使用go关键字去启动一个协程，实例如下：</p>
 <p>main.go</p>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 <span class="hljs-keyword">import</span> (
         <span class="hljs-string">&quot;fmt&quot;</span>
 )
@@ -1684,7 +1684,7 @@ f()
 <p>执行go run main.go后，发现输出只有main say: hello world,而没有Say函数的输出。</p>
 <p>原因很简单，因为主函数main首先执行完并返回return了，而go Say(&quot;func say : hello world!!!&quot;)需要为协程初始化消耗一些时间，因为晚于main的return，因为就没有输出打印。</p>
 <p>我们修改一下程序</p>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 <span class="hljs-keyword">import</span> (
         <span class="hljs-string">&quot;fmt&quot;</span>
         <span class="hljs-string">&quot;time&quot;</span>
@@ -1731,7 +1731,7 @@ f()
 <p>Wait() 会阻塞代码的运行，直到计数器减为0</p>
 </li>
 </ul>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 <span class="hljs-keyword">import</span> (
     <span class="hljs-string">&quot;fmt&quot;</span>
     <span class="hljs-string">&quot;sync&quot;</span>
@@ -1755,7 +1755,7 @@ f()
 <h4>channel(信道)</h4>
 <p>Go语言中的通道(channel)是一种特殊类型。通道像一个传递带或者队列，总是遵循先入先出的规则，保证收发数据的顺序。channel跟Linux中的双向管道很像，也是用于进程和协程间通信。</p>
 <p>channel的定义打开、发送、接收、关闭</p>
-<pre><code class="hljs"><span class="hljs-keyword">chan</span> T          <span class="hljs-comment">// 可以接收和发送类型为 T 的数据</span>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">chan</span> T          <span class="hljs-comment">// 可以接收和发送类型为 T 的数据</span>
 <span class="hljs-keyword">chan</span>&lt;- <span class="hljs-type">float64</span>  <span class="hljs-comment">// 只可以用来发送 float64 类型的数据</span>
 &lt;-<span class="hljs-keyword">chan</span> <span class="hljs-type">int</span>      <span class="hljs-comment">// 只可以用来接收 int 类型的数据</span>
 
@@ -1769,7 +1769,7 @@ x := &lt;- ch1  <span class="hljs-comment">// 接收一个数据</span>
 <span class="hljs-built_in">close</span>(ch1) <span class="hljs-comment">// 关闭channel</span>
 </code></pre>
 <p>信道实例：</p>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 
 <span class="hljs-keyword">import</span> (
     <span class="hljs-string">&quot;fmt&quot;</span>
@@ -1797,7 +1797,7 @@ x := &lt;- ch1  <span class="hljs-comment">// 接收一个数据</span>
 <p>Context是Go1.7引入到标准库的，准确说它是goroutine的上下文，包含goroutine的运行状态、环境、现场等信息。Context主要用来在goroutine之间传递上下文信息。Context几乎成为了并发控制和超时控制的标准做法。</p>
 </blockquote>
 <p>Context接口定义如下：</p>
-<pre><code class="hljs"><span class="hljs-keyword">type</span> Context <span class="hljs-keyword">interface</span> {
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">type</span> Context <span class="hljs-keyword">interface</span> {
     Deadline() (deadline time.Time, ok <span class="hljs-type">bool</span>)
     Done() &lt;-<span class="hljs-keyword">chan</span> <span class="hljs-keyword">struct</span>{}
     Err() <span class="hljs-type">error</span>
@@ -1834,7 +1834,7 @@ x := &lt;- ch1  <span class="hljs-comment">// 接收一个数据</span>
 </li>
 </ul>
 <p>下面是一个使用信道控制协程的例子</p>
-<pre><code class="hljs"><span class="hljs-keyword">package</span> main
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 
 <span class="hljs-keyword">import</span> (
     <span class="hljs-string">&quot;fmt&quot;</span>
@@ -1871,26 +1871,26 @@ x := &lt;- ch1  <span class="hljs-comment">// 接收一个数据</span>
 </blockquote>
 <h4>安装Air</h4>
 <p>通过go来安装air命令</p>
-<pre><code class="hljs">go install github.com/cosmtrek/air@latest
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">go install github.com/cosmtrek/air@latest
 </code></pre>
 <p>macOS/linux添加环境变量</p>
 <p>如添加到~/.zshrc</p>
-<pre><code class="hljs">export PATH=$PATH:$(go env GOPATH)/bin
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">export PATH=$PATH:$(go env GOPATH)/bin
 </code></pre>
 <h4>测试</h4>
 <p>进入项目文件夹根目录</p>
-<pre><code class="hljs">air -v
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">air -v
 </code></pre>
 <h4>使用Air</h4>
 <p>进入项目文件夹根目录</p>
 <p>初始化默认配置到当前路径下，会自动生成.air.toml文件到项目根目录下</p>
-<pre><code class="hljs">air init
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">air init
 </code></pre>
 <p>之后开发时，只需要执行air命令，即可实现热重更功能。</p>
-<pre><code class="hljs">air
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">air
 </code></pre>
 <h4>配置文件(.air.toml)说明</h4>
-<pre><code class="hljs"><span class="hljs-comment"># 根目录</span>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-comment"># 根目录</span>
 <span class="hljs-attr">root</span> = <span class="hljs-string">&quot;.&quot;</span>
 <span class="hljs-attr">testdata_dir</span> = <span class="hljs-string">&quot;testdata&quot;</span>
 <span class="hljs-comment"># 临时文件目录</span>

@@ -68,6 +68,14 @@ const Content = styled.div`
         padding: 10px;
       }
     }
+    /* 复制代码 */
+    div.code-copy {
+      text-align: left;
+      font-size: 14px;
+      padding: 0.6em 1em;
+      cursor: pointer;
+      background-color: #bcbaba;
+    }
   }
 `
 

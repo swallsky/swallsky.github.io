@@ -1,6 +1,7 @@
 export default {
   buildDir: "docs", // 编译后的目录
   cacheDir: "_cache", //  缓存的目录
+  globalJs: "global", // 全局ts文件名
   server: {
     port: 9090, //开发服务的端口
   },

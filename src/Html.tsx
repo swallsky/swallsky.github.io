@@ -12,6 +12,7 @@ interface Props {
     rootId: string; // 组件挂载id
     jsPath: string; // 客户js路径
     cssPath: string; // css路径
+    globalJs: string; // 全局js路径
 }
 
 // html模板
@@ -25,6 +26,7 @@ function Html(props:Props) {
         <link rel="stylesheet" href="/css/highlight/styles/default.min.css" />
         <link href={props.cssPath} rel="stylesheet" type="text/css" />
         <title>{props.title}</title>
+        <script type="text/javascript" src={props.globalJs}></script>
       </head>
       <body style={bodyStyle}>
         <div id={props.rootId}>{props.children}</div>

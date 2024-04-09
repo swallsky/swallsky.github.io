@@ -95,6 +95,14 @@ Error generating stack: `+l.message+`
         padding: 10px;
       }
     }
+    /* 复制代码 */
+    div.code-copy {
+      text-align: left;
+      font-size: 14px;
+      padding: 0.6em 1em;
+      cursor: pointer;
+      background-color: #bcbaba;
+    }
   }
 `;function Oy(e){return Vl.default.createElement(cp,null,Vl.default.createElement(ap,null),Vl.default.createElement(Ty,null,e.children))}var fp=Oy;function zy(e){return ft.default.createElement(fp,null,ft.default.createElement("div",{className:"menu"},ft.default.createElement("ul",null,ft.default.createElement("li",null,ft.default.createElement("span",{className:"icon"}),ft.default.createElement("a",{href:"/markdown.html"},"Markdown\u57FA\u7840")))),ft.default.createElement("div",{className:"cnt"},ft.default.createElement("div",{dangerouslySetInnerHTML:{__html:e.serData.markdown}})))}var dp=zy;var Ry={title:"MarkDown\u57FA\u7840",serData:{markdown:`<h2>Markdown\u4ECB\u7ECD</h2>
 <h3>\u8BF4\u660E</h3>
@@ -373,7 +381,7 @@ ___\u7C97\u659C\u4F53___
 <blockquote>
 <p>\u5C06\u5B57\u7B26\u5305\u88F9\u5728==\u4E2D\u5373\u53EF,\u8BED\u6CD5\u5982\u4E0B</p>
 </blockquote>
-<pre><code class="hljs">==\u9AD8\u4EAE\u5B57==
+<pre><div class="code-copy" onclick="CopyCode(this)">\u590D\u5236\u4EE3\u7801</div><code class="hljs">==\u9AD8\u4EAE\u5B57==
 </code></pre>
 <p>==\u9AD8\u4EAE\u5B57==</p>
 <p><strong>6.\u5C45\u4E2D\u663E\u793A</strong></p>
@@ -446,7 +454,7 @@ ___\u7C97\u659C\u4F53___
 <blockquote>
 <p>\u7528\u4E09\u4E2A\u53CD\u5F15\u53F7\uFF0C\u5C06\u4EE3\u7801\u5305\u88F9\u8D77\u6765\uFF0C\u5728\u7B2C\u4E00\u4E2A\u4E09\u4E2A\u53CD\u5F15\u53F7\u540E\u52A0\u4E0A\u8BED\u8A00\u540D\u79F0\uFF1A</p>
 </blockquote>
-<pre><code class="hljs"><span class="hljs-keyword">let</span> var1 = <span class="hljs-string">&quot;hello world&quot;</span>;
+<pre><div class="code-copy" onclick="CopyCode(this)">\u590D\u5236\u4EE3\u7801</div><code class="hljs"><span class="hljs-keyword">let</span> var1 = <span class="hljs-string">&quot;hello world&quot;</span>;
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(var1)
 </code></pre>
 <h3>\u6D41\u7A0B\u56FE</h3>

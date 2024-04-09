@@ -23,6 +23,8 @@ class SSG {
   private buildDir: string;
   // 缓存的目录
   private cacheDir: string;
+  // 全局js文件
+  private globalJs: string;
   /**
    * 构造函数
    */
@@ -32,12 +34,16 @@ class SSG {
     if (!fs.existsSync(this.buildDir)) fs.mkdirSync(this.buildDir); //创建编译后的目录
     this.cacheDir = path.join(__dirname, "../", config.cacheDir);
     if (!fs.existsSync(this.cacheDir)) fs.mkdirSync(this.cacheDir); //创建缓存的目录
+    this.globalJs = path.join(this.srcDir, config.globalJs+".ts");
   }
   /**
    * 路由配置
    * @param R
    */
   public async Route(R: RouteCfg[]) {
+    // 生成全局js文件
+    await this.BuildGlobalJs();
+    // 生成html页面
     R.map(async (route) => {
       await this.CreateHtml(route.page, route.props);
     });
@@ -111,10 +117,7 @@ class SSG {
     // 预渲染html页面
     const _html = ServerHtml(Page, props, pack);
     // 生成index.html页面
-    fs.writeFileSync(
-      path.join(this.buildDir, pack + ".html"),
-      _html
-    );
+    fs.writeFileSync(path.join(this.buildDir, pack + ".html"), _html);
   }
   /**
    * 生成html需要的打包好的js
@@ -134,17 +137,17 @@ class SSG {
   }
   /**
    * 生成页面css
-   * @param pack 
+   * @param pack
    */
   private createCss(pack: string) {
-    const cssFile = path.join(this.srcDir,pack,"page.css");
-    if(IsFileExists(cssFile)){
-      const buildCssFile = path.join(this.buildDir,"css",pack+".css");
+    const cssFile = path.join(this.srcDir, pack, "page.css");
+    if (IsFileExists(cssFile)) {
+      const buildCssFile = path.join(this.buildDir, "css", pack + ".css");
       esbuild.buildSync({
         entryPoints: [cssFile],
         bundle: true,
         minify: true,
-        outfile: buildCssFile
+        outfile: buildCssFile,
       });
     }
   }
@@ -162,6 +165,18 @@ class SSG {
     this.createCss(pack);
     // 生成html页
     this.createHtml(pack, props);
+  }
+  /**
+   * 生成全局js文件
+   * @returns
+   */
+  public async BuildGlobalJs() {
+    esbuild.buildSync({
+      entryPoints: [this.globalJs],
+      bundle: true,
+      minify: true,
+      outfile: path.join(this.buildDir, "js", "global.js"),
+    }); // 打包全局js文件
   }
 }
 

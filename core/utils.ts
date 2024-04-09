@@ -1,11 +1,12 @@
 import fs from "fs";
 import markdown from "markdown-it";
 import hljs from "highlight.js";
+
 const MD = markdown({ html: true, xhtmlOut: false, linkify: true,
     highlight: function (str, lang) {
         if (lang && hljs.getLanguage(lang)) {
             try {
-                return '<pre><code class="hljs">' +
+                return '<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">' +
                         hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
                         '</code></pre>';
             } catch (__) {}

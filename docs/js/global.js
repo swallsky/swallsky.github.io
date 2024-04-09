@@ -1,0 +1,1 @@
+(()=>{function d(o){let n=o.parentNode.querySelector("code").innerText,e=document.createElement("input");e.value=n,document.body.appendChild(e),e.select(),document.execCommand("copy"),document.body.removeChild(e),alert("\u4EE3\u7801\u5DF2\u590D\u5236\u5230\u7C98\u8D34\u677F")}window.CopyCode=d;})();
