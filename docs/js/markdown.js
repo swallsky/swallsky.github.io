@@ -36,7 +36,6 @@ Error generating stack: `+l.message+`
   margin-top: 62px;
   div.menu {
     width: 260px;
-    flex: 0 0 auto;
     height: 100vh;
     ul {
       border-right: 1px solid #ccc;
@@ -68,7 +67,7 @@ Error generating stack: `+l.message+`
     }
   }
   div.cnt {
-    flex: 1 1 auto;
+    width: 1130px;
     background-color: #fff;
     padding: 0 20px;
     /* 引用块的样式 */
