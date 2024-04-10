@@ -267,7 +267,7 @@ go env -w GOPROXY=https://goproxy.cn,direct    #七牛云代理
 <td>打印出来执行的命令，其实就是和-n的结果类似，只是这个会执行</td>
 </tr>
 <tr>
-<td>-ccflags 'arg list'</td>
+<td>-ccflags ‘arg list’</td>
 <td>传递参数给5c, 6c, 8c 调用</td>
 </tr>
 <tr>
@@ -275,11 +275,11 @@ go env -w GOPROXY=https://goproxy.cn,direct    #七牛云代理
 <td>指定相应的编译器，gccgo还是gc</td>
 </tr>
 <tr>
-<td>-gccgoflags 'arg list'</td>
+<td>-gccgoflags ‘arg list’</td>
 <td>传递参数给gccgo编译连接调用</td>
 </tr>
 <tr>
-<td>-gcflags 'arg list'</td>
+<td>-gcflags ‘arg list’</td>
 <td>传递参数给5g, 6g, 8g 调用</td>
 </tr>
 <tr>
@@ -287,11 +287,11 @@ go env -w GOPROXY=https://goproxy.cn,direct    #七牛云代理
 <td>为了和默认的安装包区别开来，采用这个前缀来重新安装那些依赖的包，-race的时候默认已经是-installsuffix race,大家可以通过-n命令来验证</td>
 </tr>
 <tr>
-<td>-ldflags 'flag list'</td>
+<td>-ldflags ‘flag list’</td>
 <td>传递参数给5l, 6l, 8l 调用</td>
 </tr>
 <tr>
-<td>-tags 'tag list'</td>
+<td>-tags ‘tag list’</td>
 <td>设置在编译的时候可以适配的那些tag，详细的tag限制参考里面的 Build Constraints</td>
 </tr>
 </tbody>
@@ -1682,7 +1682,7 @@ f()
 }
 </code></pre>
 <p>执行go run main.go后，发现输出只有main say: hello world,而没有Say函数的输出。</p>
-<p>原因很简单，因为主函数main首先执行完并返回return了，而go Say(&quot;func say : hello world!!!&quot;)需要为协程初始化消耗一些时间，因为晚于main的return，因为就没有输出打印。</p>
+<p>原因很简单，因为主函数main首先执行完并返回return了，而go Say(“func say : hello world!!!”)需要为协程初始化消耗一些时间，因为晚于main的return，因为就没有输出打印。</p>
 <p>我们修改一下程序</p>
 <pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 <span class="hljs-keyword">import</span> (

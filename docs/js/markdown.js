@@ -160,7 +160,7 @@ Error generating stack: `+l.message+`
 <blockquote>
 <ol>
 <li>
-<p>\u533A\u5757
+<p>\u533A\u5757<br />
 MarkDown\u533A\u5757\u5F15\u7528\u662F\u5728\u6BB5\u843D\u5F00\u5934\u4F7F\u7528&gt;\u7B26\u53F7\uFF0C\u7136\u540E\u540E\u9762\u7D27\u8DDF\u4E00\u4E2A\u7A7A\u683C\u7B26\u53F7\uFF1A</p>
 <p><code>&gt; \u8FD9\u91CC\u533A\u5757\u7684\u5F15\u7528. </code></p>
 <blockquote>
@@ -234,14 +234,14 @@ MarkDown\u533A\u5757\u5F15\u7528\u662F\u5728\u6BB5\u843D\u5F00\u5934\u4F7F\u7528
 <li>
 <p>\u7B2C\u4E00\u9879</p>
 <blockquote>
-<p>\u5F15\u75281
+<p>\u5F15\u75281<br />
 \u5F15\u75282</p>
 </blockquote>
 </li>
 <li>
 <p>\u7B2C\u4E8C\u9879</p>
 <blockquote>
-<p>\u5F15\u75281
+<p>\u5F15\u75281<br />
 \u5F15\u75282</p>
 </blockquote>
 </li>
@@ -256,8 +256,8 @@ MarkDown\u533A\u5757\u5F15\u7528\u662F\u5728\u6BB5\u843D\u5F00\u5934\u4F7F\u7528
 <pre><code class="hljs">[\u70B9\u51FB\u8DF3\u8F6CQQ](https://www.qq.com)
 ![\u665A\u971E](https://upload-images.jianshu.io/upload_images/703764-605e3cc2ecb664f6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 </code></pre>
-<p><a href="https://www.qq.com">\u70B9\u51FB\u8DF3\u8F6CQQ</a>
-<img src="https://upload-images.jianshu.io/upload_images/703764-605e3cc2ecb664f6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="\u665A\u971E"></p>
+<p><a href="https://www.qq.com">\u70B9\u51FB\u8DF3\u8F6CQQ</a><br />
+<img src="https://upload-images.jianshu.io/upload_images/703764-605e3cc2ecb664f6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="\u665A\u971E" /></p>
 <h3>\u5217\u8868</h3>
 <blockquote>
 <ul>
@@ -326,8 +326,8 @@ MarkDown\u533A\u5757\u5F15\u7528\u662F\u5728\u6BB5\u843D\u5F00\u5934\u4F7F\u7528
 <pre><code class="hljs">***
 ---
 </code></pre>
-<hr>
-<hr>
+<hr />
+<hr />
 <h3>\u6587\u672C\u6837\u5F0F</h3>
 <p><strong>1. \u659C\u4F53\u3001\u7C97\u4F53</strong></p>
 <blockquote>
@@ -342,11 +342,11 @@ __\u52A0\u7C97\u663E\u793A__
 ***\u7C97\u659C\u4F53***
 ___\u7C97\u659C\u4F53___
 </code></pre>
-<p><em>\u659C\u4F53\u663E\u793A</em>
+<p><em>\u659C\u4F53\u663E\u793A</em><br />
 <em>\u659C\u4F53\u663E\u793A</em></p>
-<p><strong>\u52A0\u7C97\u663E\u793A</strong>
+<p><strong>\u52A0\u7C97\u663E\u793A</strong><br />
 <strong>\u52A0\u7C97\u663E\u793A</strong></p>
-<p><em><strong>\u7C97\u659C\u4F53</strong></em>
+<p><em><strong>\u7C97\u659C\u4F53</strong></em><br />
 <em><strong>\u7C97\u659C\u4F53</strong></em></p>
 <p><strong>2.\u5220\u9664\u7EBF</strong></p>
 <blockquote>
@@ -370,11 +370,11 @@ ___\u7C97\u659C\u4F53___
 &lt;font size=4&gt;\u5B57\u4F53size=4&lt;/font&gt;
 &lt;font size=7&gt;\u5B57\u4F53size=7&lt;/font&gt;
 </code></pre>
-<p><font size=1>\u5B57\u4F53size=1</font>
-<font size=2>\u5B57\u4F53size=2</font>
-<font size=3>\u5B57\u4F53size=3</font>
-<font size=4>\u5B57\u4F53size=4</font>
-<font size=7>\u5B57\u4F53size=7</font>
+<p><font size=1>\u5B57\u4F53size=1</font><br />
+<font size=2>\u5B57\u4F53size=2</font><br />
+<font size=3>\u5B57\u4F53size=3</font><br />
+<font size=4>\u5B57\u4F53size=4</font><br />
+<font size=7>\u5B57\u4F53size=7</font><br />
 <font size=70>\u5B57\u4F53size=70</font></p>
 <p><strong>5.\u9AD8\u4EAE\u663E\u793A</strong></p>
 <blockquote>

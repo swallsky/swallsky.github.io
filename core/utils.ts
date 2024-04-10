@@ -2,7 +2,7 @@ import fs from "fs";
 import markdown from "markdown-it";
 import hljs from "highlight.js";
 
-const MD = markdown({ html: true, xhtmlOut: false, linkify: true,
+const MD = markdown({ html: true, xhtmlOut: true, linkify: true, typographer: true, breaks: true, langPrefix: 'language-',
     highlight: function (str, lang) {
         if (lang && hljs.getLanguage(lang)) {
             try {
@@ -19,7 +19,8 @@ const MD = markdown({ html: true, xhtmlOut: false, linkify: true,
 // 获取markdown数据
 export const GetMarkDownFile = (mdfile: string) => {
   var mdRemote = fs.readFileSync(mdfile, "utf-8");
-  return MD.render(mdRemote.toString());
+  var mdStr = mdRemote.toString();
+  return MD.render(mdStr);
 };
 
 /**
