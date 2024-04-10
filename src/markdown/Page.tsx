@@ -5,12 +5,10 @@ function Index(props) {
   return (
     <LayoutMarkdown>
       <div className="menu">
-        <ul>
-          <li><span className="icon" /><a href="/markdown.html">Markdown基础</a></li>
-        </ul>
+        <div dangerouslySetInnerHTML={{ __html: props.serData.markdown.menus }} />
       </div>
       <div className="cnt">
-        <div dangerouslySetInnerHTML={{ __html: props.serData.markdown }} />
+        <div dangerouslySetInnerHTML={{ __html: props.serData.markdown.content }} />
       </div>
     </LayoutMarkdown>
   );

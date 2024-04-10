@@ -8,39 +8,32 @@ const Content = styled.div`
   background-color: #f5f5f5;
   margin-top: 62px;
   div.menu {
-    width: 260px;
+    width: 300px;
     height: 100vh;
-    ul {
+    nav {
       border-right: 1px solid #ccc;
       position: fixed;
-      width: 260px;
+      width: 300px;
+      height: 100vh;
       left: 0;
-      list-style: none;
-      margin: 0;  
-      padding: 0;
-      li {
-        margin: 0;
-        padding: 10px;
-        border-bottom: 1px solid #efebeb;
-        font-size: 14px;
-        display: flex;
-        span.icon {
-          width: 20px;
-          height: 20px;
-          display: block;
-          margin-right: 5px;
-          background-image: url("./img/icon.gif");
-        }
-        a {
-          display: block;
-          color: #333;
-          text-decoration: none;
+      overflow: auto;
+      ol {
+        padding-left: 30px;
+        li {
+          margin: 0;
+          padding: 0;
+          a {
+            display: block;
+            color: #333;
+            text-decoration: none;
+            font-size: 14px;
+          }
         }
       }
     }
   }
   div.cnt {
-    width: 1130px;
+    width: 1090px;
     background-color: #fff;
     padding: 0 20px;
     /* 引用块的样式 */

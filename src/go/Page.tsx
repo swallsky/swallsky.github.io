@@ -5,12 +5,10 @@ function Page(props) {
   return (
     <LayoutMarkdown>
       <div className="menu">
-        <ul>
-          <li><span className="icon" /><a href="/go.html">Go语言基础</a></li>
-        </ul>
+        <div dangerouslySetInnerHTML={{ __html: props.serData.gobase.menus }} />
       </div>
       <div className="cnt">
-        <div dangerouslySetInnerHTML={{ __html: props.serData.gobase }} />
+        <div dangerouslySetInnerHTML={{ __html: props.serData.gobase.content }} />
       </div>
     </LayoutMarkdown>
   );

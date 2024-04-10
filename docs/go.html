@@ -1,20 +1,20 @@
-<html lang="en"><head><meta charSet="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="favicon.ico"/><link rel="stylesheet" href="/css/highlight/styles/default.min.css"/><link href="css/go.css" rel="stylesheet" type="text/css"/><title>go基础</title><script type="text/javascript" src="js/global.js"></script></head><body style="margin:0;padding:0"><div id="root"><div style="display:none"><div class="sc-beySPh CWEHv"><ul><li><a href="./">首页</a></li><li><a href="./go.html">Go语言</a></li><li><a href="./markdown.html">Markdown</a></li></ul></div><div class="sc-guDLey fZVpzq"><div class="menu"><ul><li><span class="icon"></span><a href="/go.html">Go语言基础</a></li></ul></div><div class="cnt"><div><h3>简介</h3>
+<html lang="en"><head><meta charSet="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="favicon.ico"/><link rel="stylesheet" href="/css/highlight/styles/default.min.css"/><link href="css/go.css" rel="stylesheet" type="text/css"/><title>go基础</title><script type="text/javascript" src="js/global.js"></script></head><body style="margin:0;padding:0"><div id="root"><div style="display:none"><div class="sc-beySPh CWEHv"><ul><li><a href="./">首页</a></li><li><a href="./go.html">Go语言</a></li><li><a href="./markdown.html">Markdown</a></li></ul></div><div class="sc-guDLey gaYXGi"><div class="menu"><div><nav class="table-of-contents"><ol><li><a href="#">简介 </a></li><li><a href="#-1">安装 </a><ol><li><a href="#-2">下载安装 </a></li><li><a href="#-3">配置环境变量 </a></li></ol></li><li><a href="#go">Go常用命令 </a><ol><li><a href="#-4">常用命令 </a></li><li><a href="#go-mod">go mod </a></li><li><a href="#go-run">go run </a></li><li><a href="#go-build">go build </a></li><li><a href="#go-test">go test </a></li><li><a href="#go-vet">go vet </a></li><li><a href="#go-clean">go clean </a></li><li><a href="#go-fmt">go fmt </a></li><li><a href="#go-get">go get </a></li><li><a href="#go-install">go install </a></li></ol></li><li><a href="#-5">基础语法 </a><ol><li><a href="#-6">基础语法 </a></li><li><a href="#-7">语言结构 </a></li><li><a href="#-8">数据类型 </a></li><li><a href="#-9">变量 </a></li><li><a href="#-10">数组 </a></li><li><a href="#-11">函数 </a></li><li><a href="#slice">切片Slice </a></li><li><a href="#-12">指针 </a><ol><li><a href="#-13">指针地址和指针类型 </a></li><li><a href="#-14">指针取值 </a></li><li><a href="#-15">空指针 </a></li><li><a href="#new-make">new和make </a></li><li><a href="#new">new </a></li><li><a href="#make">make </a></li><li><a href="#new-make-1">new与make的区别 </a></li></ol></li><li><a href="#-16">结构体 </a></li><li><a href="#map">Map(集合) </a></li><li><a href="#interface">interface </a><ol><li><a href="#-17">接口 </a></li><li><a href="#-18">空接口 </a></li></ol></li><li><a href="#-19">泛型 </a></li><li><a href="#-20">高阶函数 </a></li></ol></li><li><a href="#package">包(package) </a><ol><li><a href="#-21">包路径 </a></li><li><a href="#-22">引入包的特殊方式 </a></li></ol></li><li><a href="#init">init函数 </a></li><li><a href="#-23">文件及目录操作 </a><ol><li><a href="#-24">文件读取 </a></li><li><a href="#-25">文件写入 </a></li><li><a href="#bufio">bufio包 </a></li></ol></li><li><a href="#-26">并发编程(协程) </a><ol><li><a href="#goroutine">Goroutine </a></li><li><a href="#-27">并发控制 </a><ol><li><a href="#sync-wait-group">Sync.WaitGroup </a></li></ol></li><li><a href="#channel">channel(信道) </a></li><li><a href="#context">Context </a></li></ol></li><li><a href="#-28">热更新 </a><ol><li><a href="#air">安装Air </a></li><li><a href="#-29">测试 </a></li><li><a href="#air-1">使用Air </a></li><li><a href="#air-toml">配置文件(.air.toml)说明 </a></li></ol></li></ol></nav></div></div><div class="cnt"><div><h3 id="" tabindex="-1">简介 <a class="header-anchor" href="#">§</a></h3>
 <blockquote>
 <p>Go是Google公司2009年11月正式对外公开的一门编程语言。</p>
 <p>Go语言的推出，旨在不损失应用程序性能的情况下降低代码的复杂性，具有“部署简单、并发性好、语言设计良好、执行性能好”等优势，目前国内诸多 IT 公司均已采用Go语言开发项目。</p>
 </blockquote>
-<h3>安装</h3>
+<h3 id="-1" tabindex="-1">安装 <a class="header-anchor" href="#-1">§</a></h3>
 <blockquote>
 <p>Go语言经过多年的发展，现在安装比较简单，可直接从官网下载安装。</p>
 </blockquote>
-<h4>下载安装</h4>
+<h4 id="-2" tabindex="-1">下载安装 <a class="header-anchor" href="#-2">§</a></h4>
 <p>官网下载地址： <a href="https://go.dev/dl/">https://go.dev/dl/</a></p>
 <p>国内下载地址： <a href="https://golang.google.cn/dl/">https://golang.google.cn/dl/</a></p>
 <p>根据自已的操作系统，下载对应的版本安装即可。</p>
 <p>例如：</p>
 <p>Windows，下载 Microsoft Windows <a href="https://golang.google.cn/dl/go1.21.4.windows-amd64.msi">https://golang.google.cn/dl/go1.21.4.windows-amd64.msi</a></p>
 <p>Apple macOS(x86-64)，下载对应的 <a href="https://golang.google.cn/dl/go1.21.4.darwin-amd64.pkg">https://golang.google.cn/dl/go1.21.4.darwin-amd64.pkg</a></p>
-<h4>配置环境变量</h4>
+<h4 id="-3" tabindex="-1">配置环境变量 <a class="header-anchor" href="#-3">§</a></h4>
 <p>vim ~/.bash_profile</p>
 <pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">export GOPATH=/Users/xjz/go # go第三方包目录
 export GOROOT=/usr/local/go # go安装目录
@@ -23,8 +23,8 @@ export GOPROXY=https://goproxy.cn,direct # 开启第三方包国内镜像地址
 export PATH=$PATH:$GOPATH/bin # 第三方全局命令，可不设置
 </code></pre>
 <p>source ~/.bash_profile</p>
-<h3>Go常用命令</h3>
-<h4>常用命令</h4>
+<h3 id="go" tabindex="-1">Go常用命令 <a class="header-anchor" href="#go">§</a></h3>
+<h4 id="-4" tabindex="-1">常用命令 <a class="header-anchor" href="#-4">§</a></h4>
 <table>
 <thead>
 <tr>
@@ -107,7 +107,7 @@ export PATH=$PATH:$GOPATH/bin # 第三方全局命令，可不设置
 </tr>
 </tbody>
 </table>
-<h4>go mod</h4>
+<h4 id="go-mod" tabindex="-1">go mod <a class="header-anchor" href="#go-mod">§</a></h4>
 <p>go mod是Go语言的模块管理工具，go mod必须将golang升级到1.11以上版本，配置开启go mod，go语言1.16版本之后，默认开启go mod功能。</p>
 <pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">go env -w GOBIN=/usr/local/go/bin              #配置下go bin
 go env -w GO111MODULE=on                       #开启go mod
@@ -156,7 +156,7 @@ go env -w GOPROXY=https://goproxy.cn,direct    #七牛云代理
 </tbody>
 </table>
 <p>比较常用的是init,tidy,edit</p>
-<h4>go run</h4>
+<h4 id="go-run" tabindex="-1">go run <a class="header-anchor" href="#go-run">§</a></h4>
 <blockquote>
 <p>专门用来运行命令源码文件的命令，<strong>不是用来运行所有go源码的文件的</strong>。</p>
 <p>go run 命令只能接受一个命令源码文件以及若干个库源码文件(必须同属于main包)作为文件参数，且<strong>不能接受测试源码文件</strong>。它在执行时会检查源码文件的类型。如果参数中有多个或者没有命令源码文件，那么go run命令就只会打印错误提示信息并退出，而不会继续执行。</p>
@@ -220,7 +220,7 @@ go env -w GOPROXY=https://goproxy.cn,direct    #七牛云代理
 </tr>
 </tbody>
 </table>
-<h4>go build</h4>
+<h4 id="go-build" tabindex="-1">go build <a class="header-anchor" href="#go-build">§</a></h4>
 <p>Go 是强类型编译型语言，因此编译时会将所有依赖编译进同一个二进制文件。</p>
 <table>
 <thead>
@@ -296,7 +296,7 @@ go env -w GOPROXY=https://goproxy.cn,direct    #七牛云代理
 </tr>
 </tbody>
 </table>
-<h4>go test</h4>
+<h4 id="go-test" tabindex="-1">go test <a class="header-anchor" href="#go-test">§</a></h4>
 <p>go test 命令用于运行Go程序包中的测试。Go的测试是通过在与被测试的代码文件相同目录下的 _test.go 文件中编写测试函数来完成的。这里介绍几个常用的参数：</p>
 <table>
 <thead>
@@ -324,7 +324,7 @@ go env -w GOPROXY=https://goproxy.cn,direct    #七牛云代理
 </tr>
 </tbody>
 </table>
-<h4>go vet</h4>
+<h4 id="go-vet" tabindex="-1">go vet <a class="header-anchor" href="#go-vet">§</a></h4>
 <p>go vet 是 Go 编程语言的一个静态分析工具，用于检查 Go 代码中可能包含的潜在错误、不规范的代码和常见问题。它的主要目标是帮助开发人员识别和修复可能导致程序运行时错误的问题，以提高代码的质量和可靠性。</p>
 <table>
 <thead>
@@ -376,7 +376,7 @@ go env -w GOPROXY=https://goproxy.cn,direct    #七牛云代理
 </tr>
 </tbody>
 </table>
-<h4>go clean</h4>
+<h4 id="go-clean" tabindex="-1">go clean <a class="header-anchor" href="#go-clean">§</a></h4>
 <p>用于清理构建过程中生成的临时文件和构建缓存。它有助于确保项目处于干净的状态，删除构建过程中生成的中间文件，以便重新构建项目时不会受到旧文件的影响。</p>
 <table>
 <thead>
@@ -412,7 +412,7 @@ go env -w GOPROXY=https://goproxy.cn,direct    #七牛云代理
 </tr>
 </tbody>
 </table>
-<h4>go fmt</h4>
+<h4 id="go-fmt" tabindex="-1">go fmt <a class="header-anchor" href="#go-fmt">§</a></h4>
 <p>用于格式化源代码文件，以确保它们符合 Go 语言的编码规范和格式化约定。go fmt 命令的主要目的是使代码在不同项目和团队中保持一致的风格，提高代码的可读性和可维护性。</p>
 <table>
 <thead>
@@ -452,7 +452,7 @@ go env -w GOPROXY=https://goproxy.cn,direct    #七牛云代理
 </tr>
 </tbody>
 </table>
-<h4>go get</h4>
+<h4 id="go-get" tabindex="-1">go get <a class="header-anchor" href="#go-get">§</a></h4>
 <p>用于下载、安装和更新Go语言包(模块)以及它们的依耐项。这个命令通常用于获取外部包。</p>
 <table>
 <thead>
@@ -488,7 +488,7 @@ go env -w GOPROXY=https://goproxy.cn,direct    #七牛云代理
 </tr>
 </tbody>
 </table>
-<h4>go install</h4>
+<h4 id="go-install" tabindex="-1">go install <a class="header-anchor" href="#go-install">§</a></h4>
 <p>用于编译和安装Go包或程序。当运行go install时，它会编译当前目录中的Go代码，并将生成的二进制可执行文件放置在你的Go工作空间bin目录中(通常位于GOPATH中)。</p>
 <table>
 <thead>
@@ -540,8 +540,8 @@ go env -w GOPROXY=https://goproxy.cn,direct    #七牛云代理
 </tr>
 </tbody>
 </table>
-<h3>基础语法</h3>
-<h4>基础语法</h4>
+<h3 id="-5" tabindex="-1">基础语法 <a class="header-anchor" href="#-5">§</a></h3>
+<h4 id="-6" tabindex="-1">基础语法 <a class="header-anchor" href="#-6">§</a></h4>
 <blockquote>
 <p>Go程序由多个标记组成，可以是关键字，标识符，常量，字符串，符号。Go语言特点，简单，很多关键字都是简写，分号结束一般都不需要写。</p>
 </blockquote>
@@ -562,7 +562,7 @@ go env -w GOPROXY=https://goproxy.cn,direct    #七牛云代理
 <p>例如一个简单语句</p>
 <pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">fmt.Println(<span class="hljs-string">&quot;Hello, World!&quot;</span>)
 </code></pre>
-<h4>语言结构</h4>
+<h4 id="-7" tabindex="-1">语言结构 <a class="header-anchor" href="#-7">§</a></h4>
 <ul>
 <li>
 <p>包声明</p>
@@ -593,7 +593,7 @@ go env -w GOPROXY=https://goproxy.cn,direct    #七牛云代理
    fmt.Println(<span class="hljs-string">&quot;Hello, World!&quot;</span>) <span class="hljs-comment">//执行的语句</span>
 }
 </code></pre>
-<h4>数据类型</h4>
+<h4 id="-8" tabindex="-1">数据类型 <a class="header-anchor" href="#-8">§</a></h4>
 <blockquote>
 <p>数据类型是为了把数据分成所需内存大小不同的数据，编程的时候需要用大数据的时候才需要申请大内存，就可以充分利用内存。</p>
 </blockquote>
@@ -638,7 +638,7 @@ go env -w GOPROXY=https://goproxy.cn,direct    #七牛云代理
 </ul>
 </li>
 </ul>
-<h4>变量</h4>
+<h4 id="-9" tabindex="-1">变量 <a class="header-anchor" href="#-9">§</a></h4>
 <blockquote>
 <p>变量来源于数学，是计算机语言中存储计算结果或能表示值抽象概念。</p>
 <p>变量可以通过变量名访问。</p>
@@ -777,7 +777,7 @@ vname1, vname2, vname3 := v1, v2, v3 <span class="hljs-comment">// 出现在 := 
 </tr>
 </tbody>
 </table>
-<h4>数组</h4>
+<h4 id="-10" tabindex="-1">数组 <a class="header-anchor" href="#-10">§</a></h4>
 <blockquote>
 <p>数组声明需要指定元素类型及元素个数，语法格式如下：</p>
 </blockquote>
@@ -793,7 +793,7 @@ numbers := [<span class="hljs-number">5</span>]<span class="hljs-type">int</span
 
 fmt.Println(numbers[<span class="hljs-number">0</span>]) <span class="hljs-comment">//访问数组的元fmt.Println(numbers[0]) //访问数组的元</span>
 </code></pre>
-<h4>函数</h4>
+<h4 id="-11" tabindex="-1">函数 <a class="header-anchor" href="#-11">§</a></h4>
 <blockquote>
 <p>函数是基本的代码块，用于执行一个任务，Go语言最少有一个main()函数。可以通过函数来划分不同功能，逻辑上每个函数执行的是指定的任务。</p>
 <p>函数声明告诉了编译器函数的名称、返回类型，和参数。</p>
@@ -837,7 +837,7 @@ fmt.Println(numbers[<span class="hljs-number">0</span>]) <span class="hljs-comme
    <span class="hljs-keyword">return</span> result
 }
 </code></pre>
-<h4>切片Slice</h4>
+<h4 id="slice" tabindex="-1">切片Slice <a class="header-anchor" href="#slice">§</a></h4>
 <blockquote>
 <p>Go语言切片是对数组的抽象。</p>
 <p>Go语言数组的长度不可改变，在特定场景中这样集合就不太适用，Go中提供了一种灵活，功能强悍的内置类型切片(动态数组)，与数组相比切片的长度是不固定的，可以追加元素，在追加时可能使切片的容量增大。</p>
@@ -893,11 +893,11 @@ slice1 := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">t
    fmt.Printf(<span class="hljs-string">&quot;len=%d cap=%d slice=%v\n&quot;</span>,<span class="hljs-built_in">len</span>(x),<span class="hljs-built_in">cap</span>(x),x)
 }
 </code></pre>
-<h4>指针</h4>
+<h4 id="-12" tabindex="-1">指针 <a class="header-anchor" href="#-12">§</a></h4>
 <p>区别于C/C++中的指针，Go语言中的指针不能进行偏移和运算，是安全指针。</p>
 <p>Go语言中的指针需要先知道3个概念：指针地址、指针类型和指针取值。</p>
 <p>Go语言中的函数传参是值拷贝，当我们想要修改某个变量的时候，我们可以创建一个指向该变量的指针变量。传递数据使用指针，而无须拷贝数据。类型指针不能进行偏移和运算。Go语言中的指针操作非常简单，只需要记住两个符号：<code>&amp;</code>取地址操作符和<code>*</code> 解引用操作符(根据地址取值)。</p>
-<h5>指针地址和指针类型</h5>
+<h5 id="-13" tabindex="-1">指针地址和指针类型 <a class="header-anchor" href="#-13">§</a></h5>
 <p>每个变量在运行时都拥有一个地址，这个地址代表变量在内存中的位置。Go语言中使用&amp;字符放在变量前面对变量进行“取地址”操作。Go语言中的值类型(int、float、bool、string、array、struct)都有对应的指针类型，如：<code>*int</code>、<code>*int64</code>、<code>*string</code>等。</p>
 <p>取变量指针的语法如下：</p>
 <pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">  ptr := &amp;v    <span class="hljs-comment">// v的类型为T</span>
@@ -913,7 +913,7 @@ slice1 := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">t
     fmt.Println(&amp;b)                    <span class="hljs-comment">// 0xc00000e018</span>
 }
 </code></pre>
-<h5>指针取值</h5>
+<h5 id="-14" tabindex="-1">指针取值 <a class="header-anchor" href="#-14">§</a></h5>
 <p>在对普通变量使用&amp;操作符取地址后会获得这个变量的指针，然后可以对指针使用*操作，也就是指针取值。</p>
 <pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
     <span class="hljs-comment">//指针取值</span>
@@ -953,7 +953,7 @@ value of c:10
     fmt.Println(a) <span class="hljs-comment">// 100</span>
 }
 </code></pre>
-<h5>空指针</h5>
+<h5 id="-15" tabindex="-1">空指针 <a class="header-anchor" href="#-15">§</a></h5>
 <ul>
 <li>当一个指针被定义后没有分配到任何变量时，它的值为 nil</li>
 <li>空指针的判断</li>
@@ -973,7 +973,7 @@ value of c:10
     }
 }
 </code></pre>
-<h5>new和make</h5>
+<h5 id="new-make" tabindex="-1">new和make <a class="header-anchor" href="#new-make">§</a></h5>
 <p>我们先来看一个例子：</p>
 <pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
     <span class="hljs-keyword">var</span> a *<span class="hljs-type">int</span>
@@ -986,7 +986,7 @@ value of c:10
 }
 </code></pre>
 <p>执行上面的代码会引发panic，为什么呢？ 在Go语言中对于引用类型的变量，我们在使用的时候不仅要声明它，还要为它分配内存空间，否则我们的值就没办法存储。而对于值类型的声明不需要分配内存空间，是因为它们在声明的时候已经默认分配好了内存空间。要分配内存，就引出来今天的new和make。 Go语言中new和make是内建的两个函数，主要用来分配内存。</p>
-<h5>new</h5>
+<h5 id="new" tabindex="-1">new <a class="header-anchor" href="#new">§</a></h5>
 <p>new是一个内置的函数，它的函数签名如下：</p>
 <pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">new</span><span class="hljs-params">(Type)</span></span> *Type
 </code></pre>
@@ -1013,7 +1013,7 @@ value of c:10
     fmt.Println(*a)
 }
 </code></pre>
-<h5>make</h5>
+<h5 id="make" tabindex="-1">make <a class="header-anchor" href="#make">§</a></h5>
 <p>make也是用于内存分配的，区别于new，它只用于slice、map以及chan的内存创建，而且它返回的类型就是这三个类型本身，而不是他们的指针类型，因为这三种类型就是引用类型，所以就没有必要返回他们的指针了。make函数的函数签名如下：</p>
 <pre><code class="hljs">func make(t Type, size ...IntegerType) Type
 </code></pre>
@@ -1026,12 +1026,12 @@ value of c:10
     fmt.Println(b)
 }
 </code></pre>
-<h5>new与make的区别</h5>
+<h5 id="new-make-1" tabindex="-1">new与make的区别 <a class="header-anchor" href="#new-make-1">§</a></h5>
 <pre><code class="hljs">1.二者都是用来做内存分配的。
 2.make只用于slice、map以及channel的初始化，返回的还是这三个引用类型本身；
 3.而new用于类型的内存分配，并且内存对应的值为类型零值，返回的是指向类型的指针。
 </code></pre>
-<h4>结构体</h4>
+<h4 id="-16" tabindex="-1">结构体 <a class="header-anchor" href="#-16">§</a></h4>
 <p>Go语言中数组可以存储同一类型的数据，但在结构体中我们可以为不同项定义不同的数据类型。</p>
 <p>结构体是由一系列具有相同类型或不同类型的数据构成的数据集合。</p>
 <p>定义结构体</p>
@@ -1107,7 +1107,7 @@ variable_name := structure_variable_type { key1: value1, key2: value2..., keyn: 
    fmt.Printf( <span class="hljs-string">&quot;Book 2 book_id : %d\n&quot;</span>, Book2.book_id)
 }
 </code></pre>
-<h4>Map(集合)</h4>
+<h4 id="map" tabindex="-1">Map(集合) <a class="header-anchor" href="#map">§</a></h4>
 <blockquote>
 <p>Map是一种无序的键值对的集合。</p>
 <p>Map最重要的一点是通过key来快速检索数据，key类似于索引，指向数据的值。</p>
@@ -1184,8 +1184,8 @@ m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</spa
         }
 }
 </code></pre>
-<h4>interface</h4>
-<h5>接口</h5>
+<h4 id="interface" tabindex="-1">interface <a class="header-anchor" href="#interface">§</a></h4>
+<h5 id="-17" tabindex="-1">接口 <a class="header-anchor" href="#-17">§</a></h5>
 <blockquote>
 <p>接口是Go语言中数据类型的关键。几乎所有的数据结构都围绕接口展开，接口是Go语言中所有数据结构的核心。Go语言的接口实际上是一组方法的集合(接口不能声明属性)。</p>
 </blockquote>
@@ -1238,7 +1238,7 @@ m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</spa
     foo(c)
 }
 </code></pre>
-<h5>空接口</h5>
+<h5 id="-18" tabindex="-1">空接口 <a class="header-anchor" href="#-18">§</a></h5>
 <blockquote>
 <p>interface{}空接口可用于保存任何数据，它可以是一个有用的参数，因为它可以使用任何类型。</p>
 <p>interface{}类型是没有方法的接口。所有类型都至少实现零个方法，并且自动满足接口，所有类型都满足空接口</p>
@@ -1263,7 +1263,7 @@ m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</spa
     i1 = f
 }
 </code></pre>
-<h4>泛型</h4>
+<h4 id="-19" tabindex="-1">泛型 <a class="header-anchor" href="#-19">§</a></h4>
 <blockquote>
 <p>泛型是go 1.18及以上版本的新特性。</p>
 </blockquote>
@@ -1291,7 +1291,7 @@ m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</spa
   <span class="hljs-keyword">return</span> b
 }
 </code></pre>
-<h4>高阶函数</h4>
+<h4 id="-20" tabindex="-1">高阶函数 <a class="header-anchor" href="#-20">§</a></h4>
 <blockquote>
 <p>函数在Go语言中属于一等公民，拥有一等公民待遇的语法元素可以如下使用</p>
 <ul>
@@ -1398,7 +1398,7 @@ m := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</spa
 f := opMap[op]
 f()
 </code></pre>
-<h3>包(package)</h3>
+<h3 id="package" tabindex="-1">包(package) <a class="header-anchor" href="#package">§</a></h3>
 <blockquote>
 <p>Go语言中支持模块化的开发理念，一个包是一个或多个Go源码文件(.go结尾的文件)组成，是一种高级的代码复用方案，Go语言为我们提供了很多内置包，如<code>fmt</code>、<code>os</code>、<code>io</code>等。使用包的对象或者函数时，首先要通过import引入它。</p>
 <ul>
@@ -1413,7 +1413,7 @@ f()
 </li>
 </ul>
 </blockquote>
-<h4>包路径</h4>
+<h4 id="-21" tabindex="-1">包路径 <a class="header-anchor" href="#-21">§</a></h4>
 <ol>
 <li>相对路径</li>
 </ol>
@@ -1430,7 +1430,7 @@ f()
 <p>根目录中包含 <code>go.mod</code> 文件，<code>go.mod</code> 文件定义了模块的模块路径，它也是用于根目录的导入路径，以及它的依赖性要求。每个依赖性要求都被写为模块路径和特定语义版本。</p>
 <p><code>go.mod</code> 文件所在的顶层目录也被称为 <code>module</code> 的根目录，<code>module</code> 根目录以及它子目录下的所有 Go 包均归属于这个 Go Module，这个 module 也被称为 <strong>main module</strong>。</p>
 <p>go mod也是1.13之后，不需要在特定的目录中创建项目，可以任何目录下创建项目，1.16之后，默认就开启，也是Go推荐的使用方式，简单方便。</p>
-<h4>引入包的特殊方式</h4>
+<h4 id="-22" tabindex="-1">引入包的特殊方式 <a class="header-anchor" href="#-22">§</a></h4>
 <ul>
 <li>
 <p>点操作</p>
@@ -1455,7 +1455,7 @@ f()
 <pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">import</span> _ <span class="hljs-string">&quot;github.com/go-sql-driver/mysql&quot;</span>
 <span class="hljs-comment">// _操作其实是引入该包，而不直接使用包里面的函数，而是调用了该包里面的 init 函数。</span>
 </code></pre>
-<h3>init函数</h3>
+<h3 id="init" tabindex="-1">init函数 <a class="header-anchor" href="#init">§</a></h3>
 <blockquote>
 <p>Go init函数是一种特殊函数，用于在程序启动时自动执行一次，主要用于完成程序的初始化工作，如初始化数据的连接、载入本地配置文件等，每个包可以包含多个init函数，所有的init函数都在main函数执行前被调用。</p>
 </blockquote>
@@ -1480,11 +1480,11 @@ f()
 <p>不同包的init函数按照包导入的依耐关系决定执行顺序。</p>
 </li>
 </ul>
-<h3>文件及目录操作</h3>
+<h3 id="-23" tabindex="-1">文件及目录操作 <a class="header-anchor" href="#-23">§</a></h3>
 <blockquote>
 <p>在Go语言中，文件使用指向os.File类型的指针来表示的，也叫做文件句柄。使用过标准输入os.Stdio和os.Stdout，他们的类型都是*os.File。</p>
 </blockquote>
-<h4>文件读取</h4>
+<h4 id="-24" tabindex="-1">文件读取 <a class="header-anchor" href="#-24">§</a></h4>
 <p><strong>方法一：使用os.Open和切片的读取文件</strong></p>
 <pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 
@@ -1579,7 +1579,7 @@ f()
     fmt.Println(msg)
 }
 </code></pre>
-<h4>文件写入</h4>
+<h4 id="-25" tabindex="-1">文件写入 <a class="header-anchor" href="#-25">§</a></h4>
 <p>写文件，先通过os.OpenFile文件句柄，然后再通过bufio.NewWriter以及WriteString来写入字符串，详细代码如下：</p>
 <pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
 
@@ -1643,7 +1643,7 @@ f()
 <li><code>O_SYNC</code>：打开文件用于同步I/O</li>
 <li><code>os.O_TRUNC</code>：截断：如果指定文件已存在，就将该文件的长度截为0。</li>
 </ul>
-<h4>bufio包</h4>
+<h4 id="bufio" tabindex="-1">bufio包 <a class="header-anchor" href="#bufio">§</a></h4>
 <blockquote>
 <p>bufio是buffered I/O的缩写，这个代码包的程序实体实现的I/O操作都内置了缓冲区。</p>
 </blockquote>
@@ -1654,13 +1654,13 @@ f()
 <li>Writer和ReadWriter</li>
 </ul>
 <p>这些数据类型在初始化的时候需要包装一个或多个简单I/O接口类型的值。</p>
-<h3>并发编程(协程)</h3>
+<h3 id="-26" tabindex="-1">并发编程(协程) <a class="header-anchor" href="#-26">§</a></h3>
 <blockquote>
 <p>有人把Go语言比作21世纪的C语言，第一是因为Go语言设计简单，第二则是因为21世纪最重要的就是并发设计，而Go从语言层面就支持并发。同时实现了自动垃圾回收机制。</p>
 <p>Go语言的并发机制运用起来非常简便，在启动并发的方式上直接添加了语言级的关键字就可以实现，和其他编程语言比更加轻量。</p>
 <p>其他语言，高并发场景多使用多线程来支持，而Go天然支持并发，这是因为Go采用更上层的goroutine来支持高并发场景。goroutine只是由官方实现的用户态下的超级“线程池”，每个4~5KB的栈内存占用和由于实现机制而大福减少的创建和销毁开销是go高并发的根本原因。</p>
 </blockquote>
-<h4>Goroutine</h4>
+<h4 id="goroutine" tabindex="-1">Goroutine <a class="header-anchor" href="#goroutine">§</a></h4>
 <blockquote>
 <p>goroutine是一种非常轻量级的实现，可在单个进程里执行成千上万的并发任务，它是Go语言并发设计的核心。</p>
 <p>一个goroutine的栈在其生命周期开始时只有很小的栈(典型情况下2KB)，goruntine的栈不是固定的，他可以按需增大和缩小，goroutine的栈大小限制可以达到1GB，虽然极少会用到这么大。所以在Go语言中一次创建10万左右的goroutine也是可以的。</p>
@@ -1702,7 +1702,7 @@ f()
 </code></pre>
 <p>让main函数休眠3秒，Say函数的打印就顺利输出了。</p>
 <p>在Go中使用goroutine进行并发编程是比较简单的，但是跟多线程一样，并发编程难点在于线程同步和线程安全，因为下文重占探究goroutine如何实现并发控制和并发安全。</p>
-<h4>并发控制</h4>
+<h4 id="-27" tabindex="-1">并发控制 <a class="header-anchor" href="#-27">§</a></h4>
 <p>多线程会有线程安全问题，如何保证线程间通信和数据共享是多线程编程中的大难题。协程作为用户级线程同样也会面临一样的问题，Go的并发控制是通过这几种方式进行的。</p>
 <ul>
 <li>
@@ -1718,7 +1718,7 @@ f()
 <p>context</p>
 </li>
 </ul>
-<h5>Sync.WaitGroup</h5>
+<h5 id="sync-wait-group" tabindex="-1">Sync.WaitGroup <a class="header-anchor" href="#sync-wait-group">§</a></h5>
 <p>Sync.WaitGroup是一种实现并发控制方式，WaitGroup对象内部有一个计数器，最初为0开始，它有三个方法：Add()，Done()，Wait()用来控制计数器的数量。</p>
 <ul>
 <li>
@@ -1752,7 +1752,7 @@ f()
     fmt.Println(<span class="hljs-string">&quot;main say: hello world&quot;</span>)
 }
 </code></pre>
-<h4>channel(信道)</h4>
+<h4 id="channel" tabindex="-1">channel(信道) <a class="header-anchor" href="#channel">§</a></h4>
 <p>Go语言中的通道(channel)是一种特殊类型。通道像一个传递带或者队列，总是遵循先入先出的规则，保证收发数据的顺序。channel跟Linux中的双向管道很像，也是用于进程和协程间通信。</p>
 <p>channel的定义打开、发送、接收、关闭</p>
 <pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">chan</span> T          <span class="hljs-comment">// 可以接收和发送类型为 T 的数据</span>
@@ -1792,7 +1792,7 @@ x := &lt;- ch1  <span class="hljs-comment">// 接收一个数据</span>
     fmt.Println(<span class="hljs-string">&quot;main say: hello world&quot;</span>)
 }
 </code></pre>
-<h4>Context</h4>
+<h4 id="context" tabindex="-1">Context <a class="header-anchor" href="#context">§</a></h4>
 <blockquote>
 <p>Context是Go1.7引入到标准库的，准确说它是goroutine的上下文，包含goroutine的运行状态、环境、现场等信息。Context主要用来在goroutine之间传递上下文信息。Context几乎成为了并发控制和超时控制的标准做法。</p>
 </blockquote>
@@ -1863,13 +1863,13 @@ x := &lt;- ch1  <span class="hljs-comment">// 接收一个数据</span>
     time.Sleep(<span class="hljs-number">5</span> * time.Second) <span class="hljs-comment">// 为了检测监控是否停止，如果没有监控输出，就表示停止了</span>
 }
 </code></pre>
-<h3>热更新</h3>
+<h3 id="-28" tabindex="-1">热更新 <a class="header-anchor" href="#-28">§</a></h3>
 <blockquote>
 <p>由于go是静态编译语言，对于开发时并不是很友好，Air是为Go应用开发设计的一个热重载的命令行工具，当编写的项目代码发生变化时自动重新编译运地项目。</p>
 <p>只需在项目根目录下输入air即可</p>
 <p>注意：该工具与生产环境的热部署无关。</p>
 </blockquote>
-<h4>安装Air</h4>
+<h4 id="air" tabindex="-1">安装Air <a class="header-anchor" href="#air">§</a></h4>
 <p>通过go来安装air命令</p>
 <pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">go install github.com/cosmtrek/air@latest
 </code></pre>
@@ -1877,11 +1877,11 @@ x := &lt;- ch1  <span class="hljs-comment">// 接收一个数据</span>
 <p>如添加到~/.zshrc</p>
 <pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">export PATH=$PATH:$(go env GOPATH)/bin
 </code></pre>
-<h4>测试</h4>
+<h4 id="-29" tabindex="-1">测试 <a class="header-anchor" href="#-29">§</a></h4>
 <p>进入项目文件夹根目录</p>
 <pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">air -v
 </code></pre>
-<h4>使用Air</h4>
+<h4 id="air-1" tabindex="-1">使用Air <a class="header-anchor" href="#air-1">§</a></h4>
 <p>进入项目文件夹根目录</p>
 <p>初始化默认配置到当前路径下，会自动生成.air.toml文件到项目根目录下</p>
 <pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">air init
@@ -1889,7 +1889,7 @@ x := &lt;- ch1  <span class="hljs-comment">// 接收一个数据</span>
 <p>之后开发时，只需要执行air命令，即可实现热重更功能。</p>
 <pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">air
 </code></pre>
-<h4>配置文件(.air.toml)说明</h4>
+<h4 id="air-toml" tabindex="-1">配置文件(.air.toml)说明 <a class="header-anchor" href="#air-toml">§</a></h4>
 <pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-comment"># 根目录</span>
 <span class="hljs-attr">root</span> = <span class="hljs-string">&quot;.&quot;</span>
 <span class="hljs-attr">testdata_dir</span> = <span class="hljs-string">&quot;testdata&quot;</span>

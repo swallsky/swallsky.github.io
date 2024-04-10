@@ -1,12 +1,12 @@
-<html lang="en"><head><meta charSet="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="favicon.ico"/><link rel="stylesheet" href="/css/highlight/styles/default.min.css"/><link href="css/markdown.css" rel="stylesheet" type="text/css"/><title>MarkDown基础</title><script type="text/javascript" src="js/global.js"></script></head><body style="margin:0;padding:0"><div id="root"><div style="display:none"><div class="sc-beySPh CWEHv"><ul><li><a href="./">首页</a></li><li><a href="./go.html">Go语言</a></li><li><a href="./markdown.html">Markdown</a></li></ul></div><div class="sc-guDLey fZVpzq"><div class="menu"><ul><li><span class="icon"></span><a href="/markdown.html">Markdown基础</a></li></ul></div><div class="cnt"><div><h2>Markdown介绍</h2>
-<h3>说明</h3>
+<html lang="en"><head><meta charSet="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="favicon.ico"/><link rel="stylesheet" href="/css/highlight/styles/default.min.css"/><link href="css/markdown.css" rel="stylesheet" type="text/css"/><title>MarkDown基础</title><script type="text/javascript" src="js/global.js"></script></head><body style="margin:0;padding:0"><div id="root"><div style="display:none"><div class="sc-beySPh CWEHv"><ul><li><a href="./">首页</a></li><li><a href="./go.html">Go语言</a></li><li><a href="./markdown.html">Markdown</a></li></ul></div><div class="sc-guDLey gaYXGi"><div class="menu"><div><nav class="table-of-contents"><ol><li><a href="#markdown">Markdown介绍 </a><ol><li><a href="#">说明 </a></li><li><a href="#-1">优点 </a></li><li><a href="#-2">工具 </a></li></ol></li><li><a href="#markdown-1">Markdown基础用法 </a><ol><li><a href="#-3">标题 </a></li><li><a href="#-4">区块段落 </a></li><li><a href="#-5">插入连接或图片 </a></li><li><a href="#-6">列表 </a></li><li><a href="#-7">分隔线 </a></li><li><a href="#-8">文本样式 </a></li></ol></li><li><a href="#markdown-2">Markdown的高级用法 </a><ol><li><a href="#-9">表格 </a></li><li><a href="#-10">代码块 </a></li><li><a href="#-11">流程图 </a></li></ol></li></ol></nav></div></div><div class="cnt"><div><h2 id="markdown" tabindex="-1">Markdown介绍 <a class="header-anchor" href="#markdown">§</a></h2>
+<h3 id="" tabindex="-1">说明 <a class="header-anchor" href="#">§</a></h3>
 <ul>
 <li>Markdown是一种轻量级标记语言，它充许人们使用易读易写的纯文本格式编写文档</li>
 <li>Markdown语言在2004年约翰·格鲁伯(英语:John Gruber)创建。</li>
 <li>Markdown编写的文档可以导出HTML、Word、图像、PDF、Epub等多种格式的文档。</li>
 <li>Markdown编写的文档后缀为 .md，.markdown。</li>
 </ul>
-<h3>优点</h3>
+<h3 id="-1" tabindex="-1">优点 <a class="header-anchor" href="#-1">§</a></h3>
 <ul>
 <li>专注你的文字内容而不是排版样式，安心写作</li>
 <li>轻松导出HTML，PDF和本身的.md文件</li>
@@ -14,7 +14,7 @@
 <li>随时修改你的文章版本，不必像字处理软件生成若干文件版本导致混乱</li>
 <li>可读、直观、学习成本低</li>
 </ul>
-<h3>工具</h3>
+<h3 id="-2" tabindex="-1">工具 <a class="header-anchor" href="#-2">§</a></h3>
 <blockquote>
 <p>工欲善其事,必先利其器</p>
 </blockquote>
@@ -37,21 +37,20 @@
 <p><a href="https://github.com/marktext/marktext">MarkText 开源地址</a></p>
 </li>
 </ul>
-<h2>Markdown基础用法</h2>
-<h3>标题</h3>
+<h2 id="markdown-1" tabindex="-1">Markdown基础用法 <a class="header-anchor" href="#markdown-1">§</a></h2>
+<h3 id="-3" tabindex="-1">标题 <a class="header-anchor" href="#-3">§</a></h3>
 <blockquote>
 <p>使用#号标题</p>
 <p>使用#号可表示1-6级标题，一级标题对应一个#号，二级标题对应两个#号，以此类推</p>
-<blockquote>
-<h1>一级标题 h1</h1>
-<h2>二级标题 h2</h2>
-<h3>三级标题 h3</h3>
-<h4>四级标题 h3</h4>
-<h5>五级标题 h5</h5>
-<h6>六级标题 h6</h6>
 </blockquote>
-</blockquote>
-<h3>区块段落</h3>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-section"># 一级标题 h1</span>
+<span class="hljs-section">## 二级标题 h2</span>
+<span class="hljs-section">### 三级标题 h3 </span>
+<span class="hljs-section">#### 四级标题 h3 </span>
+<span class="hljs-section">##### 五级标题 h5 </span>
+<span class="hljs-section">###### 六级标题 h6</span>
+</code></pre>
+<h3 id="-4" tabindex="-1">区块段落 <a class="header-anchor" href="#-4">§</a></h3>
 <blockquote>
 <ol>
 <li>
@@ -144,7 +143,7 @@ MarkDown区块引用是在段落开头使用&gt;符号，然后后面紧跟一�
 </li>
 </ol>
 </blockquote>
-<h3>插入连接或图片</h3>
+<h3 id="-5" tabindex="-1">插入连接或图片 <a class="header-anchor" href="#-5">§</a></h3>
 <blockquote>
 <p>Markdown针对连接和图片的处理也比较简单，可以使用下面的语法标记</p>
 </blockquote>
@@ -153,7 +152,7 @@ MarkDown区块引用是在段落开头使用&gt;符号，然后后面紧跟一�
 </code></pre>
 <p><a href="https://www.qq.com">点击跳转QQ</a><br />
 <img src="https://upload-images.jianshu.io/upload_images/703764-605e3cc2ecb664f6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="晚霞" /></p>
-<h3>列表</h3>
+<h3 id="-6" tabindex="-1">列表 <a class="header-anchor" href="#-6">§</a></h3>
 <blockquote>
 <ul>
 <li>无序列表：使用*或-来标识</li>
@@ -214,7 +213,7 @@ MarkDown区块引用是在段落开头使用&gt;符号，然后后面紧跟一�
 <li>熟菜2</li>
 <li>熟菜3</li>
 </ol>
-<h3>分隔线</h3>
+<h3 id="-7" tabindex="-1">分隔线 <a class="header-anchor" href="#-7">§</a></h3>
 <blockquote>
 <p>三个以上的星号、减号、下划线，他们之间可以使用空格，但是行内不能有其他的文本</p>
 </blockquote>
@@ -223,7 +222,7 @@ MarkDown区块引用是在段落开头使用&gt;符号，然后后面紧跟一�
 </code></pre>
 <hr />
 <hr />
-<h3>文本样式</h3>
+<h3 id="-8" tabindex="-1">文本样式 <a class="header-anchor" href="#-8">§</a></h3>
 <p><strong>1. 斜体、粗体</strong></p>
 <blockquote>
 <p>有时候，我们希望对某一部分文字进行强调，使用*或_包住，不能空格，否则无效，语法如下。</p>
@@ -285,8 +284,8 @@ ___粗斜体___
 <pre><code class="hljs">&lt;center&gt;居中的字&lt;/center&gt;
 </code></pre>
 <center>居中的字</center>
-<h2>Markdown的高级用法</h2>
-<h3>表格</h3>
+<h2 id="markdown-2" tabindex="-1">Markdown的高级用法 <a class="header-anchor" href="#markdown-2">§</a></h2>
+<h3 id="-9" tabindex="-1">表格 <a class="header-anchor" href="#-9">§</a></h3>
 <blockquote>
 <p>使用|来分隔不同的单元格，使用-来分隔表头和其他行。</p>
 <ul>
@@ -344,14 +343,14 @@ ___粗斜体___
 </tr>
 </tbody>
 </table>
-<h3>代码块</h3>
+<h3 id="-10" tabindex="-1">代码块 <a class="header-anchor" href="#-10">§</a></h3>
 <blockquote>
 <p>用三个反引号，将代码包裹起来，在第一个三个反引号后加上语言名称：</p>
 </blockquote>
 <pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">let</span> var1 = <span class="hljs-string">&quot;hello world&quot;</span>;
 <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(var1)
 </code></pre>
-<h3>流程图</h3>
+<h3 id="-11" tabindex="-1">流程图 <a class="header-anchor" href="#-11">§</a></h3>
 <ol>
 <li>横向流程图</li>
 </ol>
