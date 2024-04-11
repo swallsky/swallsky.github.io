@@ -41,7 +41,7 @@ Error generating stack: `+l.message+`
       border-right: 1px solid #ccc;
       position: fixed;
       width: 300px;
-      height: 100vh;
+      height: calc(100vh - 62px);
       left: 0;
       overflow: auto;
       ol {
