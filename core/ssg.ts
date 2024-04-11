@@ -143,9 +143,10 @@ class SSG {
   /**
    * 生成页面css
    * @param page 页面文件名
+   * @param source 页面源码
    */
-  private createCss(page: string) {
-    const cssFile = path.join(this.srcDir, page, "page.css");
+  private createCss(page: string, source: string) {
+    const cssFile = path.join(this.srcDir, source, "page.css");
     if (IsFileExists(cssFile)) {
       const buildCssFile = path.join(this.buildDir, "css", page + ".css");
       esbuild.buildSync({
@@ -168,7 +169,7 @@ class SSG {
     // 生成html对应的js
     this.createJs(page, source, props);
     // 生成对应的css样式
-    this.createCss(page);
+    this.createCss(page, source);
     // 生成html页
     this.createHtml(page, source, props);
   }

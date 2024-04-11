@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "https://swallsky.github.io/",
   "scripts": {
+    "clear": "rm -rf _cache docs/*.html docs/js/*.js docs/css/*.css",
     "dev": "MODE=dev nodemon -e ts,tsx,css --watch src --watch core --watch app.ts --exec tsx app.ts",
-    "build": "rm -rf _cache && rm -rf dist && MODE=prod tsx app.ts"
+    "build": "yarn clear && MODE=prod tsx app.ts"
   },
   "keywords": [],
   "author": "",

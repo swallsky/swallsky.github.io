@@ -10,10 +10,10 @@ import Html from "./Html";
  * @param props 页面组件的props
  * @returns
  */
-const Server = (Page: any, page: string,props:any) => {
+const Server = (Page: any, page: string, props:any) => {
   if (Page) {
     return renderToString(
-      <Html title={props.title} globalJs={"js/global.js"} jsPath={"js/"+page+".js"} cssPath={"css/"+page+".css"} rootId={config.page.domRootId}>
+      <Html title={props.title} globalJs={"js/"+config.globalJs+".js"} jsPath={"js/"+page+".js"} cssPath={"css/"+page+".css"} rootId={config.page.domRootId}>
         <Page.default {...props} />
       </Html>
     );
