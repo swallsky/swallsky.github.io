@@ -1,0 +1,589 @@
+<html lang="en"><head><meta charSet="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="favicon.ico"/><link rel="stylesheet" href="/highlight/styles/default.min.css"/><link href="css/ft-nextjs.css" rel="stylesheet" type="text/css"/><title>Next.js</title><script type="text/javascript" src="js/global.js"></script></head><body style="margin:0;padding:0"><div id="root"><div style="display:none"><div class="sc-beySPh cNgRTl"><ul><li><a href="./">首页</a></li><li><a href="./go-base.html">Go语言</a></li><li><a href="./node-base.html">Node.js</a></li><li><a href="./ft-react-communication.html">前端</a></li><li><a href="./markdown-base.html">Markdown</a></li></ul></div><div class="sc-guDLey jJgNFa"><div class="menu"><div class="title">Next.js</div><div><nav class="table-of-contents"><ol><li><a href="#next-js">Next.js 介绍 </a><ol><li><a href="#next-js-1">Next.js是什么 </a><ol><li><a href="#">主要特点 </a></li></ol></li><li><a href="#-1">安装 </a><ol><li><a href="#-2">自动安装 </a></li><li><a href="#-3">手动安装 </a></li></ol></li><li><a href="#-4">项目结构 </a><ol><li><a href="#-5">根目录说明 </a></li><li><a href="#-6">两种路由的区别 </a></li></ol></li><li><a href="#app-router">应用路由(App Router) </a><ol><li><a href="#-7">创建首页 </a></li><li><a href="#-8">页面和布局 </a></li><li><a href="#-9">嵌套布局 </a></li><li><a href="#-10">模板 </a></li></ol></li><li><a href="#pages-router">页面路由(Pages  Router) </a><ol><li><a href="#-11">索引路由 </a></li><li><a href="#-12">嵌套路由 </a></li><li><a href="#-13">动态路由 </a></li><li><a href="#-14">布局模式 </a></li></ol></li><li><a href="#next-js-13">Next.js 13渲染方式 </a><ol><li><a href="#ssr">SSR </a></li><li><a href="#ssg">SSG </a></li><li><a href="#csr">CSR </a></li><li><a href="#isr">ISR </a></li></ol></li><li><a href="#-15">获取数据 </a><ol><li><a href="#-16">客户端获取 </a></li><li><a href="#-17">服务端获取 </a></li><li><a href="#-18">编译时获取 </a></li></ol></li><li><a href="#-19">其他 </a></li><li><a href="#image">Image </a></li><li><a href="#metadata">Metadata </a></li></ol></li></ol></nav></div></div><div class="cnt"><div><h3 id="next-js" tabindex="-1">Next.js 介绍 <a class="header-anchor" href="#next-js">§</a></h3>
+<h4 id="next-js-1" tabindex="-1">Next.js是什么 <a class="header-anchor" href="#next-js-1">§</a></h4>
+<blockquote>
+<p>Next.js是一个用于构建全栈Web应用程序的React框架。它提供了一种简单而高效的方式来构建服务器端渲染(SSR)和静态网站(SSG)应用程序。它是由zeit公司开发的，一个开源项目，拥有广泛的社区 支持和丰富的插件生态系统。</p>
+</blockquote>
+<h5 id="" tabindex="-1">主要特点 <a class="header-anchor" href="#">§</a></h5>
+<ol>
+<li>
+<p>服务器端渲染(SSR): Next.js支持服务器端渲染，这使得应用程序在服务器上预先渲染，从而提高页面加载速度和搜索引擎优化(SEO)。Next.js提供了内置的API和钩子，使开发能够轻松地实现SSR。</p>
+</li>
+<li>
+<p>静态网站生成(SSG)：Next.js还支持静态网站生成，这是一种构建网站的新方法，它充许开发人员在构建时预先生成静态页面。这种方法可以提高性能和可扩展性，并且不需要任何服务器端渲染。</p>
+</li>
+<li>
+<p>集成API：Next.js充许将API集成到应用程序中，从而提供更好的数据管理和安全性。它支持Auth、Netlify、Algolia等。</p>
+</li>
+<li>
+<p>自动代码分割：Next.js通过自动代码分割提供更好的应用程序性能。它可以将JavaScript代码拆分成多个小块，以减少初始加载时间和带宽消耗。</p>
+</li>
+<li>
+<p>热模块替换(HMR)：Next.js支寺热模块替换，在开发过程中更新已加载模块的技术。帮助开发时，更快地迭代和测试代码。</p>
+</li>
+<li>
+<p>数据预取：Next.js提供了一种内置的方法来预取数据，可以预先加载和缓存数据，从而提高应用程序的性能和响应速度。</p>
+</li>
+<li>
+<p>自定义页面路由：基于文件系统的路由，构建在服务器组件之上，支持布局、嵌套路由、加载状态、错误处理等。</p>
+</li>
+<li>
+<p>国际化：Next.js支持多语言和国际化，可以根据不同地区和语言的用户自动切换。</p>
+</li>
+<li>
+<p>插件生态系统：Next.js具有丰富的插件生态系统，提供了许多现成的插件来扩展其功能。</p>
+</li>
+<li>
+<p>与其他库和框架集成：Next.js可以与其他流的库和框架集成，如Formik、GraphQL、React Native等。</p>
+</li>
+</ol>
+<h4 id="-1" tabindex="-1">安装 <a class="header-anchor" href="#-1">§</a></h4>
+<blockquote>
+<p>要求</p>
+<ul>
+<li>Node.js &gt;= v16.14</li>
+</ul>
+</blockquote>
+<h5 id="-2" tabindex="-1">自动安装 <a class="header-anchor" href="#-2">§</a></h5>
+<blockquote>
+<p>使用create-next-app安装，它会自动设置所有内容。</p>
+<blockquote>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">npx create-next-app@latest
+</code></pre>
+</blockquote>
+<p>安装时，根据提示选择。</p>
+<p>说明：</p>
+<ul>
+<li>
+<p>Next.js默认附带TypeScript、ESLint和TailWind CSS配置。</p>
+</li>
+<li>
+<p>你可以选择使用src目录以将应用程序的代码与配置文件分开。</p>
+</li>
+</ul>
+</blockquote>
+<h5 id="-3" tabindex="-1">手动安装 <a class="header-anchor" href="#-3">§</a></h5>
+<p>若要手动创建新的Next.js应用，请安装所需的包：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">npm install next@latest react@latest react-dom@latest
+</code></pre>
+<p>添加package.json的scripts命令：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">{
+  <span class="hljs-string">&quot;scripts&quot;</span>: {
+    <span class="hljs-string">&quot;dev&quot;</span>: <span class="hljs-string">&quot;next dev&quot;</span>,
+    <span class="hljs-string">&quot;build&quot;</span>: <span class="hljs-string">&quot;next build&quot;</span>,
+    <span class="hljs-string">&quot;start&quot;</span>: <span class="hljs-string">&quot;next start&quot;</span>,
+    <span class="hljs-string">&quot;lint&quot;</span>: <span class="hljs-string">&quot;next lint&quot;</span>
+  }
+}
+</code></pre>
+<p>这些脚本命令对应不同的阶段：</p>
+<ul>
+<li>
+<p>dev：运行next dev以开发模式启动Next.js。</p>
+</li>
+<li>
+<p>build：运行next build生成用于生产的应用。</p>
+</li>
+<li>
+<p>start：运行next start以启动Next.js生产服务器。</p>
+</li>
+<li>
+<p>lint：运行next lint设置Next.js的内置ESLint配置。</p>
+</li>
+</ul>
+<p><strong>创建目录</strong></p>
+<blockquote>
+<p>Next.js使用文件系统路由，这意味着应用程序中的路由由您构建文件的方式决定。</p>
+</blockquote>
+<p>目录 app</p>
+<p>对应新应用程序，我们建议使用App Router。该路由充许您使用React的最新功能，并且是基于社区反馈的Pages Router演变来的。</p>
+<p>创建首页</p>
+<p>app/layout.tsx   项目根布局必须</p>
+<p>app/page.tsx  项目首页</p>
+<h4 id="-4" tabindex="-1">项目结构 <a class="header-anchor" href="#-4">§</a></h4>
+<blockquote>
+<p>介绍Next.js项目的文件和文件夹结构。</p>
+</blockquote>
+<h5 id="-5" tabindex="-1">根目录说明 <a class="header-anchor" href="#-5">§</a></h5>
+<ul>
+<li>
+<p>app  或 src/app    应用路由(App Router)， v13新增的功能</p>
+</li>
+<li>
+<p>pages  页面路由(Pages Router)   兼容历史版本</p>
+</li>
+<li>
+<p>public 静态资源目录</p>
+</li>
+<li>
+<p>src 可选应用程序源文件夹</p>
+</li>
+</ul>
+<p><strong>注意</strong></p>
+<blockquote>
+<p>Next.js 13中两种路由模式可以共存，但App Router的优先级高于Pages Router。两者都是基于文件的路由，都是基于文件的目录自动生成路由，不需要手动配置，但是两者的规则不太一样。</p>
+<p>项目启动时默认加载的首页页面冲突问题：</p>
+<p>当src/app/page.tsx默认首页文件存在的时候，此页面将作为默认启动页面。如果此时在pages目录下又新建了index.tsx页面，就会和src/app/page.tsx中的页面产生冲突，导致首页无法正常加载。因此两者只存在一个即可，另外一个相关文件要删除！</p>
+</blockquote>
+<h5 id="-6" tabindex="-1">两种路由的区别 <a class="header-anchor" href="#-6">§</a></h5>
+<blockquote>
+<p>两种路由规则的区别，Pages Router是以文件路径作为路由路径，App Router是以文件夹的路径为路由路径，该文件夹下的文件为该页面的UI元素组件，比如page.tsx文件作为页面组件文件，error.tsx出错时的fallback组件文件等。</p>
+</blockquote>
+<p><strong>示例</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>pages</th>
+<th>app</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>/</td>
+<td>./pages/index.tsx</td>
+<td>./app/page.tsx</td>
+</tr>
+<tr>
+<td>/admin</td>
+<td>./pages/admin.tsx, ./pages/admin/index.tsx</td>
+<td>./app/admin/page.tsx</td>
+</tr>
+<tr>
+<td>./blog/:slug</td>
+<td>./pages/blog/[slug].tsx</td>
+<td>./app/blog/[slug]/page.tsx</td>
+</tr>
+</tbody>
+</table>
+<p><strong>优缺点</strong></p>
+<table>
+<thead>
+<tr>
+<th>特点</th>
+<th>应用路由(App Router)</th>
+<th>页面路由(Pages Router)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>路由类型</td>
+<td>默认服务器组件</td>
+<td>默认客户端组件</td>
+</tr>
+<tr>
+<td>支持服务器组件</td>
+<td>是</td>
+<td>没有</td>
+</tr>
+<tr>
+<td>复杂性</td>
+<td>更复杂</td>
+<td>更简单</td>
+</tr>
+<tr>
+<td>性能</td>
+<td>更好</td>
+<td>一般</td>
+</tr>
+<tr>
+<td>扩展性(灵活性)</td>
+<td>更好</td>
+<td>不太好</td>
+</tr>
+</tbody>
+</table>
+<h4 id="app-router" tabindex="-1">应用路由(App Router) <a class="header-anchor" href="#app-router">§</a></h4>
+<blockquote>
+<p>在React 18之前，React应用的渲染都是重客户端的，即使是SSR，也要在客户执行繁重的水合操作。在React 18中引入了一个新的概念 – React Server Components，即React服务端组件，简称RSC，它可以在编译时或服务端运行。有了服务端组件，当然也有客户组件与之对应，在组件文件的开始使用’use server’和’use client’指令来区分两种组件。</p>
+<p>目前支持服务端组件的框架只有Next.js 13，在Next.js 13的App目录下的所有组件默认为服务端组件，如果想要使用客户端组件，那在文件开头加‘use client’指令即可。</p>
+<p>服务端组件带来以下好处：</p>
+<ul>
+<li>
+<p>减小客户端JavaScript体积：因为服务端组件的逻辑都是在服务端执行后生成HTML返回给浏览器的，浏览器端不需要加一些多余的JS文件，比如代码高亮、Markdown渲染等，返回给客户端是渲染后的内容，不需要把用的这些包文件返回；</p>
+</li>
+<li>
+<p>渐进水合：本质上来说服务端组件是不需要水合的，但一些页面交互需要用客户端实现，所以一个页面上还是会有一些客户端组件的，这些客户端组件可以各自进行水合操作，不会阻塞主线程；</p>
+</li>
+<li>
+<p>组件具备服务端能力：因为服务端组件是运行在服务端的Node.js环境中，所以它具备完整的Node.js能力，比如可以直接读取数据库、读取服务器上的文件等；</p>
+</li>
+</ul>
+<p>应用路由为v13版本新功能，应用路由基于文件系统的路由器，其中文件夹用于定义路由。每个文件夹都会映射到路由段。若要创建嵌套路由可在文件夹嵌套中完成。文件夹中的page.js,page.ts,page.tsx等是路由可公开访问的。</p>
+<p>例如：</p>
+<p>/dashboard/analytics/page.js   =&gt;   /dashboard/analytics</p>
+</blockquote>
+<h5 id="-7" tabindex="-1">创建首页 <a class="header-anchor" href="#-7">§</a></h5>
+<blockquote>
+<p>在app(或src/app)目录下，创建首页page.tsx，代码如下：</p>
+</blockquote>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Page</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello, Next.js!<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>
+}
+</code></pre>
+<p>对应访问路径为：/</p>
+<h5 id="-8" tabindex="-1">页面和布局 <a class="header-anchor" href="#-8">§</a></h5>
+<blockquote>
+<p>Next.js 13中的应用程序路由引入了新的文件约定，可以轻松的创建页面、共享布局和模板。</p>
+</blockquote>
+<p><strong>页面</strong></p>
+<p>页面路由是由文件夹路径和文件夹下的page.js(page.tsx,page.ts)等构成。</p>
+<p>例如</p>
+<ul>
+<li>
+<p>app/page.tsx     =&gt;   /</p>
+</li>
+<li>
+<p>app/dashboard/page.tsx   =&gt;   /dashboard</p>
+</li>
+</ul>
+<p><strong>布局</strong></p>
+<p>布局是可以在多个页面之间共享，在访问量，布局不能单独呈现，布局也可以嵌套。</p>
+<p>在文件夹下创建layout.js (layout.jsx、layout.tsx)为约定的布局页面。</p>
+<p>例如</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">DashboardLayout</span>(<span class="hljs-params">{
+  children, // will be a page or nested layout
+}: {
+  children: React.ReactNode
+}</span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>
+      {/* Include shared UI here e.g. a header or sidebar */}
+      <span class="hljs-tag">&lt;<span class="hljs-name">nav</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span>
+
+      {children}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span>
+  )
+}
+</code></pre>
+<p><strong>注意：</strong></p>
+<ul>
+<li>
+<p>最上面的布局称为根布局，是必须的，是所有页面共有的，根布局必须包含html、body标签。</p>
+</li>
+<li>
+<p>任何路由段都可以定义自已的布局。这个布局将在所属下级文件夹中共享。</p>
+</li>
+<li>
+<p>默认情况下，路由中的布局是嵌套的。每个父布局都使用React的children属性将页面包含在其中。</p>
+</li>
+<li>
+<p>可以使用路由组选择加入和退出共享布局的特定路由段。</p>
+</li>
+<li>
+<p>默认情况下布局是服务器组件，但可以设置为客户端组件。</p>
+</li>
+<li>
+<p>在布局中可以获取数据。</p>
+</li>
+<li>
+<p>无法在父布局及期子布局之间传递数据。但是可以在路由中多次获取相同数据，React会自动删除重复的数据，而不影响性能。</p>
+</li>
+<li>
+<p>布局无权访问其下方的路径段。要访问所有路由段，可以客户端组件中使用<a href="https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segment"><code>useSelectedLayoutSegment</code></a>或<a href="https://nextjs.org/docs/app/api-reference/functions/use-selected-layout-segments"><code>useSelectedLayoutSegments</code></a>。</p>
+</li>
+<li>
+<p>.js、.jsx、tsx都可以用于布局文件</p>
+</li>
+</ul>
+<p><strong>根布局(必须)</strong></p>
+<blockquote>
+<p>根布局在目录的顶层定义，并应用于所有路由。通过此布局，可以修改从服务器返回的初始html</p>
+</blockquote>
+<p>代码示例(app/layout.tsx)：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">RootLayout</span>(<span class="hljs-params">{
+  children,
+}: {
+  children: React.ReactNode
+}</span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>{children}<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span></span>
+  )
+}
+</code></pre>
+<ul>
+<li>
+<p>该布局必须在app根目录下</p>
+</li>
+<li>
+<p>该布局必须包含html、body标签</p>
+</li>
+<li>
+<p>可以使用路由组创建多个根布局。</p>
+</li>
+</ul>
+<h5 id="-9" tabindex="-1">嵌套布局 <a class="header-anchor" href="#-9">§</a></h5>
+<blockquote>
+<p>在文件夹中定义的布局适用当前特定的路由段，并在这些路由段中进行渲染。默认情况下，文件夹层次结构中的布局是嵌套的，这意味着它们通过参数prop来包装子布局。</p>
+</blockquote>
+<p>例如 app/dashboard/layout.tsx</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">DashboardLayout</span>(<span class="hljs-params">{
+  children,
+}: {
+  children: React.ReactNode
+}</span>) {
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">section</span>&gt;</span>{children}<span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span></span>
+}
+</code></pre>
+<p>如果要组合上述两个布局，则根布局将把dashboard/layout.tsx当子组件，包装在其中，嵌套顺序为</p>
+<p>app/layout.tsx  =&gt; /app/dashboard/layout.tsx  =&gt;  /app/dashboard/*</p>
+<p>可以使用路由组选择加入和退出共享布局的特定的路由段。</p>
+<h5 id="-10" tabindex="-1">模板 <a class="header-anchor" href="#-10">§</a></h5>
+<blockquote>
+<p>模板与布局类似，但是路由变化时会重新执行。</p>
+<p>在某些情况下，可能需要这些特定行为，而模板将比布局更合适，例如</p>
+<ul>
+<li>不同页面，布局稍有差异</li>
+<li>有一些特定用户形为，例如页面浏览量等</li>
+</ul>
+</blockquote>
+<h4 id="pages-router" tabindex="-1">页面路由(Pages  Router) <a class="header-anchor" href="#pages-router">§</a></h4>
+<blockquote>
+<p>在next.js中，路由是根据目录和文件名与路由相关联，本章节，主要讲解pages页面路由的路由规则，如果之前使用过next.js，本章可跳过。</p>
+</blockquote>
+<p>例如：文件：pages/about.js，对应的路由为/about</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">About</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>About<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+}
+</code></pre>
+<h5 id="-11" tabindex="-1">索引路由 <a class="header-anchor" href="#-11">§</a></h5>
+<blockquote>
+<p>根据文件名自动索引路由，例如</p>
+<ul>
+<li>
+<p>pages/index.js   =&gt;       /</p>
+</li>
+<li>
+<p>pages/blog/index.js  =&gt;   /blog</p>
+</li>
+</ul>
+</blockquote>
+<h5 id="-12" tabindex="-1">嵌套路由 <a class="header-anchor" href="#-12">§</a></h5>
+<blockquote>
+<p>路由支持多层嵌套，多层文件夹时，路由自动识别和匹配。</p>
+<ul>
+<li>
+<p>pages/blog/first-post.js   =&gt;   /blog/first-post</p>
+</li>
+<li>
+<p>pages/dashboard/settings/usename.js  =&gt;  /dashboard/settings/usename</p>
+</li>
+</ul>
+</blockquote>
+<h5 id="-13" tabindex="-1">动态路由 <a class="header-anchor" href="#-13">§</a></h5>
+<blockquote>
+<p>Next.js 支持具有动态路由的页面。例如</p>
+<ul>
+<li>pages/post/[id].js   =&gt;   /posts/1   posts/2</li>
+</ul>
+</blockquote>
+<h5 id="-14" tabindex="-1">布局模式 <a class="header-anchor" href="#-14">§</a></h5>
+<blockquote>
+<p>基于React的布局，例如页面的导航栏和页脚。</p>
+</blockquote>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-title class_">Navbar</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./navbar&#x27;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-title class_">Footer</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./footer&#x27;</span>
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Layout</span>(<span class="hljs-params">{ children }</span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Navbar</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>{children}<span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Footer</span> /&gt;</span>
+    <span class="hljs-tag">&lt;/&gt;</span></span>
+  )
+}
+</code></pre>
+<h4 id="next-js-13" tabindex="-1">Next.js 13渲染方式 <a class="header-anchor" href="#next-js-13">§</a></h4>
+<h5 id="ssr" tabindex="-1">SSR <a class="header-anchor" href="#ssr">§</a></h5>
+<p><strong>app路由</strong></p>
+<p>在app路由下，只要我们的组件是使用 async进行了修饰，都会默认开启SSR。</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">PokemonName</span>(<span class="hljs-params">{ params }: { params: { name: string } }</span>) {
+  <span class="hljs-keyword">const</span> { name } = params;
+
+  <span class="hljs-keyword">const</span> res = (<span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;http://localhost:3000/api/pokemon?name=&#x27;</span> + name)) <span class="hljs-keyword">as</span> any;
+  <span class="hljs-keyword">const</span> resdata = <span class="hljs-keyword">await</span> res.<span class="hljs-title function_">json</span>();
+  <span class="hljs-keyword">const</span> { data } = resdata;
+
+  <span class="hljs-keyword">return</span> (
+      <span class="hljs-comment">//...</span>
+  );
+}
+</code></pre>
+<p><strong>pages路由</strong></p>
+<p>在pages路由下，如果要开启SSR，需要实现 getServerSideProps 这个API，在请求页面的时候，提前获取到数据，然后传入组件中。</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getServerSideProps</span>(<span class="hljs-params">context: any</span>) {
+  <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> <span class="hljs-title function_">getPokemon</span>(<span class="hljs-literal">null</span>, context.<span class="hljs-property">params</span>.<span class="hljs-property">name</span>);
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">props</span>: {
+      <span class="hljs-attr">data</span>: data,
+    },
+  };
+}
+
+<span class="hljs-keyword">const</span> <span class="hljs-title function_">PokemonName</span> = (<span class="hljs-params">{ data }: any</span>) =&gt; {
+
+  <span class="hljs-keyword">return</span> (
+        <span class="hljs-comment">//...</span>
+  );
+};
+</code></pre>
+<h5 id="ssg" tabindex="-1">SSG <a class="header-anchor" href="#ssg">§</a></h5>
+<blockquote>
+<p>SSG生成静态站点，其渲染流程与SSR类似，不同的是第一步不是在用户请时在服务端执行，而是在编译阶段就完成，整个站点最后生成的都是一些静态文件，部署时也不需要启动Node服务。</p>
+</blockquote>
+<h5 id="csr" tabindex="-1">CSR <a class="header-anchor" href="#csr">§</a></h5>
+<blockquote>
+<p>客户端渲染就比较简单了，如果用到了useEffect中获取数据或其他在浏览器请求数据的方式，都可以算作是客户端渲染。</p>
+</blockquote>
+<h5 id="isr" tabindex="-1">ISR <a class="header-anchor" href="#isr">§</a></h5>
+<blockquote>
+<p>ISR是指增量静态生成，当网站有特别多的页面，并且使用SSG的方式，编译阶段需要大量的时间，ISR就是为了解决这个问题，它在编译阶段只生成部分页面，其他页面在用户请求时按需渲染并缓存起来，本质上算是SSG和SSR的结合体。</p>
+</blockquote>
+<p><strong>什么是水合</strong></p>
+<blockquote>
+<p>简单来说是React 基于虚拟DOM工作的，而SSR时服务端生成HTML是真实的DOM，并且这些DOM节点没有做事件监听等，所以需要一步操作将这些真实DOM与虚拟DOM做映射，并添加事件绑定等能力，后续页面的操作才能由React来接管，这个过程叫做水合。</p>
+</blockquote>
+<h4 id="-15" tabindex="-1">获取数据 <a class="header-anchor" href="#-15">§</a></h4>
+<blockquote>
+<p>不论是 Pages Router还是App Router，数据获取可分为三类：客户端获取、服务端获取和编译时获取。</p>
+</blockquote>
+<h5 id="-16" tabindex="-1">客户端获取 <a class="header-anchor" href="#-16">§</a></h5>
+<blockquote>
+<p>客户端获取是React的常规逻辑，在这两种路由方式上没有任何区别，都是在组件的生命周期中执行。</p>
+</blockquote>
+<p>代码如下：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Page</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-title function_">useEffect</span>(<span class="hljs-function">() =&gt;</span> {
+    <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;/api/xxx&#x27;</span>); <span class="hljs-comment">// 页面加载后请求接口</span>
+  }, []);
+
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>xxx<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
+}
+</code></pre>
+<h5 id="-17" tabindex="-1">服务端获取 <a class="header-anchor" href="#-17">§</a></h5>
+<p><strong>App Router</strong></p>
+<p>App Router完全依靠React服务端组件的能力，在服务端组件中可以直接执行一些异步请求即可</p>
+<p>代码如下：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Page</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-comment">// 发起 HTTP 请求</span>
+  <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;https://www.example.com/api/user&#x27;</span>);
+  <span class="hljs-comment">// 或者直接读取数据库</span>
+  <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> db.<span class="hljs-property">user</span>.<span class="hljs-title function_">findOne</span>({ <span class="hljs-attr">where</span>: {...} });
+
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>{data.xxx}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
+}
+</code></pre>
+<p>Next.js 13中的fetch并非WHATWG标准中定义的fetch，Next.js在其基础上做了一些特殊处理，增加缓存相关的参数和一些去重逻辑。</p>
+<p>默认情况下，fetch请求会永久缓存，它在编译阶段就会执行，如果需要在每次页面请求时都执行，则把缓存设置为不缓存或缓存一段时间即可。</p>
+<p>另外这些请求都可以是组件维度的，而不限于页面维度，所以可能会出现一个页面的执行同一个fetch请求的情况，Next.js会自动处理这些重复的请求，保证渲染一个页面时不会重复发送同一个fetch请求。</p>
+<p><strong>Pages Router</strong></p>
+<p>使用函数 <strong>getServerSideProps</strong>： 用于在SSR模式，在每次请求页面时都会执行，并将返回的props注入返回的props注入页面中</p>
+<p>代码如下：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Page</span>(<span class="hljs-params">{...}</span>) {
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>xxx<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getServerSideProps</span>(<span class="hljs-params">context: any</span>) {
+  <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;https://api.github.com/repos/vercel/next.js&#x27;</span>);
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">props</span>: {
+      <span class="hljs-attr">data</span>: data,
+    },
+  };
+}
+</code></pre>
+<h5 id="-18" tabindex="-1">编译时获取 <a class="header-anchor" href="#-18">§</a></h5>
+<blockquote>
+<p>编译时获取数据，主要是Pages Router有特定的函数处理对应的事件，而App Router则完全依耐React服务端组件的能力，没有这么多API。</p>
+</blockquote>
+<p>Pages Router编译时函数</p>
+<p><strong>getStaticProps</strong>  用于 SSG 模式，在编译时就执行，然后将返回的 <code>props</code> 注入到页面中</p>
+<p><strong>getStaticPaths</strong>  用于 SSG 模式和动态路由下，需要返回一个 <code>paths</code> 数据，用于表示当前动态路由一共有哪些页面需要生成</p>
+<p>代码如下：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Page</span>(<span class="hljs-params">{...}</span>) {
+  <span class="hljs-keyword">return</span> <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>xxx<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>;
+}
+<span class="hljs-comment">// 返回的 props 将会作为 Page 组件的 props</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">getStaticProps</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params"></span>) =&gt; {
+  <span class="hljs-keyword">return</span> { <span class="hljs-attr">props</span>: {...} }
+};
+
+
+<span class="hljs-comment">// This function gets called at build time</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">getStaticPaths</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-comment">// Call an external API endpoint to get posts</span>
+  <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> <span class="hljs-title function_">fetch</span>(<span class="hljs-string">&#x27;https://.../posts&#x27;</span>)
+  <span class="hljs-keyword">const</span> posts = <span class="hljs-keyword">await</span> res.<span class="hljs-title function_">json</span>()
+
+  <span class="hljs-comment">// Get the paths we want to pre-render based on posts</span>
+  <span class="hljs-keyword">const</span> paths = posts.<span class="hljs-title function_">map</span>(<span class="hljs-function">(<span class="hljs-params">post</span>) =&gt;</span> ({
+    <span class="hljs-attr">params</span>: { <span class="hljs-attr">id</span>: post.<span class="hljs-property">id</span> },
+  }))
+
+  <span class="hljs-comment">// We&#x27;ll pre-render only these paths at build time.</span>
+  <span class="hljs-comment">// { fallback: false } means other routes should 404.</span>
+  <span class="hljs-keyword">return</span> { paths, <span class="hljs-attr">fallback</span>: <span class="hljs-literal">false</span> }
+}
+</code></pre>
+<h4 id="-19" tabindex="-1">其他 <a class="header-anchor" href="#-19">§</a></h4>
+<blockquote>
+<p>路由、渲染、数据请求是一个框架最核心的功能，除些之外，Next.js也提供了一些其他好的好用功能。</p>
+</blockquote>
+<h4 id="image" tabindex="-1">Image <a class="header-anchor" href="#image">§</a></h4>
+<blockquote>
+<p>Next.js提供了一个Image组件用于在页面上展示图片，相较于img标签，它有一些增强能力：</p>
+<ul>
+<li>
+<p>尺寸优化：它可以根据设备类型自动提供最优尺寸的图片，也会根据客户端的支持程度提供更现代的图片格式，比如WebP或AVIF等;</p>
+</li>
+<li>
+<p>CLS优化： 它会在图片加载完成之前自动进行占位，防止出现布局偏移导致页面性能下降；</p>
+</li>
+<li>
+<p>懒加载：默认当图片在可视区域内时，才加载图片；</p>
+</li>
+</ul>
+</blockquote>
+<h4 id="metadata" tabindex="-1">Metadata <a class="header-anchor" href="#metadata">§</a></h4>
+<blockquote>
+<p>Next.js对SEO支持性很好，默认支持Meta信息方式。</p>
+</blockquote>
+<p><strong>Pages Router</strong></p>
+<p>在Pages Router中使用Head组件:</p>
+<p>代码如下：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-title class_">Head</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;next/head&#x27;</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Page</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-keyword">return</span> (
+    <span class="language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Head</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>My page title<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">&quot;og:title&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;My page title&quot;</span> <span class="hljs-attr">key</span>=<span class="hljs-string">&quot;title&quot;</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Head</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>xxx<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
+</code></pre>
+<p><strong>App Router</strong></p>
+<p>在App Router中提供了两种方式：</p>
+<p>一是配置式的</p>
+<p>在layout.tsx或page.tsx中导出metadata对象或generateMetadata函数：</p>
+<p>代码如下：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-comment">// 导出 metadata 对象</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-attr">metadata</span>: <span class="hljs-title class_">Metadata</span> = { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;...&#x27;</span>, <span class="hljs-attr">description</span>: <span class="hljs-string">&#x27;...&#x27;</span> };
+
+<span class="hljs-comment">// 或者导出 generateMetadata 函数</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> <span class="hljs-title function_">generateMetadata</span> = <span class="hljs-keyword">async</span> (<span class="hljs-params">props</span>) =&gt; {
+  <span class="hljs-keyword">return</span> { <span class="hljs-attr">title</span>: <span class="hljs-string">&#x27;...&#x27;</span>, <span class="hljs-attr">description</span>: <span class="hljs-string">&#x27;...&#x27;</span> };
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">function</span> <span class="hljs-title function_">Page</span>(<span class="hljs-params"></span>) {
+  <span class="hljs-comment">// ...</span>
+}
+</code></pre>
+<p>二是基于文件的方式</p>
+<p>比如favicon、icon、apple-ico、opengraph-image、robots.txt等这些可以直接放一个文件在app目录中，如果这些文件需要动态生成，也可以放一个同名的JS/TS文件，文件中默认导出一个函数来生成就可以了。</p>
+</div></div></div></div></div><script type="text/javascript" src="js/ft-nextjs.js"></script></body></html>

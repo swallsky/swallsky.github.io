@@ -53,6 +53,46 @@ const Route:RouteCfg[] = [
             title: "Go网络编程", 
             mdfile: "go-net.md" 
         }
-    }
+    },
+    {
+        page: "node-base",
+        source: "markdown",
+        props: {
+            title: "Node.js入门", 
+            mdfile: "node-base.md" 
+        }
+    },
+    {
+        page: "node-base2",
+        source: "markdown",
+        props: {
+            title: "Node.js基础", 
+            mdfile: "node-base2.md" 
+        }
+    },
+    {
+        page: "node-typescript",
+        source: "markdown",
+        props: {    
+            title: "TypeScript基础", 
+            mdfile: "node-typescript.md" 
+        }
+    },
+    {
+        page: "ft-nextjs",
+        source: "markdown",
+        props: {    
+            title: "Next.js", 
+            mdfile: "ft-nextjs.md" 
+        }
+    },
+    {   
+        page: "ft-react-communication",
+        source: "markdown",
+        props: {    
+            title: "React通信方式", 
+            mdfile: "ft-react-communication.md" 
+        }
+    },
 ]
 export default Route
