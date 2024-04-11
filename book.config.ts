@@ -6,6 +6,7 @@ export default {
     port: 9090, //开发服务的端口
   },
   page: {
+    title: "码农魔法书", // 页面的title
     domRootId: "root", // dom的root的id
     index: "Page.tsx", // 模块入口页
     serverData: "SerData.ts", // 在服务端获取数据

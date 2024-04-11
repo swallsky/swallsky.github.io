@@ -13,7 +13,7 @@ import Html from "./Html";
 const Server = (Page: any, page: string, props:any) => {
   if (Page) {
     return renderToString(
-      <Html title={props.title} globalJs={"js/"+config.globalJs+".js"} jsPath={"js/"+page+".js"} cssPath={"css/"+page+".css"} rootId={config.page.domRootId}>
+      <Html title={config.page.title+" - "+props.title} globalJs={"js/"+config.globalJs+".js"} jsPath={"js/"+page+".js"} cssPath={"css/"+page+".css"} rootId={config.page.domRootId}>
         <Page.default {...props} />
       </Html>
     );
