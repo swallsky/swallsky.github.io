@@ -5,15 +5,15 @@ import Html from "./Html";
 
 /**
  * 返回服务端的html
- * @param Page
- * @param props
- * @param jspath
+ * @param Page  页面组件
+ * @param page  页面名称
+ * @param props 页面组件的props
  * @returns
  */
-const Server = (Page: any, props: any, pack: string) => {
+const Server = (Page: any, page: string,props:any) => {
   if (Page) {
     return renderToString(
-      <Html title={props.title} globalJs={"js/global.js"} jsPath={"js/"+pack+".js"} cssPath={"css/"+pack+".css"} rootId={config.page.domRootId}>
+      <Html title={props.title} globalJs={"js/global.js"} jsPath={"js/"+page+".js"} cssPath={"css/"+page+".css"} rootId={config.page.domRootId}>
         <Page.default {...props} />
       </Html>
     );

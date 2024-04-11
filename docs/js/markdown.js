@@ -96,7 +96,7 @@ Error generating stack: `+l.message+`
       background-color: #bcbaba;
     }
   }
-`;function Oy(e){return Vl.default.createElement(cp,null,Vl.default.createElement(ap,null),Vl.default.createElement(Ty,null,e.children))}var fp=Oy;function zy(e){return Yn.default.createElement(fp,null,Yn.default.createElement("div",{className:"menu"},Yn.default.createElement("div",{dangerouslySetInnerHTML:{__html:e.serData.markdown.menus}})),Yn.default.createElement("div",{className:"cnt"},Yn.default.createElement("div",{dangerouslySetInnerHTML:{__html:e.serData.markdown.content}})))}var dp=zy;var Ry={title:"MarkDown\u57FA\u7840",serData:{markdown:{content:`<h2 id="markdown" tabindex="-1">Markdown\u4ECB\u7ECD <a class="header-anchor" href="#markdown">\xA7</a></h2>
+`;function Oy(e){return Vl.default.createElement(cp,null,Vl.default.createElement(ap,null),Vl.default.createElement(Ty,null,e.children))}var fp=Oy;function zy(e){return Yn.default.createElement(fp,null,Yn.default.createElement("div",{className:"menu"},Yn.default.createElement("div",{dangerouslySetInnerHTML:{__html:e.serData.markdown.menus}})),Yn.default.createElement("div",{className:"cnt"},Yn.default.createElement("div",{dangerouslySetInnerHTML:{__html:e.serData.markdown.content}})))}var dp=zy;var Ry={title:"MarkDown\u57FA\u7840",mdfile:"markdown-base.md",serData:{markdown:{content:`<h2 id="markdown" tabindex="-1">Markdown\u4ECB\u7ECD <a class="header-anchor" href="#markdown">\xA7</a></h2>
 <h3 id="" tabindex="-1">\u8BF4\u660E <a class="header-anchor" href="#">\xA7</a></h3>
 <ul>
 <li>Markdown\u662F\u4E00\u79CD\u8F7B\u91CF\u7EA7\u6807\u8BB0\u8BED\u8A00\uFF0C\u5B83\u5145\u8BB8\u4EBA\u4EEC\u4F7F\u7528\u6613\u8BFB\u6613\u5199\u7684\u7EAF\u6587\u672C\u683C\u5F0F\u7F16\u5199\u6587\u6863</li>
