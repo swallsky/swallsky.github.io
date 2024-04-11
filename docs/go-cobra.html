@@ -1,0 +1,310 @@
+<html lang="en"><head><meta charSet="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="favicon.ico"/><link rel="stylesheet" href="/highlight/styles/default.min.css"/><link href="css/go-cobra.css" rel="stylesheet" type="text/css"/><title>Cobra命令行工具</title><script type="text/javascript" src="js/global.js"></script></head><body style="margin:0;padding:0"><div id="root"><div style="display:none"><div class="sc-beySPh cNgRTl"><ul><li><a href="./">首页</a></li><li><a href="./go-base.html">Go语言</a></li><li><a href="./markdown-base.html">Markdown</a></li></ul></div><div class="sc-guDLey leUJiK"><div class="menu"><div class="title">Cobra命令行工具</div><div><nav class="table-of-contents"><ol><li><a href="#cobra">Cobra介绍 </a></li><li><a href="#">安装 </a></li><li><a href="#-1">概念 </a></li><li><a href="#-2">使用 </a><ol><li><a href="#-3">持久性标志 </a></li><li><a href="#-4">本地标志 </a></li><li><a href="#-5">父命令上的本地标志 </a></li><li><a href="#-6">必需的标志 </a></li><li><a href="#-7">参数验证 </a></li><li><a href="#-8">预设命令 </a></li></ol></li></ol></nav></div></div><div class="cnt"><div><h3 id="cobra" tabindex="-1">Cobra介绍 <a class="header-anchor" href="#cobra">§</a></h3>
+<blockquote>
+<p>Cobra是Go的Cli框架。包含一套用于创建功能强大的现代化的CLI应用程序的库，也可以用于快速生成基于Cobra的应用程序和命令文件的工具。cobra被用在很多go语言的项目中，如Kubernetes、Docker、Istio、Hugo等等</p>
+</blockquote>
+<p>Cobra提供：</p>
+<ul>
+<li>
+<p>简单的基于子命令的命令行，例如app server、app fetch等</p>
+</li>
+<li>
+<p>完全符合POSIX标准(包括短版本和长版本)</p>
+</li>
+<li>
+<p>嵌套子命令</p>
+</li>
+<li>
+<p>全局、本地和级联标志</p>
+</li>
+<li>
+<p>使用 cobra init appname、cobra add cmdname可以很容易生成应用程序和命令</p>
+</li>
+<li>
+<p>智能提示 ，例如：app srver… did you mean app server?</p>
+</li>
+<li>
+<p>自动生成命令和标志</p>
+</li>
+<li>
+<p>自动识别 -h --help等等为help的标志</p>
+</li>
+<li>
+<p>为应用程序自动shell补全(bash、zsh、fish)</p>
+</li>
+<li>
+<p>为应用程序自动生成手册</p>
+</li>
+<li>
+<p>命令别名</p>
+</li>
+<li>
+<p>灵活定义帮助、用法等</p>
+</li>
+<li>
+<p>可选的与viper的紧密集成</p>
+</li>
+</ul>
+<h3 id="" tabindex="-1">安装 <a class="header-anchor" href="#">§</a></h3>
+<p>Cobra安装简单，在项目根目录下安装cobra包</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">go get -u github.com/spf13/cobra
+</code></pre>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;github.com/spf13/cobra&quot;</span>
+</code></pre>
+<h3 id="-1" tabindex="-1">概念 <a class="header-anchor" href="#-1">§</a></h3>
+<p>Cobra建立在命令、参数和标志的结构之上。</p>
+<ul>
+<li>
+<p>Commands：命令，模块说明，用应说明等</p>
+</li>
+<li>
+<p>Args：参数，向应用传递参数、配置等</p>
+</li>
+<li>
+<p>Flags： 在命令行中更改代码参数的修饰符</p>
+</li>
+</ul>
+<p>好的应用程序在使用时，读起来像句子。用户知道如何操作和使用该程序。</p>
+<p>通用模式如：<code>APPNAME VERB NOUN --ADJECTIVE.</code> or <code>APPNAME COMMAND ARG --FLAG</code></p>
+<p>例1：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">hugo server --port=1313
+</code></pre>
+<p>例2：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">git clone URL --bare
+</code></pre>
+<h3 id="-2" tabindex="-1">使用 <a class="header-anchor" href="#-2">§</a></h3>
+<p>通常基于Cobra应用程序将遵循以下组织结构 appName为应用目录</p>
+<pre><code class="hljs">▾ appName/
+    ▾ cmd/
+        add.go
+        your.go
+        root.go
+        version.go
+      main.go
+</code></pre>
+<p>main.go文件代码如下：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+  <span class="hljs-string">&quot;{pathToYourApp}/cmd&quot;</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+  cmd.Execute()
+}
+</code></pre>
+<p>根命令cmd/root.go代码如下：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">var</span> rootCmd = &amp;cobra.Command{
+  Use:   <span class="hljs-string">&quot;hugo&quot;</span>,
+  Short: <span class="hljs-string">&quot;Hugo is a very fast static site generator&quot;</span>,
+  Long: <span class="hljs-string">`A Fast and Flexible Static Site Generator built with
+                love by spf13 and friends in Go.
+                Complete documentation is available at http://hugo.spf13.com`</span>,
+  Run: <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(cmd *cobra.Command, args []<span class="hljs-type">string</span>)</span></span> {
+    <span class="hljs-comment">// Do Stuff Here</span>
+  },
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Execute</span><span class="hljs-params">()</span></span> {
+  <span class="hljs-keyword">if</span> err := rootCmd.Execute(); err != <span class="hljs-literal">nil</span> {
+    fmt.Println(err)
+    os.Exit(<span class="hljs-number">1</span>)
+  }
+}
+</code></pre>
+<p>子命令cmd/version.go，查询版本</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> cmd
+
+<span class="hljs-keyword">import</span> (
+  <span class="hljs-string">&quot;fmt&quot;</span>
+
+  <span class="hljs-string">&quot;github.com/spf13/cobra&quot;</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">init</span><span class="hljs-params">()</span></span> {
+  rootCmd.AddCommand(versionCmd)
+}
+
+<span class="hljs-keyword">var</span> versionCmd = &amp;cobra.Command{
+  Use:   <span class="hljs-string">&quot;version&quot;</span>,
+  Short: <span class="hljs-string">&quot;Print the version number of Hugo&quot;</span>,
+  Long:  <span class="hljs-string">`All software has versions. This is Hugo&#x27;s`</span>,
+  Run: <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(cmd *cobra.Command, args []<span class="hljs-type">string</span>)</span></span> {
+    fmt.Println(<span class="hljs-string">&quot;Hugo Static Site Generator v0.9 -- HEAD&quot;</span>)
+  },
+}
+</code></pre>
+<h4 id="-3" tabindex="-1">持久性标志 <a class="header-anchor" href="#-3">§</a></h4>
+<p>持久性标志可用于它所分配的命令以及该命令下的每个命令，为全局标志。</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">rootCmd.PersistentFlags().BoolVarP(&amp;Verbose, <span class="hljs-string">&quot;verbose&quot;</span>, <span class="hljs-string">&quot;v&quot;</span>, <span class="hljs-literal">false</span>, <span class="hljs-string">&quot;verbose output&quot;</span>)
+</code></pre>
+<h4 id="-4" tabindex="-1">本地标志 <a class="header-anchor" href="#-4">§</a></h4>
+<p>还可以在本地分配一个标志，该标志仅适用于特定命令。</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">rootCmd.Flags().StringVarP(&amp;Source, <span class="hljs-string">&quot;source&quot;</span>, <span class="hljs-string">&quot;s&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;Source directory to read from&quot;</span>)
+</code></pre>
+<h4 id="-5" tabindex="-1">父命令上的本地标志 <a class="header-anchor" href="#-5">§</a></h4>
+<p>默认情况下，Cobra只解析target命令上的本地标志，任何本地标志父命令将被忽略。通过启用Cobra将在执目标命令之前，解析每个命令的本地标志。</p>
+<p>Command.TraverseChildren</p>
+<p>代码如下：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">command := cobra.Command{
+  Use: <span class="hljs-string">&quot;print [OPTIONS] [COMMANDS]&quot;</span>,
+  TraverseChildren: <span class="hljs-literal">true</span>,
+}
+</code></pre>
+<h4 id="-6" tabindex="-1">必需的标志 <a class="header-anchor" href="#-6">§</a></h4>
+<p>默认情况下，标志是可选的。相反，如果希望命令报告错误，且标记为必需时，使用下面的代码。</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">rootCmd.Flags().StringVarP(&amp;Region, <span class="hljs-string">&quot;region&quot;</span>, <span class="hljs-string">&quot;r&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;AWS region (required)&quot;</span>)
+rootCmd.MarkFlagRequired(<span class="hljs-string">&quot;region&quot;</span>)
+</code></pre>
+<h4 id="-7" tabindex="-1">参数验证 <a class="header-anchor" href="#-7">§</a></h4>
+<p>可以使用字段指定位置参数的验证，使用Args来处理参数</p>
+<p>例如：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">var</span> cmd = &amp;cobra.Command{
+  Short: <span class="hljs-string">&quot;hello&quot;</span>,
+  Args: <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(cmd *cobra.Command, args []<span class="hljs-type">string</span>)</span></span> <span class="hljs-type">error</span> {
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(args) &lt; <span class="hljs-number">1</span> {
+      <span class="hljs-keyword">return</span> errors.New(<span class="hljs-string">&quot;requires at least one arg&quot;</span>)
+    }
+    <span class="hljs-keyword">if</span> myapp.IsValidColor(args[<span class="hljs-number">0</span>]) {
+      <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+    }
+    <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;invalid color specified: %s&quot;</span>, args[<span class="hljs-number">0</span>])
+  },
+  Run: <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(cmd *cobra.Command, args []<span class="hljs-type">string</span>)</span></span> {
+    fmt.Println(<span class="hljs-string">&quot;Hello, World!&quot;</span>)
+  },
+}
+</code></pre>
+<p>Cobra内置了以下验证器</p>
+<ul>
+<li><code>NoArgs</code>- 如果有任何位置参数，该命令将报告错误。</li>
+<li><code>ArbitraryArgs</code>- 该命令将接受任何参数。</li>
+<li><code>OnlyValidArgs</code>- 如果 字段中没有任何位置参数，则该命令将报告错误。<code>ValidArgs``Command</code></li>
+<li><code>MinimumNArgs(int)</code>- 如果没有至少 N 个位置参数，该命令将报告错误。</li>
+<li><code>MaximumNArgs(int)</code>- 如果位置参数超过 N 个，该命令将报告错误。</li>
+<li><code>ExactArgs(int)</code>- 如果位置参数不完全是 N 个，该命令将报告错误。</li>
+<li><code>ExactValidArgs(int)</code>= 如果没有确切的 N 个位置参数，或者有任何位置参数不在<code>ValidArgs``Command</code></li>
+<li><code>RangeArgs(min, max)</code>- 如果 args 数量不在预期 args 的最小和最大数量之间，则该命令将报告错误。</li>
+</ul>
+<p>例如：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+  <span class="hljs-string">&quot;fmt&quot;</span>
+  <span class="hljs-string">&quot;strings&quot;</span>
+
+  <span class="hljs-string">&quot;github.com/spf13/cobra&quot;</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+  <span class="hljs-keyword">var</span> echoTimes <span class="hljs-type">int</span>
+
+  <span class="hljs-keyword">var</span> cmdPrint = &amp;cobra.Command{
+    Use:   <span class="hljs-string">&quot;print [string to print]&quot;</span>,
+    Short: <span class="hljs-string">&quot;Print anything to the screen&quot;</span>,
+    Long: <span class="hljs-string">`print is for printing anything back to the screen.
+For many years people have printed back to the screen.`</span>,
+    Args: cobra.MinimumNArgs(<span class="hljs-number">1</span>),
+    Run: <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(cmd *cobra.Command, args []<span class="hljs-type">string</span>)</span></span> {
+      fmt.Println(<span class="hljs-string">&quot;Print: &quot;</span> + strings.Join(args, <span class="hljs-string">&quot; &quot;</span>))
+    },
+  }
+
+  <span class="hljs-keyword">var</span> cmdEcho = &amp;cobra.Command{
+    Use:   <span class="hljs-string">&quot;echo [string to echo]&quot;</span>,
+    Short: <span class="hljs-string">&quot;Echo anything to the screen&quot;</span>,
+    Long: <span class="hljs-string">`echo is for echoing anything back.
+Echo works a lot like print, except it has a child command.`</span>,
+    Args: cobra.MinimumNArgs(<span class="hljs-number">1</span>),
+    Run: <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(cmd *cobra.Command, args []<span class="hljs-type">string</span>)</span></span> {
+      fmt.Println(<span class="hljs-string">&quot;Print: &quot;</span> + strings.Join(args, <span class="hljs-string">&quot; &quot;</span>))
+    },
+  }
+
+  <span class="hljs-keyword">var</span> cmdTimes = &amp;cobra.Command{
+    Use:   <span class="hljs-string">&quot;times [# times] [string to echo]&quot;</span>,
+    Short: <span class="hljs-string">&quot;Echo anything to the screen more times&quot;</span>,
+    Long: <span class="hljs-string">`echo things multiple times back to the user by providing
+a count and a string.`</span>,
+    Args: cobra.MinimumNArgs(<span class="hljs-number">1</span>),
+    Run: <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(cmd *cobra.Command, args []<span class="hljs-type">string</span>)</span></span> {
+      <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; echoTimes; i++ {
+        fmt.Println(<span class="hljs-string">&quot;Echo: &quot;</span> + strings.Join(args, <span class="hljs-string">&quot; &quot;</span>))
+      }
+    },
+  }
+
+  cmdTimes.Flags().IntVarP(&amp;echoTimes, <span class="hljs-string">&quot;times&quot;</span>, <span class="hljs-string">&quot;t&quot;</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&quot;times to echo the input&quot;</span>)
+
+  <span class="hljs-keyword">var</span> rootCmd = &amp;cobra.Command{Use: <span class="hljs-string">&quot;app&quot;</span>}
+  rootCmd.AddCommand(cmdPrint, cmdEcho)
+  cmdEcho.AddCommand(cmdTimes)
+  rootCmd.Execute()
+}
+</code></pre>
+<h4 id="-8" tabindex="-1">预设命令 <a class="header-anchor" href="#-8">§</a></h4>
+<p>预设命令，可以在命令函数之前或之后运行。如果子函数不声明自已的函数，则这些函数将由子函数继承。这些函数的执行顺序如下：</p>
+<ul>
+<li><code>PersistentPreRun</code></li>
+<li><code>PreRun</code></li>
+<li><code>Run</code></li>
+<li><code>PostRun</code></li>
+<li><code>PersistentPostRun</code></li>
+</ul>
+<p>实例如下：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+  <span class="hljs-string">&quot;fmt&quot;</span>
+
+  <span class="hljs-string">&quot;github.com/spf13/cobra&quot;</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+
+  <span class="hljs-keyword">var</span> rootCmd = &amp;cobra.Command{
+    Use:   <span class="hljs-string">&quot;root [sub]&quot;</span>,
+    Short: <span class="hljs-string">&quot;My root command&quot;</span>,
+    PersistentPreRun: <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(cmd *cobra.Command, args []<span class="hljs-type">string</span>)</span></span> {
+      fmt.Printf(<span class="hljs-string">&quot;Inside rootCmd PersistentPreRun with args: %v\n&quot;</span>, args)
+    },
+    PreRun: <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(cmd *cobra.Command, args []<span class="hljs-type">string</span>)</span></span> {
+      fmt.Printf(<span class="hljs-string">&quot;Inside rootCmd PreRun with args: %v\n&quot;</span>, args)
+    },
+    Run: <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(cmd *cobra.Command, args []<span class="hljs-type">string</span>)</span></span> {
+      fmt.Printf(<span class="hljs-string">&quot;Inside rootCmd Run with args: %v\n&quot;</span>, args)
+    },
+    PostRun: <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(cmd *cobra.Command, args []<span class="hljs-type">string</span>)</span></span> {
+      fmt.Printf(<span class="hljs-string">&quot;Inside rootCmd PostRun with args: %v\n&quot;</span>, args)
+    },
+    PersistentPostRun: <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(cmd *cobra.Command, args []<span class="hljs-type">string</span>)</span></span> {
+      fmt.Printf(<span class="hljs-string">&quot;Inside rootCmd PersistentPostRun with args: %v\n&quot;</span>, args)
+    },
+  }
+
+  <span class="hljs-keyword">var</span> subCmd = &amp;cobra.Command{
+    Use:   <span class="hljs-string">&quot;sub [no options!]&quot;</span>,
+    Short: <span class="hljs-string">&quot;My subcommand&quot;</span>,
+    PreRun: <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(cmd *cobra.Command, args []<span class="hljs-type">string</span>)</span></span> {
+      fmt.Printf(<span class="hljs-string">&quot;Inside subCmd PreRun with args: %v\n&quot;</span>, args)
+    },
+    Run: <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(cmd *cobra.Command, args []<span class="hljs-type">string</span>)</span></span> {
+      fmt.Printf(<span class="hljs-string">&quot;Inside subCmd Run with args: %v\n&quot;</span>, args)
+    },
+    PostRun: <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(cmd *cobra.Command, args []<span class="hljs-type">string</span>)</span></span> {
+      fmt.Printf(<span class="hljs-string">&quot;Inside subCmd PostRun with args: %v\n&quot;</span>, args)
+    },
+    PersistentPostRun: <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(cmd *cobra.Command, args []<span class="hljs-type">string</span>)</span></span> {
+      fmt.Printf(<span class="hljs-string">&quot;Inside subCmd PersistentPostRun with args: %v\n&quot;</span>, args)
+    },
+  }
+
+  rootCmd.AddCommand(subCmd)
+
+  rootCmd.SetArgs([]<span class="hljs-type">string</span>{<span class="hljs-string">&quot;&quot;</span>})
+  rootCmd.Execute()
+  fmt.Println()
+  rootCmd.SetArgs([]<span class="hljs-type">string</span>{<span class="hljs-string">&quot;sub&quot;</span>, <span class="hljs-string">&quot;arg1&quot;</span>, <span class="hljs-string">&quot;arg2&quot;</span>})
+  rootCmd.Execute()
+}
+</code></pre>
+</div></div></div></div></div><script type="text/javascript" src="js/go-cobra.js"></script></body></html>

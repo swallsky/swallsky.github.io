@@ -6,15 +6,27 @@ import styled from "styled-components";
 const Content = styled.div`
   display: flex;
   background-color: #f5f5f5;
-  margin-top: 62px;
+  margin-top: 60px;
   div.menu {
     width: 300px;
     height: 100vh;
+    div.title {
+      height: 50px;
+      line-height: 50px;
+      font-size: 16px;
+      font-weight: bold;
+      border-right: 1px solid #ccc;
+      position:fixed;
+      left:0;
+      width: 300px;
+      text-indent: 12px;
+    }
     nav {
       border-right: 1px solid #ccc;
       position: fixed;
       width: 300px;
-      height: calc(100vh - 62px);
+      height: calc(100vh - 90px);
+      top: 90px;
       left: 0;
       overflow: auto;
       ol {

@@ -5,6 +5,7 @@ function Index(props) {
   return (
     <LayoutMarkdown>
       <div className="menu">
+        <div className="title">{props.title}</div>
         <div dangerouslySetInnerHTML={{ __html: props.serData.markdown.menus }} />
       </div>
       <div className="cnt">

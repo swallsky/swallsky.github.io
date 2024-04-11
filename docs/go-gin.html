@@ -1,0 +1,608 @@
+<html lang="en"><head><meta charSet="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="favicon.ico"/><link rel="stylesheet" href="/highlight/styles/default.min.css"/><link href="css/go-gin.css" rel="stylesheet" type="text/css"/><title>Gin框架</title><script type="text/javascript" src="js/global.js"></script></head><body style="margin:0;padding:0"><div id="root"><div style="display:none"><div class="sc-beySPh cNgRTl"><ul><li><a href="./">首页</a></li><li><a href="./go-base.html">Go语言</a></li><li><a href="./markdown-base.html">Markdown</a></li></ul></div><div class="sc-guDLey leUJiK"><div class="menu"><div class="title">Gin框架</div><div><nav class="table-of-contents"><ol><li><a href="#gin">Gin框架介绍 </a></li><li><a href="#">安装和使用 </a></li><li><a href="#-1">示例 </a><ol><li><a href="#html">HTML渲染 </a></li><li><a href="#-2">表单处理 </a></li><li><a href="#-3">各种格式的渲染 </a></li><li><a href="#-4">文件上传 </a></li><li><a href="#-5">路由组 </a></li><li><a href="#path">路由path参数 </a></li><li><a href="#cookie">Cookie </a></li><li><a href="#-6">重定向 </a></li><li><a href="#-7">中间件 </a></li><li><a href="#-8">自定义日志文件 </a></li><li><a href="#jwt">JWT </a></li></ol></li></ol></nav></div></div><div class="cnt"><div><h3 id="gin" tabindex="-1">Gin框架介绍 <a class="header-anchor" href="#gin">§</a></h3>
+<blockquote>
+<p>Gin是一个Go编写的Web框架(类似Node.js的express、koa等框架)，性能很好，是一个轻量级的Web框架。本章将从安装使用，以及路由、中间件、日志等方面介绍Gin。</p>
+</blockquote>
+<p><a href="https://gin-gonic.com/zh-cn/docs/introduction/">Gin官方文档</a></p>
+<h3 id="" tabindex="-1">安装和使用 <a class="header-anchor" href="#">§</a></h3>
+<blockquote>
+<p>要求：Go版本大于1.13</p>
+</blockquote>
+<ul>
+<li>进入项目目录，初始化</li>
+</ul>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">go mod init demo1.com
+</code></pre>
+<ul>
+<li>下载并安装gin框架</li>
+</ul>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">go get -u github.com/gin-gonic/gin
+</code></pre>
+<ul>
+<li>在项目目录下开始使用使用main.go</li>
+</ul>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;github.com/gin-gonic/gin&quot;</span>
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    r := gin.Default()
+    r.GET(<span class="hljs-string">&quot;/ping&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *gin.Context)</span></span> {
+        c.JSON(<span class="hljs-number">200</span>, gin.H{
+            <span class="hljs-string">&quot;message&quot;</span>: <span class="hljs-string">&quot;pong&quot;</span>,
+        })
+    })
+    r.Run() <span class="hljs-comment">// 监听并在 0.0.0.0:8080 上启动服务</span>
+}
+</code></pre>
+<ul>
+<li>使用go run 运行程序</li>
+</ul>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">go run main.go
+</code></pre>
+<ul>
+<li>开发时，可借助air进行代码热更新，提高开发效率</li>
+</ul>
+<p><a href="https://github.com/cosmtrek/air/blob/master/README-zh_cn.md">go air相关的文档</a></p>
+<h3 id="-1" tabindex="-1">示例 <a class="header-anchor" href="#-1">§</a></h3>
+<blockquote>
+<p>以实例的方式，展示gin相关的功能</p>
+</blockquote>
+<h4 id="html" tabindex="-1">HTML渲染 <a class="header-anchor" href="#html">§</a></h4>
+<blockquote>
+<p>使用 LoadHTMLGlob() 或者 LoadHTMLFiles()</p>
+</blockquote>
+<p>go代码如下：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    router := gin.Default()
+    router.LoadHTMLGlob(<span class="hljs-string">&quot;templates/*&quot;</span>)
+    <span class="hljs-comment">//router.LoadHTMLFiles(&quot;templates/template1.html&quot;, &quot;templates/template2.html&quot;)</span>
+    router.GET(<span class="hljs-string">&quot;/index&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *gin.Context)</span></span> {
+        c.HTML(http.StatusOK, <span class="hljs-string">&quot;index.tmpl&quot;</span>, gin.H{
+            <span class="hljs-string">&quot;title&quot;</span>: <span class="hljs-string">&quot;Main website&quot;</span>,
+        })
+    })
+    router.Run(<span class="hljs-string">&quot;:8080&quot;</span>)
+}
+</code></pre>
+<p>templates/index.tmpl的模板代码</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>
+        {{ .title }}
+    <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<h4 id="-2" tabindex="-1">表单处理 <a class="header-anchor" href="#-2">§</a></h4>
+<ul>
+<li>通过结构体和ShouldBind函数进行绑定</li>
+</ul>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;github.com/gin-gonic/gin&quot;</span>
+)
+
+<span class="hljs-keyword">type</span> LoginForm <span class="hljs-keyword">struct</span> {
+    User     <span class="hljs-type">string</span> <span class="hljs-string">`form:&quot;user&quot; binding:&quot;required&quot;`</span>
+    Password <span class="hljs-type">string</span> <span class="hljs-string">`form:&quot;password&quot; binding:&quot;required&quot;`</span>
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    router := gin.Default()
+    router.POST(<span class="hljs-string">&quot;/login&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *gin.Context)</span></span> {
+        <span class="hljs-comment">// 使用显式绑定声明绑定 multipart form：</span>
+        <span class="hljs-comment">// c.ShouldBindWith(&amp;form, binding.Form)</span>
+        <span class="hljs-comment">// 或者简单地使用 ShouldBind 方法自动绑定：</span>
+        <span class="hljs-keyword">var</span> form LoginForm
+        <span class="hljs-comment">// 在这种情况下，将自动选择合适的绑定</span>
+        <span class="hljs-keyword">if</span> c.ShouldBind(&amp;form) == <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">if</span> form.User == <span class="hljs-string">&quot;user&quot;</span> &amp;&amp; form.Password == <span class="hljs-string">&quot;password&quot;</span> {
+                c.JSON(<span class="hljs-number">200</span>, gin.H{<span class="hljs-string">&quot;status&quot;</span>: <span class="hljs-string">&quot;you are logged in&quot;</span>})
+            } <span class="hljs-keyword">else</span> {
+                c.JSON(<span class="hljs-number">401</span>, gin.H{<span class="hljs-string">&quot;status&quot;</span>: <span class="hljs-string">&quot;unauthorized&quot;</span>})
+            }
+        }
+    })
+    router.Run(<span class="hljs-string">&quot;:8080&quot;</span>)
+}
+</code></pre>
+<ul>
+<li>使用DefaultPostForm、PostForm函数进行表单处理</li>
+</ul>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    router := gin.Default()
+
+    router.POST(<span class="hljs-string">&quot;/form_post&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *gin.Context)</span></span> {
+        message := c.PostForm(<span class="hljs-string">&quot;message&quot;</span>)
+        nick := c.DefaultPostForm(<span class="hljs-string">&quot;nick&quot;</span>, <span class="hljs-string">&quot;anonymous&quot;</span>)
+
+        c.JSON(<span class="hljs-number">200</span>, gin.H{
+            <span class="hljs-string">&quot;status&quot;</span>:  <span class="hljs-string">&quot;posted&quot;</span>,
+            <span class="hljs-string">&quot;message&quot;</span>: message,
+            <span class="hljs-string">&quot;nick&quot;</span>:    nick,
+        })
+    })
+    router.Run(<span class="hljs-string">&quot;:8080&quot;</span>)
+}
+</code></pre>
+<p>gin通过Query获取url参数，通过PostForm来获取POST提交的数据</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    router := gin.Default()
+
+    router.POST(<span class="hljs-string">&quot;/post&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *gin.Context)</span></span> {
+
+        id := c.Query(<span class="hljs-string">&quot;id&quot;</span>)
+        page := c.DefaultQuery(<span class="hljs-string">&quot;page&quot;</span>, <span class="hljs-string">&quot;0&quot;</span>)
+        name := c.PostForm(<span class="hljs-string">&quot;name&quot;</span>)
+        message := c.PostForm(<span class="hljs-string">&quot;message&quot;</span>)
+
+        fmt.Printf(<span class="hljs-string">&quot;id: %s; page: %s; name: %s; message: %s&quot;</span>, id, page, name, message)
+    })
+    router.Run(<span class="hljs-string">&quot;:8080&quot;</span>)
+}
+</code></pre>
+<h4 id="-3" tabindex="-1">各种格式的渲染 <a class="header-anchor" href="#-3">§</a></h4>
+<p>gin支持XML/JSON/YAML/ProBuf渲染，详情实例见下：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    r := gin.Default()
+
+    <span class="hljs-comment">// gin.H 是 map[string]interface{} 的一种快捷方式</span>
+    r.GET(<span class="hljs-string">&quot;/someJSON&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *gin.Context)</span></span> {
+        c.JSON(http.StatusOK, gin.H{<span class="hljs-string">&quot;message&quot;</span>: <span class="hljs-string">&quot;hey&quot;</span>, <span class="hljs-string">&quot;status&quot;</span>: http.StatusOK})
+    })
+
+    r.GET(<span class="hljs-string">&quot;/moreJSON&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *gin.Context)</span></span> {
+        <span class="hljs-comment">// 你也可以使用一个结构体</span>
+        <span class="hljs-keyword">var</span> msg <span class="hljs-keyword">struct</span> {
+            Name    <span class="hljs-type">string</span> <span class="hljs-string">`json:&quot;user&quot;`</span>
+            Message <span class="hljs-type">string</span>
+            Number  <span class="hljs-type">int</span>
+        }
+        msg.Name = <span class="hljs-string">&quot;Lena&quot;</span>
+        msg.Message = <span class="hljs-string">&quot;hey&quot;</span>
+        msg.Number = <span class="hljs-number">123</span>
+        <span class="hljs-comment">// 注意 msg.Name 在 JSON 中变成了 &quot;user&quot;</span>
+        <span class="hljs-comment">// 将输出：{&quot;user&quot;: &quot;Lena&quot;, &quot;Message&quot;: &quot;hey&quot;, &quot;Number&quot;: 123}</span>
+        c.JSON(http.StatusOK, msg)
+    })
+
+    r.GET(<span class="hljs-string">&quot;/someXML&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *gin.Context)</span></span> {
+        c.XML(http.StatusOK, gin.H{<span class="hljs-string">&quot;message&quot;</span>: <span class="hljs-string">&quot;hey&quot;</span>, <span class="hljs-string">&quot;status&quot;</span>: http.StatusOK})
+    })
+
+    r.GET(<span class="hljs-string">&quot;/someYAML&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *gin.Context)</span></span> {
+        c.YAML(http.StatusOK, gin.H{<span class="hljs-string">&quot;message&quot;</span>: <span class="hljs-string">&quot;hey&quot;</span>, <span class="hljs-string">&quot;status&quot;</span>: http.StatusOK})
+    })
+
+    r.GET(<span class="hljs-string">&quot;/someProtoBuf&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *gin.Context)</span></span> {
+        reps := []<span class="hljs-type">int64</span>{<span class="hljs-type">int64</span>(<span class="hljs-number">1</span>), <span class="hljs-type">int64</span>(<span class="hljs-number">2</span>)}
+        label := <span class="hljs-string">&quot;test&quot;</span>
+        <span class="hljs-comment">// protobuf 的具体定义写在 testdata/protoexample 文件中。</span>
+        data := &amp;protoexample.Test{
+            Label: &amp;label,
+            Reps:  reps,
+        }
+        <span class="hljs-comment">// 请注意，数据在响应中变为二进制数据</span>
+        <span class="hljs-comment">// 将输出被 protoexample.Test protobuf 序列化了的数据</span>
+        c.ProtoBuf(http.StatusOK, data)
+    })
+
+    <span class="hljs-comment">// 监听并在 0.0.0.0:8080 上启动服务</span>
+    r.Run(<span class="hljs-string">&quot;:8080&quot;</span>)
+}
+</code></pre>
+<h4 id="-4" tabindex="-1">文件上传 <a class="header-anchor" href="#-4">§</a></h4>
+<p>html页面代码(tpls/onefile.html)如下:</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>单文件上传<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;/onefile&quot;</span> <span class="hljs-attr">enctype</span>=<span class="hljs-string">&quot;multipart/form-data&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;file&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;file&quot;</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>提交<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<p>多文件上传页面(tpls/morefile.html)如下：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;viewport&quot;</span> <span class="hljs-attr">content</span>=<span class="hljs-string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>多文件上传<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">method</span>=<span class="hljs-string">&quot;post&quot;</span> <span class="hljs-attr">action</span>=<span class="hljs-string">&quot;/morefile&quot;</span> <span class="hljs-attr">enctype</span>=<span class="hljs-string">&quot;multipart/form-data&quot;</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;file&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;upload[]&quot;</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;file&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;upload[]&quot;</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;file&quot;</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;upload[]&quot;</span> /&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;submit&quot;</span>&gt;</span>提交<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre>
+<p>文件文件上传的go代码</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> mds
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;log&quot;</span>
+    <span class="hljs-string">&quot;net/http&quot;</span>
+
+    <span class="hljs-string">&quot;github.com/gin-gonic/gin&quot;</span>
+)
+
+<span class="hljs-comment">// 单文件上传模板页面</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">OneFileHtml</span><span class="hljs-params">(c *gin.Context)</span></span> {
+    c.HTML(http.StatusOK, <span class="hljs-string">&quot;onefile.html&quot;</span>, gin.H{})
+}
+
+<span class="hljs-comment">// 上传文件</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">OneFile</span><span class="hljs-params">(c *gin.Context)</span></span> {
+    <span class="hljs-comment">// 单文件</span>
+    file, _ := c.FormFile(<span class="hljs-string">&quot;file&quot;</span>)
+    log.Println(file.Filename)
+
+    dst := <span class="hljs-string">&quot;./assets/imgs/&quot;</span> + file.Filename <span class="hljs-comment">//上传文件完整路径,以程序运行的根目录为准</span>
+    <span class="hljs-comment">// 上传文件至指定的完整文件路径</span>
+    c.SaveUploadedFile(file, dst)
+    c.String(http.StatusOK, fmt.Sprintf(<span class="hljs-string">&quot;%s uploaded!&quot;</span>, file.Filename))
+}
+
+
+<span class="hljs-comment">// 多文件页面</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">MoreFileHtml</span><span class="hljs-params">(c *gin.Context)</span></span> {
+    c.HTML(http.StatusOK, <span class="hljs-string">&quot;morefile.html&quot;</span>, gin.H{})
+}
+
+<span class="hljs-comment">// 多文件页面处理</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">MoreFile</span><span class="hljs-params">(c *gin.Context)</span></span> {
+    form, _ := c.MultipartForm()
+    files := form.File[<span class="hljs-string">&quot;upload[]&quot;</span>]
+    <span class="hljs-comment">// 循环上传文件</span>
+    <span class="hljs-keyword">for</span> _, file := <span class="hljs-keyword">range</span> files {
+        log.Println(file.Filename)
+        <span class="hljs-comment">//上传至文件指定的目录</span>
+        dst := <span class="hljs-string">&quot;./assets/mores/&quot;</span> + file.Filename
+        c.SaveUploadedFile(file, dst)
+    }
+    c.String(<span class="hljs-number">200</span>, fmt.Sprintf(<span class="hljs-string">&quot;%d files uploaded!&quot;</span>, <span class="hljs-built_in">len</span>(files)))
+}
+</code></pre>
+<p>在main.go中设置路由</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;demo.com/mds&quot;</span>
+    <span class="hljs-string">&quot;demo.com/middles&quot;</span>
+    <span class="hljs-string">&quot;github.com/gin-gonic/gin&quot;</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    r := gin.Default()
+    f := r.Group(<span class="hljs-string">&quot;/file&quot;</span>)                <span class="hljs-comment">//文件上传分组</span>
+    {
+        f.GET(<span class="hljs-string">&quot;/onefile&quot;</span>, mds.OneFileHtml)   <span class="hljs-comment">//单文件上传页面</span>
+        f.POST(<span class="hljs-string">&quot;/onefile&quot;</span>, mds.OneFile)      <span class="hljs-comment">//单文件上传处理</span>
+        f.GET(<span class="hljs-string">&quot;/morefile&quot;</span>, mds.MoreFileHtml) <span class="hljs-comment">//多文件上传页面</span>
+        f.POST(<span class="hljs-string">&quot;/morefile&quot;</span>, mds.MoreFile)    <span class="hljs-comment">//多文件上传页面处理</span>
+    }
+}
+</code></pre>
+<h4 id="-5" tabindex="-1">路由组 <a class="header-anchor" href="#-5">§</a></h4>
+<blockquote>
+<p>上面的多文件上传，就用到了路由分组，gin的路由分很简单，使用Group函数进行路由分组。</p>
+</blockquote>
+<p>实例代码如下：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    router := gin.Default()
+
+    <span class="hljs-comment">// 简单的路由组: v1</span>
+    v1 := router.Group(<span class="hljs-string">&quot;/v1&quot;</span>)
+    {
+        v1.POST(<span class="hljs-string">&quot;/login&quot;</span>, loginEndpoint)
+        v1.POST(<span class="hljs-string">&quot;/submit&quot;</span>, submitEndpoint)
+        v1.POST(<span class="hljs-string">&quot;/read&quot;</span>, readEndpoint)
+    }
+
+    <span class="hljs-comment">// 简单的路由组: v2</span>
+    v2 := router.Group(<span class="hljs-string">&quot;/v2&quot;</span>)
+    {
+        v2.POST(<span class="hljs-string">&quot;/login&quot;</span>, loginEndpoint)
+        v2.POST(<span class="hljs-string">&quot;/submit&quot;</span>, submitEndpoint)
+        v2.POST(<span class="hljs-string">&quot;/read&quot;</span>, readEndpoint)
+    }
+
+    router.Run(<span class="hljs-string">&quot;:8080&quot;</span>)
+}
+</code></pre>
+<h4 id="path" tabindex="-1">路由path参数 <a class="header-anchor" href="#path">§</a></h4>
+<blockquote>
+<p>gin支持像/user/:name，这种路由path格式，通过Param参数可获取对应的路由path参数</p>
+</blockquote>
+<p>详细代码如下：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    router := gin.Default()
+
+    <span class="hljs-comment">// 此 handler 将匹配 /user/john 但不会匹配 /user/ 或者 /user</span>
+    router.GET(<span class="hljs-string">&quot;/user/:name&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *gin.Context)</span></span> {
+        name := c.Param(<span class="hljs-string">&quot;name&quot;</span>)
+        c.String(http.StatusOK, <span class="hljs-string">&quot;Hello %s&quot;</span>, name)
+    })
+
+    <span class="hljs-comment">// 此 handler 将匹配 /user/john/ 和 /user/john/send</span>
+    <span class="hljs-comment">// 如果没有其他路由匹配 /user/john，它将重定向到 /user/john/</span>
+    router.GET(<span class="hljs-string">&quot;/user/:name/*action&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *gin.Context)</span></span> {
+        name := c.Param(<span class="hljs-string">&quot;name&quot;</span>)
+        action := c.Param(<span class="hljs-string">&quot;action&quot;</span>)
+        message := name + <span class="hljs-string">&quot; is &quot;</span> + action
+        c.String(http.StatusOK, message)
+    })
+
+    router.Run(<span class="hljs-string">&quot;:8080&quot;</span>)
+}
+</code></pre>
+<h4 id="cookie" tabindex="-1">Cookie <a class="header-anchor" href="#cookie">§</a></h4>
+<blockquote>
+<p>gin默认也集中了cookie相关的操作</p>
+</blockquote>
+<p>Cookie代码操作如下：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;github.com/gin-gonic/gin&quot;</span>
+)
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    router := gin.Default()
+    router.GET(<span class="hljs-string">&quot;/cookie&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *gin.Context)</span></span> {
+        cookie, err := c.Cookie(<span class="hljs-string">&quot;gin_cookie&quot;</span>) <span class="hljs-comment">//获取对应的cookie值</span>
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            cookie = <span class="hljs-string">&quot;NotSet&quot;</span>
+            <span class="hljs-comment">// 设置cookie值</span>
+            c.SetCookie(<span class="hljs-string">&quot;gin_cookie&quot;</span>, <span class="hljs-string">&quot;test&quot;</span>, <span class="hljs-number">3600</span>, <span class="hljs-string">&quot;/&quot;</span>, <span class="hljs-string">&quot;localhost&quot;</span>, <span class="hljs-literal">false</span>, <span class="hljs-literal">true</span>)
+        }
+
+        fmt.Printf(<span class="hljs-string">&quot;Cookie value: %s \n&quot;</span>, cookie)
+    })
+
+    router.Run()
+}
+</code></pre>
+<h4 id="-6" tabindex="-1">重定向 <a class="header-anchor" href="#-6">§</a></h4>
+<blockquote>
+<p>HTTP重定向很容易。内部、外部重定向均支持，通过Redirect函数进行重定向</p>
+</blockquote>
+<p>Get重定向</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">r.GET(<span class="hljs-string">&quot;/test&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *gin.Context)</span></span> {
+    c.Redirect(http.StatusMovedPermanently, <span class="hljs-string">&quot;http://www.google.com/&quot;</span>)
+})
+</code></pre>
+<p>POST重定向</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">r.POST(<span class="hljs-string">&quot;/test&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *gin.Context)</span></span> {
+    c.Redirect(http.StatusFound, <span class="hljs-string">&quot;/foo&quot;</span>)
+})
+</code></pre>
+<p>路由重定向，使用HandleContext</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">r.GET(<span class="hljs-string">&quot;/test&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *gin.Context)</span></span> {
+    c.Request.URL.Path = <span class="hljs-string">&quot;/test2&quot;</span>
+    r.HandleContext(c)
+})
+r.GET(<span class="hljs-string">&quot;/test2&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *gin.Context)</span></span> {
+    c.JSON(<span class="hljs-number">200</span>, gin.H{<span class="hljs-string">&quot;hello&quot;</span>: <span class="hljs-string">&quot;world&quot;</span>})
+})
+</code></pre>
+<h4 id="-7" tabindex="-1">中间件 <a class="header-anchor" href="#-7">§</a></h4>
+<blockquote>
+<p>gin的中间件，使用也相对较简单，请见代码实例</p>
+</blockquote>
+<p>gin中间件的代码如下：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Logger</span><span class="hljs-params">()</span></span> gin.HandlerFunc {
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *gin.Context)</span></span> {
+        t := time.Now()
+
+        <span class="hljs-comment">// 设置 example 变量</span>
+        c.Set(<span class="hljs-string">&quot;example&quot;</span>, <span class="hljs-string">&quot;12345&quot;</span>)
+
+        <span class="hljs-comment">// 请求前</span>
+
+        c.Next()
+
+        <span class="hljs-comment">// 请求后</span>
+        latency := time.Since(t)
+        log.Print(latency)
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    r := gin.New() <span class="hljs-comment">//关闭默认的中间件</span>
+    r.Use(Logger()) <span class="hljs-comment">//使用自定义的中间件</span>
+
+    r.GET(<span class="hljs-string">&quot;/test&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *gin.Context)</span></span> {
+        example := c.MustGet(<span class="hljs-string">&quot;example&quot;</span>).(<span class="hljs-type">string</span>)
+
+        <span class="hljs-comment">// 打印：&quot;12345&quot;</span>
+        log.Println(example)
+    })
+
+    <span class="hljs-comment">// 监听并在 0.0.0.0:8080 上启动服务</span>
+    r.Run(<span class="hljs-string">&quot;:8080&quot;</span>)
+}
+</code></pre>
+<h4 id="-8" tabindex="-1">自定义日志文件 <a class="header-anchor" href="#-8">§</a></h4>
+<blockquote>
+<p>上节我们学习了gin的中间件，gin的日志文件，也是使用的中间件的模式</p>
+</blockquote>
+<p>自定义日志文件的详情代码如下：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    router := gin.New()
+    <span class="hljs-comment">// LoggerWithFormatter 中间件会写入日志到 gin.DefaultWriter</span>
+    <span class="hljs-comment">// 默认 gin.DefaultWriter = os.Stdout</span>
+    router.Use(gin.LoggerWithFormatter(<span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(param gin.LogFormatterParams)</span></span> <span class="hljs-type">string</span> {
+        <span class="hljs-comment">// 你的自定义格式</span>
+        <span class="hljs-keyword">return</span> fmt.Sprintf(<span class="hljs-string">&quot;%s - [%s] \&quot;%s %s %s %d %s \&quot;%s\&quot; %s\&quot;\n&quot;</span>,
+                param.ClientIP,
+                param.TimeStamp.Format(time.RFC1123),
+                param.Method,
+                param.Path,
+                param.Request.Proto,
+                param.StatusCode,
+                param.Latency,
+                param.Request.UserAgent(),
+                param.ErrorMessage,
+        )
+    }))
+    router.Use(gin.Recovery())
+    router.GET(<span class="hljs-string">&quot;/ping&quot;</span>, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *gin.Context)</span></span> {
+        c.String(<span class="hljs-number">200</span>, <span class="hljs-string">&quot;pong&quot;</span>)
+    })
+    router.Run(<span class="hljs-string">&quot;:8080&quot;</span>)
+}
+</code></pre>
+<h4 id="jwt" tabindex="-1">JWT <a class="header-anchor" href="#jwt">§</a></h4>
+<blockquote>
+<p>JWT全称JSON Web Token是一种跨域认证解决方案，属于一个开放的标准，它规定了一种Token实现方式，目前多用于前后端分离项目和OAuth2.0业务场景下。</p>
+</blockquote>
+<p>我们使用第三方库jwt-go来实现生成JWT和解析JWT的功能。</p>
+<p><strong>安装jwt-go：</strong></p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">go get -u github.com/dgrijalva/jwt-go
+</code></pre>
+<p><strong>生成JWT和解析JWT：</strong></p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-comment">// MyClaims 自定义声明结构体并内嵌jwt.StandardClaims</span>
+<span class="hljs-comment">// jwt包自带的jwt.StandardClaims只包含了官方字段</span>
+<span class="hljs-comment">// 我们这里需要额外记录一个username字段，所以要自定义结构体</span>
+<span class="hljs-comment">// 如果想要保存更多信息，都可以添加到这个结构体中</span>
+<span class="hljs-keyword">type</span> MyClaims <span class="hljs-keyword">struct</span> {
+    Username <span class="hljs-type">string</span> <span class="hljs-string">`json:&quot;username&quot;`</span>
+    jwt.StandardClaims
+}
+<span class="hljs-comment">// 设置JWT过期时间，这里设置为2小</span>
+<span class="hljs-keyword">const</span> TokenExpireDuration = time.Hour * <span class="hljs-number">2</span>
+<span class="hljs-comment">// 设置一个私钥</span>
+<span class="hljs-keyword">var</span> MySecret = []<span class="hljs-type">byte</span>(<span class="hljs-string">&quot;123456&quot;</span>)
+
+<span class="hljs-comment">// GenToken 生成JWT</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">GenToken</span><span class="hljs-params">(username <span class="hljs-type">string</span>)</span></span> (<span class="hljs-type">string</span>, <span class="hljs-type">error</span>) {
+    <span class="hljs-comment">// 创建一个我们自己的声明</span>
+    c := MyClaims{
+        username, <span class="hljs-comment">// 自定义字段</span>
+        jwt.StandardClaims{
+            ExpiresAt: time.Now().Add(TokenExpireDuration).Unix(), <span class="hljs-comment">// 过期时间</span>
+            Issuer:    <span class="hljs-string">&quot;my-project&quot;</span>,                               <span class="hljs-comment">// 签发人</span>
+        },
+    }
+    <span class="hljs-comment">// 使用指定的签名方法创建签名对象</span>
+    token := jwt.NewWithClaims(jwt.SigningMethodHS256, c)
+    <span class="hljs-comment">// 使用指定的secret签名并获得完整的编码后的字符串token</span>
+    <span class="hljs-keyword">return</span> token.SignedString(MySecret)
+}
+
+
+<span class="hljs-comment">// ParseToken 解析JWT</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">ParseToken</span><span class="hljs-params">(tokenString <span class="hljs-type">string</span>)</span></span> (*MyClaims, <span class="hljs-type">error</span>) {
+    <span class="hljs-comment">// 解析token</span>
+    token, err := jwt.ParseWithClaims(tokenString, &amp;MyClaims{}, <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(token *jwt.Token)</span></span> (i <span class="hljs-keyword">interface</span>{}, err <span class="hljs-type">error</span>) {
+        <span class="hljs-keyword">return</span> MySecret, <span class="hljs-literal">nil</span>
+    })
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
+    }
+    <span class="hljs-keyword">if</span> claims, ok := token.Claims.(*MyClaims); ok &amp;&amp; token.Valid { <span class="hljs-comment">// 校验token</span>
+        <span class="hljs-keyword">return</span> claims, <span class="hljs-literal">nil</span>
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, errors.New(<span class="hljs-string">&quot;invalid token&quot;</span>)
+}
+</code></pre>
+<p>在gin框架中使用JWT</p>
+<p>首先写一个登录接口，通过用户和密码判断成功后，生成token并返回，代码如下：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs">r.POST(<span class="hljs-string">&quot;/auth&quot;</span>, authHandler)
+
+我们的authHandler定义如下：
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">authHandler</span><span class="hljs-params">(c *gin.Context)</span></span> {
+    <span class="hljs-comment">// 用户发送用户名和密码过来</span>
+    <span class="hljs-keyword">var</span> user UserInfo
+    err := c.ShouldBind(&amp;user)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        c.JSON(http.StatusOK, gin.H{
+            <span class="hljs-string">&quot;code&quot;</span>: <span class="hljs-number">2001</span>,
+            <span class="hljs-string">&quot;msg&quot;</span>:  <span class="hljs-string">&quot;无效的参数&quot;</span>,
+        })
+        <span class="hljs-keyword">return</span>
+    }
+    <span class="hljs-comment">// 校验用户名和密码是否正确</span>
+    <span class="hljs-keyword">if</span> user.Username == <span class="hljs-string">&quot;q1mi&quot;</span> &amp;&amp; user.Password == <span class="hljs-string">&quot;q1mi123&quot;</span> {
+        <span class="hljs-comment">// 生成Token</span>
+        tokenString, _ := GenToken(user.Username)
+        c.JSON(http.StatusOK, gin.H{
+            <span class="hljs-string">&quot;code&quot;</span>: <span class="hljs-number">2000</span>,
+            <span class="hljs-string">&quot;msg&quot;</span>:  <span class="hljs-string">&quot;success&quot;</span>,
+            <span class="hljs-string">&quot;data&quot;</span>: gin.H{<span class="hljs-string">&quot;token&quot;</span>: tokenString},
+        })
+        <span class="hljs-keyword">return</span>
+    }
+    c.JSON(http.StatusOK, gin.H{
+        <span class="hljs-string">&quot;code&quot;</span>: <span class="hljs-number">2002</span>,
+        <span class="hljs-string">&quot;msg&quot;</span>:  <span class="hljs-string">&quot;鉴权失败&quot;</span>,
+    })
+    <span class="hljs-keyword">return</span>
+}
+</code></pre>
+<p>需要使用到授权接口时，就需要验证JWT，在gin中就需要使用中间件，具体的代码如下：</p>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-comment">// JWTAuthMiddleware 基于JWT的认证中间件</span>
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">JWTAuthMiddleware</span><span class="hljs-params">()</span></span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *gin.Context)</span></span> {
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(c *gin.Context)</span></span> {
+        <span class="hljs-comment">// 客户端携带Token有三种方式 1.放在请求头 2.放在请求体 3.放在URI</span>
+        <span class="hljs-comment">// 这里假设Token放在Header的Authorization中，并使用Bearer开头</span>
+        <span class="hljs-comment">// 这里的具体实现方式要依据你的实际业务情况决定</span>
+        authHeader := c.PostForm(<span class="hljs-string">&quot;Authorization&quot;</span>)
+        <span class="hljs-keyword">if</span> authHeader == <span class="hljs-string">&quot;&quot;</span> {
+            c.JSON(http.StatusOK, gin.H{
+                <span class="hljs-string">&quot;code&quot;</span>: <span class="hljs-number">2003</span>,
+                <span class="hljs-string">&quot;msg&quot;</span>:  <span class="hljs-string">&quot;请求头中auth为空&quot;</span>,
+            })
+            c.Abort()
+            <span class="hljs-keyword">return</span>
+        }
+        <span class="hljs-comment">// 按空格分割</span>
+        parts := strings.SplitN(authHeader, <span class="hljs-string">&quot; &quot;</span>, <span class="hljs-number">2</span>)
+        <span class="hljs-keyword">if</span> !(<span class="hljs-built_in">len</span>(parts) == <span class="hljs-number">2</span> &amp;&amp; parts[<span class="hljs-number">0</span>] == <span class="hljs-string">&quot;Bearer&quot;</span>) {
+            c.JSON(http.StatusOK, gin.H{
+                <span class="hljs-string">&quot;code&quot;</span>: <span class="hljs-number">2004</span>,
+                <span class="hljs-string">&quot;msg&quot;</span>:  <span class="hljs-string">&quot;请求头中auth格式有误&quot;</span>,
+            })
+            c.Abort()
+            <span class="hljs-keyword">return</span>
+        }
+        <span class="hljs-comment">// parts[1]是获取到的tokenString，我们使用之前定义好的解析JWT的函数来解析它</span>
+        mc, err := ParseToken(parts[<span class="hljs-number">1</span>])
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            c.JSON(http.StatusOK, gin.H{
+                <span class="hljs-string">&quot;code&quot;</span>: <span class="hljs-number">2005</span>,
+                <span class="hljs-string">&quot;msg&quot;</span>:  <span class="hljs-string">&quot;无效的Token&quot;</span>,
+            })
+            c.Abort()
+            <span class="hljs-keyword">return</span>
+        }
+        <span class="hljs-comment">// 将当前请求的username信息保存到请求的上下文c上</span>
+        c.Set(<span class="hljs-string">&quot;username&quot;</span>, mc.Username)
+        c.Next() <span class="hljs-comment">// 后续的处理函数可以用过c.Get(&quot;username&quot;)来获取当前请求的用户信息</span>
+    }
+}
+
+<span class="hljs-comment">// 注册一个/home路由，发个请求验证一下吧。</span>
+
+r.GET(<span class="hljs-string">&quot;/home&quot;</span>, JWTAuthMiddleware(), homeHandler)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">homeHandler</span><span class="hljs-params">(c *gin.Context)</span></span> {
+    username := c.MustGet(<span class="hljs-string">&quot;username&quot;</span>).(<span class="hljs-type">string</span>)
+    c.JSON(http.StatusOK, gin.H{
+        <span class="hljs-string">&quot;code&quot;</span>: <span class="hljs-number">2000</span>,
+        <span class="hljs-string">&quot;msg&quot;</span>:  <span class="hljs-string">&quot;success&quot;</span>,
+        <span class="hljs-string">&quot;data&quot;</span>: gin.H{<span class="hljs-string">&quot;username&quot;</span>: username},
+    })
+}
+</code></pre>
+</div></div></div></div></div><script type="text/javascript" src="js/go-gin.js"></script></body></html>
