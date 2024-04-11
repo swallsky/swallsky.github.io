@@ -65,16 +65,21 @@ Error generating stack: `+i.message+`
     nav {
       border-right: 1px solid #ccc;
       position: fixed;
-      width: 300px;
+      width: 290px;
       height: calc(100vh - 90px);
       top: 90px;
-      left: 0;
+      left: 10px;
       overflow: auto;
       ol {
-        padding-left: 30px;
+        padding-left: 20px;
         li {
           margin: 0;
           padding: 0;
+          &::marker {
+            color: #747373;
+            font-size: 14px;
+            margin-right: 10px;
+          }
           a {
             display: block;
             color: #333;
