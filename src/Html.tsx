@@ -23,7 +23,7 @@ function Html(props:Props) {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="shortcut icon" href="favicon.ico"/>
-        <link rel="stylesheet" href="/css/highlight/styles/default.min.css" />
+        <link rel="stylesheet" href="/highlight/styles/default.min.css" />
         <link href={props.cssPath} rel="stylesheet" type="text/css" />
         <title>{props.title}</title>
         <script type="text/javascript" src={props.globalJs}></script>
