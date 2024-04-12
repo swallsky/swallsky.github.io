@@ -115,7 +115,7 @@ Error generating stack: `+l.message+`
         text-align: left;
       }
       tbody tr td {
-        border-bottom: 1px solid #ccc;
+        border-bottom: 1px solid #f0efef;
         padding: 10px;
       }
     }
