@@ -18,7 +18,7 @@ const HeadStyle = styled.div`
         padding: 0;
         li {
             margin: 0 10px;
-            width: 100px;
+            /* width: 100px; */
             a {
                 text-decoration: none;
                 color: #666;
@@ -31,6 +31,7 @@ const HeadStyle = styled.div`
                 border: 1px solid #DDD;
                 margin-top: -5px;
                 margin-left: -12px;
+                position: absolute;
                 li {
                     height: 35px;
                     line-height: 35px;
@@ -76,6 +77,9 @@ function Header() {
                     <li><a href="./ft-react-communication.html">React通讯</a></li>
                     <li><a href="./markdown-base.html">Markdown</a></li>
                 </ul>)}
+            </li>
+            <li>
+                <a href="#">AI</a>
             </li>
         </ul>
     </HeadStyle>
