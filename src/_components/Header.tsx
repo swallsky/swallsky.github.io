@@ -78,9 +78,9 @@ function Header() {
                     <li><a href="./markdown-base.html">Markdown</a></li>
                 </ul>)}
             </li>
-            <li>
+            {/* <li>
                 <a href="#">AI</a>
-            </li>
+            </li> */}
         </ul>
     </HeadStyle>
   );
