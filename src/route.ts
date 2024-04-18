@@ -55,6 +55,14 @@ const Route:RouteCfg[] = [
         }
     },
     {
+        page: "go-reverse", 
+        source: "markdown", 
+        props: {    
+            title: "Go反向代理", 
+            mdfile: "go-reverse.md"
+        }
+    },
+    {
         page: "node-base",
         source: "markdown",
         props: {

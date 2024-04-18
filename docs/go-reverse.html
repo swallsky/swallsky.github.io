@@ -1,0 +1,113 @@
+<html lang="en"><head><meta charSet="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="favicon.ico"/><link rel="stylesheet" href="/highlight/styles/default.min.css"/><link href="css/go-reverse.css" rel="stylesheet" type="text/css"/><title>码农魔法书 - Go反向代理</title><script type="text/javascript" src="js/global.js"></script></head><body style="margin:0;padding:0"><div id="root"><div style="display:none"><div class="sc-beySPh logPCA"><ul><li><a href="./">首页</a></li><li><a href="./go-base.html">Go语言</a></li><li><a href="./node-base.html">Node.js</a></li><li><a href="./ft-react-communication.html">前端</a></li></ul></div><div class="sc-guDLey jyIDhn"><div class="menu"><div class="title">Go反向代理</div><div><nav class="table-of-contents"><ol><li><a href="#">反向代理 </a></li><li><a href="#golang">Golang实现反向代理 </a></li><li><a href="#golang-tls">Golang反向代理tls </a></li></ol></nav></div></div><div class="cnt"><div><h3 id="" tabindex="-1">反向代理 <a class="header-anchor" href="#">§</a></h3>
+<blockquote>
+<p>反向代理是一种网络架构，它将客户端请求转发至后端服务器，然后将响应返回至客户端。与正向代理不同的是，反向代理隐藏了后端的服务器的身份，并对客户端提供一些额外的服务，例如负载均衡、缓存和安全性增强等。</p>
+</blockquote>
+<h3 id="golang" tabindex="-1">Golang实现反向代理 <a class="header-anchor" href="#golang">§</a></h3>
+<blockquote>
+<p>使用Golang实现反向代理是非常简单的。Golang提供了一个标准库&quot;net/http/httputil&quot;,其中包含了一些有用的函数和结构体，可以方便地实现反向代理。</p>
+</blockquote>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+	<span class="hljs-string">&quot;fmt&quot;</span>
+	<span class="hljs-string">&quot;net/http&quot;</span>
+	<span class="hljs-string">&quot;net/http/httputil&quot;</span>
+	<span class="hljs-string">&quot;net/url&quot;</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+    <span class="hljs-comment">// 目标服务器地址</span>
+	target, err := url.Parse(<span class="hljs-string">&quot;http://localhost:9091&quot;</span>)
+	<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+		<span class="hljs-built_in">panic</span>(err)
+	}
+
+    <span class="hljs-comment">// 设置代理</span>
+	proxy := httputil.NewSingleHostReverseProxy(target)
+
+    <span class="hljs-comment">// 自定义的请求处理函数</span>
+	proxy.Director = <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(req *http.Request)</span></span> {
+		fmt.Printf(<span class="hljs-string">&quot;Request: %v %v %v \n&quot;</span>, req.Method, req.Host, req.URL)
+
+		req.Header.Add(<span class="hljs-string">&quot;X-Forwarded-Host&quot;</span>, req.Host)
+		req.URL.Host = target.Host
+		req.URL.Scheme = target.Scheme
+	}
+
+	<span class="hljs-comment">// 自定义的错误处理函数</span>
+	proxy.ErrorHandler = <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(w http.ResponseWriter, r *http.Request, err <span class="hljs-type">error</span>)</span></span> {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+    <span class="hljs-comment">// 启动服务</span>
+	http.ListenAndServe(<span class="hljs-string">&quot;:9000&quot;</span>, proxy)
+}
+
+</code></pre>
+<h3 id="golang-tls" tabindex="-1">Golang反向代理tls <a class="header-anchor" href="#golang-tls">§</a></h3>
+<blockquote>
+<p>基于https的反向代理tls,代码如下：</p>
+</blockquote>
+<pre><div class="code-copy" onclick="CopyCode(this)">复制代码</div><code class="hljs"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+	<span class="hljs-string">&quot;crypto/tls&quot;</span>
+	<span class="hljs-string">&quot;fmt&quot;</span>
+	<span class="hljs-string">&quot;log&quot;</span>
+	<span class="hljs-string">&quot;net/http&quot;</span>
+	<span class="hljs-string">&quot;net/http/httputil&quot;</span>
+	<span class="hljs-string">&quot;net/url&quot;</span>
+)
+
+<span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">main</span><span class="hljs-params">()</span></span> {
+	<span class="hljs-comment">// 目标地址</span>
+	target, err := url.Parse(<span class="hljs-string">&quot;http://localhost:9091&quot;</span>)
+	<span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+		<span class="hljs-built_in">panic</span>(err)
+	}
+
+	<span class="hljs-comment">// 设置代理</span>
+	proxy := httputil.NewSingleHostReverseProxy(target)
+
+	<span class="hljs-comment">// 忽略证书验证</span>
+	transport := &amp;http.Transport{
+		TLSClientConfig: &amp;tls.Config{
+			InsecureSkipVerify: <span class="hljs-literal">true</span>, <span class="hljs-comment">// 忽略证书验证</span>
+		},
+	}
+	proxy.Transport = transport
+
+	<span class="hljs-comment">// 自定义的请求处理函数</span>
+	proxy.Director = <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(req *http.Request)</span></span> {
+		fmt.Printf(<span class="hljs-string">&quot;Request: %v %v %v \n&quot;</span>, req.Method, req.Host, req.URL)
+
+		req.Header.Add(<span class="hljs-string">&quot;X-Forwarded-Host&quot;</span>, req.Host)
+		req.URL.Host = target.Host
+		req.URL.Scheme = target.Scheme
+	}
+
+	<span class="hljs-comment">// 自定义的错误处理函数</span>
+	proxy.ErrorHandler = <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">(w http.ResponseWriter, r *http.Request, err <span class="hljs-type">error</span>)</span></span> {
+		fmt.Printf(<span class="hljs-string">&quot;Error: %v \n&quot;</span>, err)
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+	}
+
+	<span class="hljs-comment">//	启动服务</span>
+	<span class="hljs-comment">// http.ListenAndServe(&quot;:9000&quot;, proxy)</span>
+	<span class="hljs-keyword">go</span> <span class="hljs-function"><span class="hljs-keyword">func</span><span class="hljs-params">()</span></span> {
+		server := &amp;http.Server{
+			Addr:      <span class="hljs-string">&quot;:9000&quot;</span>,
+			Handler:   proxy,
+			TLSConfig: &amp;tls.Config{},
+		}
+		log.Println(<span class="hljs-string">&quot;ListenAndServe: 9000&quot;</span>)
+		<span class="hljs-keyword">if</span> err := server.ListenAndServeTLS(<span class="hljs-string">&quot;server.crt&quot;</span>, <span class="hljs-string">&quot;server.key&quot;</span>); err != <span class="hljs-literal">nil</span> {
+			log.Printf(<span class="hljs-string">&quot;ListenAndServeTLS: %v&quot;</span>, err)
+		}
+	}()
+
+	<span class="hljs-comment">// 等待退出</span>
+	<span class="hljs-keyword">select</span> {}
+}
+</code></pre>
+</div></div></div></div></div><script type="text/javascript" src="js/go-reverse.js"></script></body></html>

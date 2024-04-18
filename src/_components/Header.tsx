@@ -60,6 +60,7 @@ function Header() {
                     <li><a href="./go-viper.html">Viper</a></li>
                     <li><a href="./go-gin.html">Gin框架</a></li>
                     <li><a href="./go-net.html">Net</a></li>
+                    <li><a href="./go-reverse.html">反向代理</a></li>
                 </ul>)}
             </li>
             <li onMouseEnter={() => toggleHover(1)} onMouseLeave={() => toggleHover(1)}>
